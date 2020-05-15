@@ -3,10 +3,18 @@ export class Vector {
   }
 
   dot(v2: Vector) : number {
-    return this.x * v2.x + this.y*v2.y
+    return this.x * v2.x + this.y * v2.y;
   }
 
   scale(factor: number) : Vector {
-    return new Vector(this.x * factor, this.y* factor);
+    return new Vector(this.x * factor, this.y * factor);
+  }
+
+  square() : number {
+    return this.dot(this);
+  }
+
+  norm2(): number {
+    return Math.sqrt(this.square());
   }
 }
