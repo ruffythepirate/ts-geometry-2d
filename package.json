@@ -1,0 +1,35 @@
+{
+  "name": "2d-geometry",
+  "version": "0.0.1",
+  "description": "This is a simple library to use for 2d Geometry tasks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
+  "keywords": [
+    "geometry",
+    "2d"
+  ],
+  "author": "Johan Ablett-Karlsson",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^25.2.2",
+    "@types/node": "^14.0.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^25.5.1",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.9.2"
+  }
+}
