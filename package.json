@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "lint": "npx tslint src/*",
     "lint:fix": "npx tslint src/* --fix",
-    "docs": "npx typedoc --mode modules src",
+    "docs": "npx typedoc src",
     "test": "npx jest",
     "test:watch": "npx jest --watchAll"
   },
@@ -36,6 +36,7 @@
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
     "typedoc": "^0.17.6",
+    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "^3.9.2"
   }
 }
