@@ -4,13 +4,48 @@
 
 ## Index
 
-### Modules
+### Classes
 
-* ["Line"](modules/_line_.md)
-* ["Line.test"](modules/_line_test_.md)
-* ["LineSegment"](modules/_linesegment_.md)
-* ["LineSegment.test"](modules/_linesegment_test_.md)
-* ["Point"](modules/_point_.md)
-* ["Point.test"](modules/_point_test_.md)
-* ["Vector"](modules/_vector_.md)
-* ["Vector.test"](modules/_vector_test_.md)
+* [Line](classes/line.md)
+* [LineSegment](classes/linesegment.md)
+* [Point](classes/point.md)
+* [Vector](classes/vector.md)
+
+### Variables
+
+* [l](globals.md#let-l)
+* [ls](globals.md#const-ls)
+* [p](globals.md#let-p)
+* [v](globals.md#let-v)
+
+## Variables
+
+### `Let` l
+
+• **l**: *[Line](classes/line.md)‹›* = new Line(new Point(0, 0), new Vector(1, 0))
+
+*Defined in [Line.test.ts:5](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Line.test.ts#L5)*
+
+___
+
+### `Const` ls
+
+• **ls**: *[LineSegment](classes/linesegment.md)‹›* = new LineSegment(new Point(0, 0), new Point(1, 0))
+
+*Defined in [LineSegment.test.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/LineSegment.test.ts#L4)*
+
+___
+
+### `Let` p
+
+• **p**: *[Point](classes/point.md)‹›* = new Point(1, 2)
+
+*Defined in [Point.test.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Point.test.ts#L4)*
+
+___
+
+### `Let` v
+
+• **v**: *[Vector](classes/vector.md)‹›* = new Vector(1, 2)
+
+*Defined in [Vector.test.ts:3](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.test.ts#L3)*
