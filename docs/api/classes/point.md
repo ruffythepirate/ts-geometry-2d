@@ -28,7 +28,7 @@
 
 \+ **new Point**(`x`: number, `y`: number): *[Point](point.md)*
 
-*Defined in [Point.ts:3](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Point.ts#L3)*
+*Defined in [Point.ts:3](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Point.ts#L3)*
 
 **Parameters:**
 
@@ -45,7 +45,7 @@ Name | Type |
 
 • **x**: *number*
 
-*Defined in [Point.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Point.ts#L4)*
+*Defined in [Point.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Point.ts#L4)*
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 • **y**: *number*
 
-*Defined in [Point.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Point.ts#L4)*
+*Defined in [Point.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Point.ts#L4)*
 
 ## Methods
 
@@ -61,13 +61,15 @@ ___
 
 ▸ **minus**(`p`: [Point](point.md)): *[Vector](vector.md)*
 
-*Defined in [Point.ts:7](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Point.ts#L7)*
+*Defined in [Point.ts:11](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Point.ts#L11)*
+
+Returns the vector going from the inputted point p, to this point.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`p` | [Point](point.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`p` | [Point](point.md) |   |
 
 **Returns:** *[Vector](vector.md)*
 
@@ -77,12 +79,14 @@ ___
 
 ▸ **plus**(`v`: [Vector](vector.md)): *[Point](point.md)*
 
-*Defined in [Point.ts:11](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Point.ts#L11)*
+*Defined in [Point.ts:19](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Point.ts#L19)*
+
+Returns the point reached when starting at this point and then moving according to vector.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`v` | [Vector](vector.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`v` | [Vector](vector.md) |   |
 
 **Returns:** *[Point](point.md)*

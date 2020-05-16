@@ -30,7 +30,7 @@
 
 \+ **new Vector**(`x`: number, `y`: number): *[Vector](vector.md)*
 
-*Defined in [Vector.ts:1](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L1)*
+*Defined in [Vector.ts:1](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L1)*
 
 **Parameters:**
 
@@ -47,7 +47,7 @@ Name | Type |
 
 • **x**: *number*
 
-*Defined in [Vector.ts:2](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L2)*
+*Defined in [Vector.ts:2](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L2)*
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **y**: *number*
 
-*Defined in [Vector.ts:2](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L2)*
+*Defined in [Vector.ts:2](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L2)*
 
 ## Methods
 
@@ -63,13 +63,15 @@ ___
 
 ▸ **dot**(`v2`: [Vector](vector.md)): *number*
 
-*Defined in [Vector.ts:5](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L5)*
+*Defined in [Vector.ts:9](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L9)*
+
+Gives the dot product between the two vectors.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`v2` | [Vector](vector.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`v2` | [Vector](vector.md) |   |
 
 **Returns:** *number*
 
@@ -79,7 +81,9 @@ ___
 
 ▸ **norm2**(): *number*
 
-*Defined in [Vector.ts:17](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L17)*
+*Defined in [Vector.ts:31](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L31)*
+
+The euclidean length of this vector.
 
 **Returns:** *number*
 
@@ -89,13 +93,15 @@ ___
 
 ▸ **scale**(`factor`: number): *[Vector](vector.md)*
 
-*Defined in [Vector.ts:9](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L9)*
+*Defined in [Vector.ts:17](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L17)*
+
+Returns a new vector that is this vector multiplied by the given scalar.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`factor` | number |
+Name | Type | Description |
+------ | ------ | ------ |
+`factor` | number |   |
 
 **Returns:** *[Vector](vector.md)*
 
@@ -105,6 +111,8 @@ ___
 
 ▸ **square**(): *number*
 
-*Defined in [Vector.ts:13](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/Vector.ts#L13)*
+*Defined in [Vector.ts:24](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/Vector.ts#L24)*
+
+This vector dot producted with itself.
 
 **Returns:** *number*

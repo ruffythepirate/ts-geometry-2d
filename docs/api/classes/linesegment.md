@@ -2,6 +2,8 @@
 
 # Class: LineSegment
 
+A LineSegment is defined by two points, it represents the line between these points.
+
 ## Hierarchy
 
 * **LineSegment**
@@ -27,7 +29,7 @@
 
 \+ **new LineSegment**(`p1`: [Point](point.md), `p2`: [Point](point.md)): *[LineSegment](linesegment.md)*
 
-*Defined in [LineSegment.ts:4](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/LineSegment.ts#L4)*
+*Defined in [LineSegment.ts:7](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/LineSegment.ts#L7)*
 
 **Parameters:**
 
@@ -44,7 +46,7 @@ Name | Type |
 
 • **p1**: *[Point](point.md)*
 
-*Defined in [LineSegment.ts:5](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/LineSegment.ts#L5)*
+*Defined in [LineSegment.ts:8](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/LineSegment.ts#L8)*
 
 ___
 
@@ -52,7 +54,7 @@ ___
 
 • **p2**: *[Point](point.md)*
 
-*Defined in [LineSegment.ts:5](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/LineSegment.ts#L5)*
+*Defined in [LineSegment.ts:8](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/LineSegment.ts#L8)*
 
 ## Methods
 
@@ -60,12 +62,14 @@ ___
 
 ▸ **closestPoint**(`p2`: [Point](point.md)): *[Point](point.md)‹›*
 
-*Defined in [LineSegment.ts:8](https://github.com/ruffythepirate/ts-geometry-2d/blob/73fa52f/src/LineSegment.ts#L8)*
+*Defined in [LineSegment.ts:16](https://github.com/ruffythepirate/ts-geometry-2d/blob/ea6ac3b/src/LineSegment.ts#L16)*
+
+Gets the closest point on the line segment to the given point.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`p2` | [Point](point.md) |
+Name | Type | Description |
+------ | ------ | ------ |
+`p2` | [Point](point.md) |  Point to get closest point for.  |
 
 **Returns:** *[Point](point.md)‹›*
