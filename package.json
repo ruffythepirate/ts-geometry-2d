@@ -4,7 +4,11 @@
   "description": "This is a simple library to use for 2d Geometry tasks.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "build": "npx tsc",
+    "lint": "npx tslint src/*",
+    "lint:fix": "npx tslint src/* --fix",
+    "test": "npx jest",
+    "test:watch": "npx jest --watchAll"
   },
   "jest": {
     "transform": {
