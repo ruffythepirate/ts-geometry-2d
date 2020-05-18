@@ -73,10 +73,57 @@
 								<li class="tsd-kind-class"><a href="classes/line.html" class="tsd-kind-icon">Line</a></li>
 								<li class="tsd-kind-class"><a href="classes/linesegment.html" class="tsd-kind-icon">Line<wbr>Segment</a></li>
 								<li class="tsd-kind-class"><a href="classes/point.html" class="tsd-kind-icon">Point</a></li>
+								<li class="tsd-kind-class"><a href="classes/polygon.html" class="tsd-kind-icon">Polygon</a></li>
 								<li class="tsd-kind-class"><a href="classes/vector.html" class="tsd-kind-icon">Vector</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a></li>
+							</ul>
+						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="isclockwise" class="tsd-anchor"></a>
+					<h3>is<wbr>Clockwise</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Clockwise<span class="tsd-signature-symbol">(</span>lineSegments<span class="tsd-signature-symbol">: </span><a href="classes/linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Polygon.ts#L35">Polygon.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This function is based on the idea that the cross product between v1 and v2 is
+										norm(v1) * norm(v2) * sin(alpha) where
+										alpha is the angle between the vectors. By going through each line segment as a vector and
+										taking the cross product,
+										we see if sin(alpha) is mostly positive or negative. Positive here meaning the vectors
+									are turning right, negative meaning they are turning left.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>lineSegments: <a href="classes/linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Array of line segments to check, note that they have to define a polygon by defining a
+										closed shape (ie. the last line must end where the first line starts.).</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -100,7 +147,13 @@
 						<a href="classes/point.html" class="tsd-kind-icon">Point</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/polygon.html" class="tsd-kind-icon">Polygon</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/vector.html" class="tsd-kind-icon">Vector</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
 					</li>
 				</ul>
 			</nav>
@@ -115,6 +168,9 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>

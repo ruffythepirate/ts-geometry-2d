@@ -31,3 +31,9 @@ test('square should return vector dot itself.', () => {
 test('norm2 should return euklidean length of vector.', () => {
   expect(v.norm2()).toBe(Math.sqrt(5));
 });
+
+test('cross should return the size of the cross product', () => {
+  const v2 = new Vector(2, 1);
+
+  expect(v.cross(v2)).toBe(-3);
+});

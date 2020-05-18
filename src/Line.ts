@@ -19,7 +19,8 @@ export class Line {
   }
 
   /**
-   * Returns what number you would have to multiply the lines vector with to reach the point returned by project when starting from the line's point.
+   * Returns what number you would have to multiply the lines vector with to reach the
+   * point returned by project when starting from the line's point.
    * @param p2
    * Point whose projection we get the factor for.
    */
@@ -29,7 +30,9 @@ export class Line {
   }
 
   /**
-   * Gives the minimum distance squared from p2 to the line. This function exists because it doesn't require any Math.sqrt, and is hence a more efficient way if one want to compare distances between many points.
+   * Gives the minimum distance squared from p2 to the line.
+   * This function exists because it doesn't require any Math.sqrt, and is hence a more efficient
+   * way if one want to compare distances between many points.
    * @param p2
    * Point to get minimum distance for.
    */

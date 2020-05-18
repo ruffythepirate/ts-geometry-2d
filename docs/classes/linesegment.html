@@ -101,7 +101,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#asvector" class="tsd-kind-icon">as<wbr>Vector</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#closestpoint" class="tsd-kind-icon">closest<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#flip" class="tsd-kind-icon">flip</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,7 +121,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/41ea77d/src/LineSegment.ts#L7">LineSegment.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/LineSegment.ts#L8">LineSegment.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -144,7 +146,7 @@
 					<div class="tsd-signature tsd-kind-icon">p1<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/41ea77d/src/LineSegment.ts#L8">LineSegment.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/LineSegment.ts#L9">LineSegment.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -154,13 +156,35 @@
 					<div class="tsd-signature tsd-kind-icon">p2<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/41ea77d/src/LineSegment.ts#L8">LineSegment.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/LineSegment.ts#L9">LineSegment.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="asvector" class="tsd-anchor"></a>
+					<h3>as<wbr>Vector</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">as<wbr>Vector<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/LineSegment.ts#L31">LineSegment.ts:31</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the vector defined by going from point p1 to point p2</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="closestpoint" class="tsd-anchor"></a>
 					<h3>closest<wbr>Point</h3>
@@ -171,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/41ea77d/src/LineSegment.ts#L16">LineSegment.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/LineSegment.ts#L17">LineSegment.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,6 +213,28 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="point.html" class="tsd-signature-type">Point</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="flip" class="tsd-anchor"></a>
+					<h3>flip</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">flip<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/LineSegment.ts#L38">LineSegment.ts:38</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a new Line Segment where p1 and p2 have changed places.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -222,7 +268,13 @@
 								<a href="linesegment.html#p2" class="tsd-kind-icon">p2</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linesegment.html#asvector" class="tsd-kind-icon">as<wbr>Vector</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="linesegment.html#closestpoint" class="tsd-kind-icon">closest<wbr>Point</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linesegment.html#flip" class="tsd-kind-icon">flip</a>
 							</li>
 						</ul>
 					</li>
@@ -232,7 +284,13 @@
 						<a href="point.html" class="tsd-kind-icon">Point</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="polygon.html" class="tsd-kind-icon">Polygon</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="vector.html" class="tsd-kind-icon">Vector</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
 					</li>
 				</ul>
 			</nav>
@@ -247,6 +305,9 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
