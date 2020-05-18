@@ -101,9 +101,13 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#asline" class="tsd-kind-icon">as<wbr>Line</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#asvector" class="tsd-kind-icon">as<wbr>Vector</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#closestpoint" class="tsd-kind-icon">closest<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#containspoint" class="tsd-kind-icon">contains<wbr>Point</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#flip" class="tsd-kind-icon">flip</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="linesegment.html#intersects" class="tsd-kind-icon">intersects</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="linesegment.html#fromvalues" class="tsd-kind-icon">from<wbr>Values</a></li>
 							</ul>
 						</section>
 					</div>
@@ -121,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/LineSegment.ts#L8">LineSegment.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L8">LineSegment.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -146,7 +150,7 @@
 					<div class="tsd-signature tsd-kind-icon">p1<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/LineSegment.ts#L9">LineSegment.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L9">LineSegment.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,13 +160,30 @@
 					<div class="tsd-signature tsd-kind-icon">p2<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/LineSegment.ts#L9">LineSegment.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L9">LineSegment.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="asline" class="tsd-anchor"></a>
+					<h3>as<wbr>Line</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">as<wbr>Line<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="line.html" class="tsd-signature-type">Line</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L70">LineSegment.ts:70</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="line.html" class="tsd-signature-type">Line</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="asvector" class="tsd-anchor"></a>
 					<h3>as<wbr>Vector</h3>
@@ -173,7 +194,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/LineSegment.ts#L31">LineSegment.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L35">LineSegment.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -195,7 +216,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/LineSegment.ts#L17">LineSegment.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L21">LineSegment.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -217,6 +238,36 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="containspoint" class="tsd-anchor"></a>
+					<h3>contains<wbr>Point</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">contains<wbr>Point<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L64">LineSegment.ts:64</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns if the given point exists on this line segment or not.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>p: <a href="point.html" class="tsd-signature-type">Point</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="flip" class="tsd-anchor"></a>
 					<h3>flip</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -226,7 +277,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/LineSegment.ts#L38">LineSegment.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L77">LineSegment.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -234,6 +285,68 @@
 									<p>Returns a new Line Segment where p1 and p2 have changed places.</p>
 								</div>
 							</div>
+							<h4 class="tsd-returns-title">Returns <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="intersects" class="tsd-anchor"></a>
+					<h3>intersects</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">intersects<span class="tsd-signature-symbol">(</span>ls2<span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L43">LineSegment.ts:43</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the point where the given line segments intersect, if such point exists.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ls2: <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="fromvalues" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Values</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Values<span class="tsd-signature-symbol">(</span>x1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, x2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2053b13/src/LineSegment.ts#L12">LineSegment.ts:12</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x1: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y1: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>x2: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y2: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h4>
 						</li>
 					</ul>
@@ -268,13 +381,25 @@
 								<a href="linesegment.html#p2" class="tsd-kind-icon">p2</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linesegment.html#asline" class="tsd-kind-icon">as<wbr>Line</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="linesegment.html#asvector" class="tsd-kind-icon">as<wbr>Vector</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="linesegment.html#closestpoint" class="tsd-kind-icon">closest<wbr>Point</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linesegment.html#containspoint" class="tsd-kind-icon">contains<wbr>Point</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="linesegment.html#flip" class="tsd-kind-icon">flip</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="linesegment.html#intersects" class="tsd-kind-icon">intersects</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="linesegment.html#fromvalues" class="tsd-kind-icon">from<wbr>Values</a>
 							</li>
 						</ul>
 					</li>
