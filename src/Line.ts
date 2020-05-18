@@ -1,5 +1,6 @@
 import { Vector } from './Vector';
 import { Point } from './Point';
+import { Matrix } from './Matrix';
 
 /**
  * A line is represented by a point and a vector, it is of infinite length.
@@ -15,6 +16,23 @@ export class Line {
    */
   project(p2: Point) : Point {
     const factor = this.projectFactor(p2);
+    return this.p.plus(this.v.scale(factor));
+  }
+
+  /**
+   * Finds the point where two lines intersect returns undefind if the lines are parallel.:w
+   * @param l2
+   * Other line we want to check intersection with.
+   */
+  intersects(l2: Line): Point | undefined {
+    const matrix = Matrix.fromVectors(this.v, l2.v);
+    const inv = matrix.inverse();
+
+    if (inv === undefined) {
+      return undefined;
+    }
+    const factor =  inv.times(l2.p.minus(this.p)).x;
+
     return this.p.plus(this.v.scale(factor));
   }
 

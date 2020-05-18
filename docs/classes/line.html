@@ -101,6 +101,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="line.html#intersects" class="tsd-kind-icon">intersects</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="line.html#project" class="tsd-kind-icon">project</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="line.html#projectdistance" class="tsd-kind-icon">project<wbr>Distance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="line.html#projectdistancesquare" class="tsd-kind-icon">project<wbr>Distance<wbr>Square</a></li>
@@ -122,7 +123,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L7">Line.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L8">Line.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -147,7 +148,7 @@
 					<div class="tsd-signature tsd-kind-icon">p<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L8">Line.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L9">Line.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,13 +158,44 @@
 					<div class="tsd-signature tsd-kind-icon">v<span class="tsd-signature-symbol">:</span> <a href="vector.html" class="tsd-signature-type">Vector</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L8">Line.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L9">Line.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="intersects" class="tsd-anchor"></a>
+					<h3>intersects</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">intersects<span class="tsd-signature-symbol">(</span>l2<span class="tsd-signature-symbol">: </span><a href="line.html" class="tsd-signature-type">Line</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L27">Line.ts:27</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Finds the point where two lines intersect returns undefind if the lines are parallel.:w</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>l2: <a href="line.html" class="tsd-signature-type">Line</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Other line we want to check intersection with.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="project" class="tsd-anchor"></a>
 					<h3>project</h3>
@@ -174,7 +206,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L16">Line.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L17">Line.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,7 +237,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L49">Line.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L67">Line.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,7 +268,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L39">Line.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L57">Line.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,7 +301,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/96d4a5d/src/Line.ts#L27">Line.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/303a133/src/Line.ts#L45">Line.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -318,6 +350,9 @@
 								<a href="line.html#v" class="tsd-kind-icon">v</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="line.html#intersects" class="tsd-kind-icon">intersects</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="line.html#project" class="tsd-kind-icon">project</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -335,6 +370,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="linesegment.html" class="tsd-kind-icon">Line<wbr>Segment</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="matrix.html" class="tsd-kind-icon">Matrix</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="point.html" class="tsd-kind-icon">Point</a>
@@ -361,6 +399,9 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>

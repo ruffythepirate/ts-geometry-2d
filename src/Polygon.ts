@@ -1,6 +1,10 @@
 import { LineSegment } from './LineSegment';
 import { Point } from './Point';
+import { Line } from './Line';
 
+/**
+ * A polygon is defined by a number of line segments that enclose an area.
+ */
 export class Polygon {
 
   private constructor(public lineSegments: LineSegment[]) {
@@ -18,6 +22,26 @@ export class Polygon {
     },
                                        []);
     return new Polygon(lineSegments);
+  }
+
+  swell(size: number) : Polygon {
+    throw new Error('');
+    // we define lines that pass size units outside of each line segment.
+    const lines = this.lineSegments.map((ls) => {
+      const segmentVector = ls.asVector();
+      const growVector = segmentVector.
+       clockwisePerpendicular()
+           .reverse()
+           .normed()
+           .scale(size);
+      return new Line(ls.p1.plus(growVector), segmentVector);
+    });
+    const newPoints = lines.map((v, i, array) => {
+      const nextIndex = (i + 1) % array.length;
+      return array[i].intersects(array[nextIndex]) as Point;
+    });
+
+    return Polygon.fromPoints(newPoints);
   }
 }
 
