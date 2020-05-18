@@ -1,5 +1,5 @@
 {
   "mode":"file",
-  "out": "docs/api",
-  "plugin": "typedoc-plugin-markdown"
+  "out": "docs/",
+  "exclude": "**/*.test.ts"
 }

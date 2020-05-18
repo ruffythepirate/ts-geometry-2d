@@ -8,9 +8,14 @@ It can be used by anyone that want to add simple geometry operations to a `types
 
 There are many other geometry repositories already, why create another one? Because I couldn't find any repository that contained the operations on polygons that I needed to perform layouting when visualizing graphs.
 
+## Features
+
+Refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d/globals.html) to see available classes and their functions.
+
 ## Requirements
 
-* To build or develop you need `npx` https://github.com/npm/npx. This allows invoking of the other global npm requirements in the repository (Typescript, Jest) without having to install them.
+* Node and npm
+* To build or develop you will benefit from having `npx` https://github.com/npm/npx. This allows invoking of the other global npm requirements in the repository (Typescript, Jest) without having to install them.
 
 ## Usage
 
