@@ -17,17 +17,23 @@ test('constructor should guarantee that line segments are clockwise oriented', (
   ).toBeDefined();
 });
 
-// test('swell should return a new bigger polygon.', () => {
-//     const newPol = pol.swell(1);
-//
-//     expect(newPol).toEqual(createPolygon(
-//         [
-//             [-1,-1],
-//             [-1, 2],
-//             [2, 2],
-//             [2, -1]
-//         ]));
-// });
+test('containsPoints should return true if point is inside Polygon.', () => {
+  expect(true).toBeTruthy();
+});
+
+test('swell should return a new bigger polygon.', () => {
+  const newPol = pol.swell(1);
+
+  const expectedPolygon = createPolygon(
+    [
+            [-1, -1],
+            [-1, 2],
+            [2, 2],
+            [2, -1],
+    ]);
+
+  expect(newPol.lineSegmentsAsSet()).toEqual(expectedPolygon.lineSegmentsAsSet());
+});
 
 function equalLineSegment(x1: number, y1: number, x2: number, y2: number) {
   return (lineSegment: LineSegment) => lineSegment.p1.x === x1

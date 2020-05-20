@@ -24,9 +24,15 @@ export class Polygon {
     return new Polygon(lineSegments);
   }
 
+  containsPoint(p: Point): boolean {
+    return false;
+  }
+
+  lineSegmentsAsSet(): Set<LineSegment> {
+    return new Set<LineSegment>(this.lineSegments);
+  }
+
   swell(size: number) : Polygon {
-    throw new Error('');
-    // we define lines that pass size units outside of each line segment.
     const lines = this.lineSegments.map((ls) => {
       const segmentVector = ls.asVector();
       const growVector = segmentVector.
