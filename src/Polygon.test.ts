@@ -18,7 +18,21 @@ test('constructor should guarantee that line segments are clockwise oriented', (
 });
 
 test('containsPoints should return true if point is inside Polygon.', () => {
-  expect(true).toBeTruthy();
+  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  expect(pol.containsPoint(Point.fromValues(0.5, 0.5))).toBeTruthy();
+});
+
+test('containsPoint should return false if point is outside', () => {
+  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  expect(pol.containsPoint(Point.fromValues(-0.5, 0.5))).toBeFalsy();
+  expect(pol.containsPoint(Point.fromValues(1.5, 0.5))).toBeFalsy();
+  expect(pol.containsPoint(Point.fromValues(0.5, -0.5))).toBeFalsy();
+  expect(pol.containsPoint(Point.fromValues(0.5, 1.5))).toBeFalsy();
+});
+
+test('containsPoint should return false if point is tangent to line', () => {
+  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  expect(pol.containsPoint(Point.fromValues(-0.5, 1))).toBeFalsy();
 });
 
 test('swell should return a new bigger polygon.', () => {

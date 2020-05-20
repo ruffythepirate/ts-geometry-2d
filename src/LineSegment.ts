@@ -44,7 +44,7 @@ export class LineSegment {
       return false;
     }
     const [topPoint, bottomPoint] = this.p1.y > this.p2.y ? [this.p1, this.p2] : [this.p2, this.p1];
-    return p.minus(topPoint).cross(bottomPoint.minus(topPoint)) > 0;
+    return p.minus(topPoint).cross(bottomPoint.minus(topPoint)) >= 0;
   }
 
   private getHeightIntervalIncludingP1ExcludingP2() : Interval {

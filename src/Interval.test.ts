@@ -42,3 +42,11 @@ test('contains should handle half-open interval properly', () => {
   expect(int2.contains(0)).toBeFalsy();
   expect(int2.contains(1)).toBeTruthy();
 });
+
+test('contains should handle if interval is only one value', () => {
+  const int1 = new Interval(1, 1, true, false);
+  const int2 = new Interval(1, 1, false, false);
+
+  expect(int1.contains(1)).toBeTruthy();
+  expect(int2.contains(1)).toBeFalsy();
+});

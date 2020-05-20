@@ -32,7 +32,10 @@ export class Polygon {
    * @param p
    */
   containsPoint(p: Point): boolean {
-    return false;
+    const intersectedLines = this.lineSegments.reduce((a, v) => {
+      return v.rightOfPoint(p) ? a + 1 : a;
+    },                                                0);
+    return intersectedLines % 2 === 1;
   }
 
   lineSegmentsAsSet(): Set<LineSegment> {

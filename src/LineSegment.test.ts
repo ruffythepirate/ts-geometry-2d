@@ -52,6 +52,11 @@ test('rightOfPoint should return true if line segment is right of point', () => 
   expect(ls.rightOfPoint(Point.fromValues(-1, 0.5))).toBeTruthy();
 });
 
+test('rightOfPoint should return true if line segment is horizontal and point is left of end interval', () => {
+  const ls = LineSegment.fromValues(0, 0, 1, 0);
+  expect(ls.rightOfPoint(Point.fromValues(-1, 0))).toBeTruthy();
+});
+
 test('rightOfPoint should return false if line segment is left of point', () => {
   const ls1 = LineSegment.fromValues(0, 0, 0, 1);
   expect(ls1.rightOfPoint(Point.fromValues(1, 0.5))).toBeFalsy();

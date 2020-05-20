@@ -17,6 +17,10 @@ export class Interval {
      */
   constructor(public min: number, public max: number,
               private includeMin: boolean = true, private includeMax: boolean = true) {
+    if (min === max) {
+      this.includeMin = (this.includeMin || this.includeMax);
+      this.includeMax = this.includeMin;
+    }
   }
 
     /**
