@@ -24,6 +24,13 @@ export class Polygon {
     return new Polygon(lineSegments);
   }
 
+  /**
+   * Verifies whether a point reside inside this polygon or not.
+   * If the point is positioned at the periphery,
+   * it should be
+   * considered as not contained.
+   * @param p
+   */
   containsPoint(p: Point): boolean {
     return false;
   }
@@ -32,6 +39,11 @@ export class Polygon {
     return new Set<LineSegment>(this.lineSegments);
   }
 
+  /**
+   * Returns a Polygon that is expanded by 'size' units compared to this one.
+   * @param size
+   * number of units the polygon should expand.
+   */
   swell(size: number) : Polygon {
     const lines = this.lineSegments.map((ls) => {
       const segmentVector = ls.asVector();

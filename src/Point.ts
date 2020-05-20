@@ -4,6 +4,10 @@ export class Point {
   constructor(public x:number, public y:number) {
   }
 
+  static fromValues(x: number, y: number) {
+    return new Point(x, y);
+  }
+
   /**
    * Returns the vector going from the inputted point p, to this point.
    * @param p

@@ -42,6 +42,24 @@ test('intersects should return undefined if point is only both lines', () => {
   expect(ls1.intersects(ls2)).not.toBeDefined();
 });
 
+test('rightOfPoint should return false if line segment is not on same height.', () => {
+  const ls = LineSegment.fromValues(0, 0, 0, 1);
+  expect(ls.rightOfPoint(Point.fromValues(-1, 2))).toBeFalsy();
+});
+
+test('rightOfPoint should return true if line segment is right of point', () => {
+  const ls = LineSegment.fromValues(0, 0, 0, 1);
+  expect(ls.rightOfPoint(Point.fromValues(-1, 0.5))).toBeTruthy();
+});
+
+test('rightOfPoint should return false if line segment is left of point', () => {
+  const ls1 = LineSegment.fromValues(0, 0, 0, 1);
+  expect(ls1.rightOfPoint(Point.fromValues(1, 0.5))).toBeFalsy();
+
+  const ls2 = LineSegment.fromValues(0, 1, 0, 0);
+  expect(ls2.rightOfPoint(Point.fromValues(1, 0.5))).toBeFalsy();
+});
+
 test('containsPoint should return true when point is on line segment', () => {
   const ls1 = LineSegment.fromValues(0, 0, 0, 2);
 

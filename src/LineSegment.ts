@@ -1,6 +1,7 @@
 import { Point } from './Point';
 import { Line } from './Line';
 import { Vector } from './Vector';
+import { Interval } from './Interval';
 
 /**
  * A LineSegment is defined by two points, it represents the line between these points.
@@ -27,6 +28,31 @@ export class LineSegment {
       return this.p1;
     }
     return l.project(p2);
+  }
+
+  /**
+   * Returns boolean whether this segment is placed to the right of given point.
+   * This is defined as if whether a line segment starting at point p, and going
+   * to x = infinity, intersects this line segment.
+   * If the point is on the line segment, false is returned,
+   * @param p
+   * Point to check if line segemnt is to the right of
+   */
+  rightOfPoint(p: Point) : boolean {
+    const heightInterval = this.getHeightIntervalIncludingP1ExcludingP2();
+    if (! heightInterval.contains(p.y)) {
+      return false;
+    }
+    const [topPoint, bottomPoint] = this.p1.y > this.p2.y ? [this.p1, this.p2] : [this.p2, this.p1];
+    return p.minus(topPoint).cross(bottomPoint.minus(topPoint)) > 0;
+  }
+
+  private getHeightIntervalIncludingP1ExcludingP2() : Interval {
+    if (this.p1.y < this.p2.y) {
+      return new Interval(this.p1.y, this.p2.y, true, false);
+    }
+    return new Interval(this.p2.y, this.p1.y, false, true);
+
   }
 
   /**
