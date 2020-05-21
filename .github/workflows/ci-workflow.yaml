@@ -19,6 +19,6 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: coverage-badge
-          path: output/coverage/badge.svg
+          path: coverage/badge.svg
     env:
       CI: true
