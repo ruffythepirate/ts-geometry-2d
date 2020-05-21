@@ -9,7 +9,8 @@
     "lint:fix": "npx tslint src/* --fix",
     "docs": "npx typedoc src",
     "test": "npx jest",
-    "test:coverage": "npx jest --coverage && npx lcov-badge-generator -o coverage/badge.svg coverage/lcov.info",
+    "test:coverage": "npx jest --coverage",
+    "test:badge": "npx lcov-badge-generator -o coverage/badge.svg coverage/lcov.info",
     "test:watch": "npx jest --watchAll"
   },
   "jest": {
