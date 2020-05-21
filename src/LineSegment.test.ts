@@ -88,3 +88,10 @@ test('containsPoint should return false when point is not on line segment', () =
   expect(ls2.containsPoint(new Point(3, 0))).toBeFalsy();
   expect(ls1.containsPoint(new Point(0.1, 1))).toBeFalsy();
 });
+
+test('startFrom should return new Line Segment starting from p', () => {
+  const p = Point.fromValues(50, 23);
+  const ls2 = ls.startFrom(p);
+  expect(ls).not.toEqual(ls2);
+  expect(ls2).toEqual(new LineSegment(p, ls.p2));
+});

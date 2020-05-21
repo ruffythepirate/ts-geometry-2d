@@ -93,6 +93,14 @@ export class LineSegment {
   }
 
   /**
+   * Returns a new Line Segment where p1 equals the new p instead.
+   * @param p
+   */
+  startFrom(p: Point) : LineSegment {
+    return new LineSegment(p, this.p2);
+  }
+
+  /**
    * Returns if the given point exists on this line segment or not.
    * @param p
    */

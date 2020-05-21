@@ -60,7 +60,7 @@ export class Polygon {
   }
 
   /**
-   * Returns the points where a line intersects a polygon.
+   * Returns the points where a line intersects this polygon.
    * @param ls
    */
   intersects(ls : LineSegment) : Set<Point> {
@@ -74,30 +74,72 @@ export class Polygon {
   }
 
   /**
+   * Returns the first segment that is intersected by the argument segment,
+   * and the point where they intersect. Returns undefined if no
+   * intersect exists.
+   * @param ls
+   */
+  firstIntersectSegmentAndPoint(ls: LineSegment): [LineSegment, Point] | undefined {
+    const intersections = this.intersectSegmentAndPoints(ls);
+    const sortedPoints = Array.from(intersections).sort((p1, p2) => p1[1].distanceSquare(p2[1]));
+    return sortedPoints.length > 0 ? sortedPoints[sortedPoints.length - 1] : undefined;
+  }
+
+  /**
+   * Returns a set with tuples of all the intersecting points and the
+   * corresponding line segment where they intersect.
+   * @param ls
+   */
+  intersectSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
+    return this.lineSegments.reduce((a, v) => {
+      const p = v.intersects(ls);
+      if (p !== undefined) {
+        a.add([v, p]);
+      }
+      return a;
+    },                              new Set<[LineSegment, Point]>());
+  }
+
+  /**
    * Merges this polygon and the other polygon into one shape. If no overlap is found
    * between the polygons exception is thrown.
    * @param otherPolygon
    * Polygon to merge this polygon with.
    */
   merge(otherPolygon: Polygon) : Polygon {
-    const initialSegment = this.lineSegments.find(ls => !otherPolygon.containsPoint(ls.p1));
-    if (initialSegment === undefined) {
-      return otherPolygon;
-    }
-    const otherInitial = otherPolygon.lineSegments.find(ls => !this.containsPoint(ls.p1));
-    if (otherInitial === undefined) {
-      return this;
-    }
-
-    // if( this.lineSegments.find(ls => otherPolygon.intersects(ls)))
-    throw new Error('No overlap found between polygons.');
-    // find point outside of other polygon.
-
-    // walk along the line segments, add start point for each,
-    // if intersection found, add intersection
-    // point. Continue on other shape. Walk until initial point is hit.
+    return mergePolygons(this, otherPolygon);
   }
 
+  /**
+   * Returns the line segment following the given line segment.
+   * If inputted line segment is not defined in polygon, error is thrown.
+   * @param ls
+   */
+  nextLineSegment(ls: LineSegment): LineSegment {
+    const lsIndex = this.lineSegments.indexOf(ls);
+    if (lsIndex === -1) {
+      throw Error('The line segment given is not from this polygon!');
+    }
+    const nextIndex = (lsIndex + 1) % this.lineSegments.length;
+    return this.lineSegments[nextIndex];
+  }
+
+  /**
+   * Returns the line segment that starts from point p, throws exception
+   * if no such line segment exists.
+   * @param p
+   */
+  lineSegmentFrom(p: Point): LineSegment {
+    const ls = this.lineSegments.find(ls => ls.p1.x === p.x && ls.p1.y === p.y);
+    if (ls) {
+      return ls;
+    }
+    throw Error(`No line segment found starting from ${p.x}, ${p.y}!`);
+  }
+
+  /**
+   * Returns all line segments as a set, to easier be able to compare two polygons for equality.
+   */
   lineSegmentsAsSet(): Set<LineSegment> {
     return new Set<LineSegment>(this.lineSegments);
   }
@@ -144,4 +186,47 @@ function isClockwise(lineSegments: LineSegment[]): Boolean {
         const nextIndex = (i + 1) % array.length;
         return sum + array[i].cross(array[nextIndex]);
       },      0);
+}
+
+function mergePolygons(pol1 : Polygon, pol2: Polygon): Polygon {
+  let currentSegment = pol1.lineSegments.find(ls => !pol2.containsPoint(ls.p1));
+  if (currentSegment === undefined) {
+    return pol2;
+  }
+  const otherInitial = pol2.lineSegments.find(ls => !pol1.containsPoint(ls.p1));
+  if (otherInitial === undefined) {
+    return pol1;
+  }
+
+  let circleComplete = false;
+  let newPoint: Point;
+  const points: Point[] = [];
+  points.push(currentSegment.p1);
+  let currentPol = pol1;
+  let otherPol = pol2;
+  while (!circleComplete) {
+    [newPoint, currentSegment, currentPol, otherPol] =
+      getNextStep(currentSegment, currentPol, otherPol);
+    if (points.find(p => p === newPoint) === undefined) {
+      points.push(newPoint);
+    } else {
+      circleComplete = true;
+    }
+  }
+  function getNextStep(currentSegment: LineSegment,
+                       thisPolygon: Polygon,
+                       otherPolygon: Polygon) : [Point, LineSegment, Polygon, Polygon] {
+    const intersect = otherPolygon.firstIntersectSegmentAndPoint(currentSegment);
+    if (intersect === undefined) {
+      return [currentSegment.p2,
+        thisPolygon.lineSegmentFrom(currentSegment.p2),
+        thisPolygon,
+        otherPolygon];
+    }
+    return [intersect[1],
+      intersect[0].startFrom(intersect[1]),
+      otherPolygon,
+      thisPolygon];
+  }
+  return Polygon.fromPoints(points);
 }

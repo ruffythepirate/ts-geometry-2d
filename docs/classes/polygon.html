@@ -102,9 +102,13 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#containspoint" class="tsd-kind-icon">contains<wbr>Point</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#firstintersect" class="tsd-kind-icon">first<wbr>Intersect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#firstintersectsegmentandpoint" class="tsd-kind-icon">first<wbr>Intersect<wbr>Segment<wbr>And<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#intersectsegmentandpoints" class="tsd-kind-icon">intersect<wbr>Segment<wbr>And<wbr>Points</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#intersects" class="tsd-kind-icon">intersects</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#linesegmentfrom" class="tsd-kind-icon">line<wbr>Segment<wbr>From</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#linesegmentsasset" class="tsd-kind-icon">line<wbr>Segments<wbr>AsSet</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#merge" class="tsd-kind-icon">merge</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#nextlinesegment" class="tsd-kind-icon">next<wbr>Line<wbr>Segment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#swell" class="tsd-kind-icon">swell</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#transpose" class="tsd-kind-icon">transpose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="polygon.html#frompoints" class="tsd-kind-icon">from<wbr>Points</a></li>
@@ -125,7 +129,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L8">Polygon.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L8">Polygon.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -147,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">line<wbr>Segments<span class="tsd-signature-symbol">:</span> <a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L10">Polygon.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L10">Polygon.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,7 +168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L34">Polygon.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L34">Polygon.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -197,7 +201,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L56">Polygon.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L56">Polygon.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -220,6 +224,69 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="firstintersectsegmentandpoint" class="tsd-anchor"></a>
+					<h3>first<wbr>Intersect<wbr>Segment<wbr>And<wbr>Point</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">first<wbr>Intersect<wbr>Segment<wbr>And<wbr>Point<span class="tsd-signature-symbol">(</span>ls<span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">, </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L82">Polygon.ts:82</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the first segment that is intersected by the argument segment,
+										and the point where they intersect. Returns undefined if no
+									intersect exists.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ls: <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">, </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="intersectsegmentandpoints" class="tsd-anchor"></a>
+					<h3>intersect<wbr>Segment<wbr>And<wbr>Points</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">intersect<wbr>Segment<wbr>And<wbr>Points<span class="tsd-signature-symbol">(</span>ls<span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">, </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L93">Polygon.ts:93</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a set with tuples of all the intersecting points and the
+									corresponding line segment where they intersect.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ls: <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">, </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="intersects" class="tsd-anchor"></a>
 					<h3>intersects</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -229,12 +296,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L67">Polygon.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L66">Polygon.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns the points where a line intersects a polygon.</p>
+									<p>Returns the points where a line intersects this polygon.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -250,6 +317,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="linesegmentfrom" class="tsd-anchor"></a>
+					<h3>line<wbr>Segment<wbr>From</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">line<wbr>Segment<wbr>From<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L132">Polygon.ts:132</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the line segment that starts from point p, throws exception
+									if no such line segment exists.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>p: <a href="point.html" class="tsd-signature-type">Point</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="linesegmentsasset" class="tsd-anchor"></a>
 					<h3>line<wbr>Segments<wbr>AsSet</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -259,9 +357,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L96">Polygon.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L143">Polygon.ts:143</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns all line segments as a set, to easier be able to compare two polygons for equality.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -276,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L83">Polygon.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L109">Polygon.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -299,6 +402,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="nextlinesegment" class="tsd-anchor"></a>
+					<h3>next<wbr>Line<wbr>Segment</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">next<wbr>Line<wbr>Segment<span class="tsd-signature-symbol">(</span>ls<span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linesegment.html" class="tsd-signature-type">LineSegment</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L118">Polygon.ts:118</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the line segment following the given line segment.
+									If inputted line segment is not defined in polygon, error is thrown.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ls: <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="linesegment.html" class="tsd-signature-type">LineSegment</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="swell" class="tsd-anchor"></a>
 					<h3>swell</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -308,7 +442,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L105">Polygon.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L152">Polygon.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -339,7 +473,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L46">Polygon.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L46">Polygon.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -372,7 +506,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/24bfa9a/src/Polygon.ts#L16">Polygon.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/673c4bb/src/Polygon.ts#L16">Polygon.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -430,13 +564,25 @@
 								<a href="polygon.html#firstintersect" class="tsd-kind-icon">first<wbr>Intersect</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#firstintersectsegmentandpoint" class="tsd-kind-icon">first<wbr>Intersect<wbr>Segment<wbr>And<wbr>Point</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#intersectsegmentandpoints" class="tsd-kind-icon">intersect<wbr>Segment<wbr>And<wbr>Points</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#intersects" class="tsd-kind-icon">intersects</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#linesegmentfrom" class="tsd-kind-icon">line<wbr>Segment<wbr>From</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#linesegmentsasset" class="tsd-kind-icon">line<wbr>Segments<wbr>AsSet</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#merge" class="tsd-kind-icon">merge</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#nextlinesegment" class="tsd-kind-icon">next<wbr>Line<wbr>Segment</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#swell" class="tsd-kind-icon">swell</a>
@@ -456,6 +602,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#mergepolygons" class="tsd-kind-icon">merge<wbr>Polygons</a>
 					</li>
 				</ul>
 			</nav>

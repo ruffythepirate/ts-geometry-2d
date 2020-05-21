@@ -70,19 +70,41 @@ test('merge should return containing polygon if one contains the other.', () => 
   expect(swelled.merge(pol)).toBe(swelled);
 });
 
-// test('merge should merge two diamond polygons', () => {
-//   const pol1 = createPolygon(
-//     [
-//       [-1, 0],
-//       [0, 1],
-//       [1, 0],
-//       [0, -1],
-//     ],
-//   );
-//   const pol2 = pol1.transpose(1, 0);
-//
-//   expect(pol1.merge(pol2).lineSegments.length).toBe(8);
-// });
+test('merge should merge two diamond polygons', () => {
+  const pol1 = createPolygon(
+    [
+      [-1, 0],
+      [0, 1],
+      [1, 0],
+      [0, -1],
+    ],
+  );
+  const pol2 = pol1.transpose(1, 0);
+
+  expect(pol1.merge(pol2).lineSegments.length).toBe(8);
+});
+
+test('nextLineSegment should throw error if line segment not in polygon', () => {
+  expect(() => pol.nextLineSegment(LineSegment.fromValues(0, 0, 4, 4))).toThrow();
+});
+
+test('nextLineSegment should return the next line segment in order', () => {
+  expect(pol.nextLineSegment(pol.lineSegments[0])).toBe(pol.lineSegments[1]);
+  expect(pol.nextLineSegment(pol.lineSegments[1])).toBe(pol.lineSegments[2]);
+  expect(pol.nextLineSegment(pol.lineSegments[2])).toBe(pol.lineSegments[3]);
+  expect(pol.nextLineSegment(pol.lineSegments[3])).toBe(pol.lineSegments[0]);
+});
+
+test('intersectSegmentAndPoints should return empty set if not intersection', () => {
+  expect(pol.intersectSegmentAndPoints(LineSegment.fromValues(-1, -1, -1, 0))).toEqual(new Set());
+  expect(pol.intersectSegmentAndPoints(LineSegment.fromValues(-1, -1, -2, -1))).toEqual(new Set());
+});
+
+test('intersectSegmentAndPoints should return all intersecting points', () => {
+  expect(pol.intersectSegmentAndPoints(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
+    .toEqual(new Set([[pol.lineSegments[0], Point.fromValues(0, 0.5)],
+                       [pol.lineSegments[2], Point.fromValues(1, 0.5)]]));
+});
 
 test('intersects should return empty set if not intersection', () => {
   expect(pol.intersects(LineSegment.fromValues(-1, -1, -1, 0))).toEqual(new Set());
@@ -93,6 +115,27 @@ test('intersects should return all intersecting points', () => {
   expect(pol.intersects(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
     .toEqual(new Set([Point.fromValues(0, 0.5),
       Point.fromValues(1, 0.5)]));
+});
+
+test('firstIntersectSegmentAndPoint should return undefined if no intersects', () => {
+  const ls = LineSegment.fromValues(-1, -1, -2, -1);
+  expect(pol.firstIntersectSegmentAndPoint(ls))
+    .not.toBeDefined();
+});
+
+test('firstIntersectSegmentAndPoint should return closest point to p1 when multiple intercepts',
+     () => {
+       expect(pol.firstIntersectSegmentAndPoint(LineSegment
+                                             .fromValues(-1, 0.5, 2, 0.5)))
+    .toEqual([pol.lineSegments[0], Point.fromValues(0, 0.5)]);
+     });
+
+test('lineSegmentFromPoint should return line segment ends at point p', () => {
+  pol.lineSegments.forEach(ls => expect(pol.lineSegmentFrom(ls.p1)).toBe(ls));
+});
+
+test('lineSegmentFromPoint should throw error if no line segment exists.', () => {
+  expect(() => pol.lineSegmentFrom(Point.fromValues(-1, -1))).toThrow();
 });
 
 test('firstIntersect should return undefined if no intersects', () => {
