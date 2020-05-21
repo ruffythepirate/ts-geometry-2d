@@ -63,12 +63,12 @@ test('merge should throw error if no overlap', () => {
   expect(() => pol1.merge(pol2)).toThrow;
 });
 
-// test('merge should return containing polygon if one contains the other.', () => {
-//   const swelled = pol.swell(5);
-//
-//   expect(pol.merge(swelled)).toBe(swelled);
-//   expect(swelled.merge(pol)).toBe(swelled);
-// });
+test('merge should return containing polygon if one contains the other.', () => {
+  const swelled = pol.swell(5);
+
+  expect(pol.merge(swelled)).toBe(swelled);
+  expect(swelled.merge(pol)).toBe(swelled);
+});
 
 // test('merge should merge two diamond polygons', () => {
 //   const pol1 = createPolygon(

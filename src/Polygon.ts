@@ -55,7 +55,6 @@ export class Polygon {
    */
   firstIntersect(ls: LineSegment): Point | undefined {
     const intersections = this.intersects(ls);
-    console.log(intersections);
     const sortedPoints = Array.from(intersections).sort((p1, p2) => p1.distanceSquare(p2));
     return sortedPoints.length > 0 ? sortedPoints[sortedPoints.length - 1] : undefined;
   }
@@ -85,6 +84,11 @@ export class Polygon {
     if (initialSegment === undefined) {
       return otherPolygon;
     }
+    const otherInitial = otherPolygon.lineSegments.find(ls => !this.containsPoint(ls.p1));
+    if (otherInitial === undefined) {
+      return this;
+    }
+
     // if( this.lineSegments.find(ls => otherPolygon.intersects(ls)))
     throw new Error('No overlap found between polygons.');
     // find point outside of other polygon.
