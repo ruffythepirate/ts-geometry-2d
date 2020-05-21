@@ -9,6 +9,7 @@
     "lint:fix": "npx tslint src/* --fix",
     "docs": "npx typedoc src",
     "test": "npx jest",
+    "test:coverage": "npx jest --coverage",
     "test:watch": "npx jest --watchAll"
   },
   "jest": {
