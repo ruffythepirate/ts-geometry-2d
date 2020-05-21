@@ -20,5 +20,5 @@ jobs:
 # with:
 #  name: coverage-badge
 #  path: output/coverage/badge.svg
-      env:
-        CI: true
+    env:
+      CI: true
