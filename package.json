@@ -1,7 +1,7 @@
 {
-  "name": "2d-geometry",
-  "version": "0.0.1",
-  "description": "This is a simple library to use for 2d Geometry tasks.",
+  "name": "ts-2d-geometry",
+  "version": "1.0.0",
+  "description": "This is a simple library containing classes with immutable operations to use for 2d Geometry tasks.",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
