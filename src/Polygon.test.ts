@@ -95,16 +95,16 @@ test('intersects should return all intersecting points', () => {
       Point.fromValues(1, 0.5)]));
 });
 
-// test('firstIntersect should return undefined if no intersects', () => {
-//   const ls = LineSegment.fromValues(-1, -1, -2, -1)
-//   expect(pol.firstIntersect(ls))
-//     .not.toBeDefined();
-// });
-//
-// test('firstIntersect should return closest point to p1 when multiple intercepts', () => {
-//   expect(pol.firstIntersect(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
-//     .toEqual(Point.fromValues(0, 0.5));
-// });
+test('firstIntersect should return undefined if no intersects', () => {
+  const ls = LineSegment.fromValues(-1, -1, -2, -1);
+  expect(pol.firstIntersect(ls))
+    .not.toBeDefined();
+});
+
+test('firstIntersect should return closest point to p1 when multiple intercepts', () => {
+  expect(pol.firstIntersect(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
+    .toEqual(Point.fromValues(0, 0.5));
+});
 
 function equalLineSegment(x1: number, y1: number, x2: number, y2: number) {
   return (lineSegment: LineSegment) => lineSegment.p1.x === x1
