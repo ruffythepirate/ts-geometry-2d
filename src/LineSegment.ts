@@ -47,6 +47,15 @@ export class LineSegment {
     return p.minus(topPoint).cross(bottomPoint.minus(topPoint)) >= 0;
   }
 
+  /**
+   * Returns new line segment that is like this segment transposed.
+   * @param x
+   * @param y
+   */
+  transpose(x: number, y: number): LineSegment {
+    return new LineSegment(this.p1.transpose(x, y), this.p2.transpose(x, y));
+  }
+
   private getHeightIntervalIncludingP1ExcludingP2() : Interval {
     if (this.p1.y < this.p2.y) {
       return new Interval(this.p1.y, this.p2.y, true, false);
@@ -90,7 +99,8 @@ export class LineSegment {
   containsPoint(p: Point): Boolean {
     const p1p = p.minus(this.p1);
     const p1p2 = this.p2.minus(this.p1);
-    return p1p.square() <= p1p2.square() && p1p.cross(p1p2) === 0;
+    const dotProd = p1p.dot(p1p2);
+    return dotProd > 0 && dotProd <= p1p2.square() && p1p.cross(p1p2) === 0;
   }
 
   asLine() : Line {

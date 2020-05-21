@@ -65,6 +65,12 @@ test('rightOfPoint should return false if line segment is left of point', () => 
   expect(ls2.rightOfPoint(Point.fromValues(1, 0.5))).toBeFalsy();
 });
 
+test('transpose should create new line segment that is moved', () => {
+  const transp = ls.transpose(1, 2);
+  expect(transp.p1).toEqual(ls.p1.transpose(1, 2));
+  expect(transp.p2).toEqual(ls.p2.transpose(1, 2));
+});
+
 test('containsPoint should return true when point is on line segment', () => {
   const ls1 = LineSegment.fromValues(0, 0, 0, 2);
 
@@ -75,6 +81,7 @@ test('containsPoint should return false when point is not on line segment', () =
   const ls1 = LineSegment.fromValues(0, 0, 0, 2);
   const ls2 = LineSegment.fromValues(0, 0, 2, 0);
 
+  expect(ls1.containsPoint(new Point(0, -1))).toBeFalsy();
   expect(ls1.containsPoint(new Point(0, 3))).toBeFalsy();
   expect(ls1.containsPoint(new Point(0, -3))).toBeFalsy();
   expect(ls2.containsPoint(new Point(3, 0))).toBeFalsy();

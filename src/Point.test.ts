@@ -22,3 +22,16 @@ test('plus should create Point', () => {
   expect(p1.x).toBe(2);
   expect(p1.y).toBe(3);
 });
+
+test('transpose should create new Point', () => {
+  const p1 = p.transpose(3, 2);
+  expect(p1.x).toBe(p.x + 3);
+  expect(p1.y).toBe(p.y + 2);
+});
+
+test('distanceSquare should return the distance between points squared', () => {
+  const p1 = Point.fromValues(0, 0);
+  const p2 = Point.fromValues(2, 2);
+  expect(p1.distanceSquare(p2)).toBe(8);
+  expect(p2.distanceSquare(p1)).toBe(8);
+});
