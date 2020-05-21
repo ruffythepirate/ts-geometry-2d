@@ -1,4 +1,6 @@
 ![Node.js CI](https://github.com/ruffythepirate/ts-geometry-2d/workflows/Node.js%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/ruffythepirate/ts-geometry-2d/branch/master/graph/badge.svg)](https://codecov.io/gh/ruffythepirate/ts-geometry-2d)
+
 
 # 2D Geometry
 
