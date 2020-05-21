@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/ruffythepirate/ts-geometry-2d/workflows/Node.js%20CI/badge.svg)
+
 # 2D Geometry
 
 This repository contains basic classes to perform Geometry operations in 2 dimensions.
