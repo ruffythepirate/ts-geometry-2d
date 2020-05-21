@@ -23,14 +23,13 @@ Refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d
 
 ## Usage
 
-The project is not yet published as a npm package, but this is the aim. When this happens, you just install it using 
+You can install the package using
+
 ```bash
-npm i -S <name>
+npm i -S ts-2d-geometry
 ```
 
-For now you would have to clone the repository locally and either use the `.ts` files if you are developing in typscript, or build the project using `npm run build` and then use the input from `/dist` folder in your `javascript` project.
-
-For commands to `test`, `lint`, `compile` etc. please refer to the `scripts` section in the `package.json` file.
+All main classes are exported from `index.js`
 
 ## Contributing
 
