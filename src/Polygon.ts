@@ -48,24 +48,24 @@ export class Polygon {
   }
 
   /**
-   * Returns the first point where the line segment intersects the polygon.
+   * Returns the first point where the line segment intersect the polygon.
    * This is defined as the point closest to p1 in the line segment.
    * @param ls
    * The line segment to check intersection with.
    */
-  firstIntersect(ls: LineSegment): Point | undefined {
-    const intersections = this.intersects(ls);
+  firstIntersection(ls: LineSegment): Point | undefined {
+    const intersections = this.intersect(ls);
     const sortedPoints = Array.from(intersections).sort((p1, p2) => p1.distanceSquare(p2));
     return sortedPoints.length > 0 ? sortedPoints[sortedPoints.length - 1] : undefined;
   }
 
   /**
-   * Returns the points where a line intersects this polygon.
+   * Returns the points where a line intersect this polygon.
    * @param ls
    */
-  intersects(ls : LineSegment) : Set<Point> {
+  intersect(ls : LineSegment) : Set<Point> {
     return this.lineSegments.reduce((a, v) => {
-      const p = v.intersects(ls);
+      const p = v.intersect(ls);
       if (p !== undefined) {
         a.add(p);
       }
@@ -79,8 +79,8 @@ export class Polygon {
    * intersect exists.
    * @param ls
    */
-  firstIntersectSegmentAndPoint(ls: LineSegment): [LineSegment, Point] | undefined {
-    const intersections = this.intersectSegmentAndPoints(ls);
+  firstIntersectionSegmentAndPoint(ls: LineSegment): [LineSegment, Point] | undefined {
+    const intersections = this.intersectionSegmentAndPoints(ls);
     const sortedPoints = Array.from(intersections).sort((p1, p2) => p1[1].distanceSquare(p2[1]));
     return sortedPoints.length > 0 ? sortedPoints[sortedPoints.length - 1] : undefined;
   }
@@ -90,9 +90,9 @@ export class Polygon {
    * corresponding line segment where they intersect.
    * @param ls
    */
-  intersectSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
+  intersectionSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
     return this.lineSegments.reduce((a, v) => {
-      const p = v.intersects(ls);
+      const p = v.intersect(ls);
       if (p !== undefined) {
         a.add([v, p]);
       }
@@ -161,7 +161,7 @@ export class Polygon {
     });
     const newPoints = lines.map((v, i, array) => {
       const nextIndex = (i + 1) % array.length;
-      return array[i].intersects(array[nextIndex]) as Point;
+      return array[i].intersect(array[nextIndex]) as Point;
     });
 
     return Polygon.fromPoints(newPoints);
@@ -216,7 +216,7 @@ function mergePolygons(pol1 : Polygon, pol2: Polygon): Polygon {
   function getNextStep(currentSegment: LineSegment,
                        thisPolygon: Polygon,
                        otherPolygon: Polygon) : [Point, LineSegment, Polygon, Polygon] {
-    const intersect = otherPolygon.firstIntersectSegmentAndPoint(currentSegment);
+    const intersect = otherPolygon.firstIntersectionSegmentAndPoint(currentSegment);
     if (intersect === undefined) {
       return [currentSegment.p2,
         thisPolygon.lineSegmentFrom(currentSegment.p2),

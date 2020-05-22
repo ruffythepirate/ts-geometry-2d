@@ -95,37 +95,39 @@ test('nextLineSegment should return the next line segment in order', () => {
   expect(pol.nextLineSegment(pol.lineSegments[3])).toBe(pol.lineSegments[0]);
 });
 
-test('intersectSegmentAndPoints should return empty set if not intersection', () => {
-  expect(pol.intersectSegmentAndPoints(LineSegment.fromValues(-1, -1, -1, 0))).toEqual(new Set());
-  expect(pol.intersectSegmentAndPoints(LineSegment.fromValues(-1, -1, -2, -1))).toEqual(new Set());
+test('intersectionSegmentAndPoints should return empty set if not intersection', () => {
+  expect(pol.intersectionSegmentAndPoints(
+    LineSegment.fromValues(-1, -1, -1, 0))).toEqual(new Set());
+  expect(pol.intersectionSegmentAndPoints(
+    LineSegment.fromValues(-1, -1, -2, -1))).toEqual(new Set());
 });
 
-test('intersectSegmentAndPoints should return all intersecting points', () => {
-  expect(pol.intersectSegmentAndPoints(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
+test('intersectionSegmentAndPoints should return all intersecting points', () => {
+  expect(pol.intersectionSegmentAndPoints(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
     .toEqual(new Set([[pol.lineSegments[0], Point.fromValues(0, 0.5)],
                        [pol.lineSegments[2], Point.fromValues(1, 0.5)]]));
 });
 
-test('intersects should return empty set if not intersection', () => {
-  expect(pol.intersects(LineSegment.fromValues(-1, -1, -1, 0))).toEqual(new Set());
-  expect(pol.intersects(LineSegment.fromValues(-1, -1, -2, -1))).toEqual(new Set());
+test('intersect should return empty set if not intersection', () => {
+  expect(pol.intersect(LineSegment.fromValues(-1, -1, -1, 0))).toEqual(new Set());
+  expect(pol.intersect(LineSegment.fromValues(-1, -1, -2, -1))).toEqual(new Set());
 });
 
-test('intersects should return all intersecting points', () => {
-  expect(pol.intersects(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
+test('intersect should return all intersecting points', () => {
+  expect(pol.intersect(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
     .toEqual(new Set([Point.fromValues(0, 0.5),
       Point.fromValues(1, 0.5)]));
 });
 
-test('firstIntersectSegmentAndPoint should return undefined if no intersects', () => {
+test('firstIntersectionSegmentAndPoint should return undefined if no intersect', () => {
   const ls = LineSegment.fromValues(-1, -1, -2, -1);
-  expect(pol.firstIntersectSegmentAndPoint(ls))
+  expect(pol.firstIntersectionSegmentAndPoint(ls))
     .not.toBeDefined();
 });
 
-test('firstIntersectSegmentAndPoint should return closest point to p1 when multiple intercepts',
+test('firstIntersectionSegmentAndPoint should return closest point to p1 when multiple intercepts',
      () => {
-       expect(pol.firstIntersectSegmentAndPoint(LineSegment
+       expect(pol.firstIntersectionSegmentAndPoint(LineSegment
                                              .fromValues(-1, 0.5, 2, 0.5)))
     .toEqual([pol.lineSegments[0], Point.fromValues(0, 0.5)]);
      });
@@ -138,14 +140,14 @@ test('lineSegmentFromPoint should throw error if no line segment exists.', () =>
   expect(() => pol.lineSegmentFrom(Point.fromValues(-1, -1))).toThrow();
 });
 
-test('firstIntersect should return undefined if no intersects', () => {
+test('firstIntersection should return undefined if no intersect', () => {
   const ls = LineSegment.fromValues(-1, -1, -2, -1);
-  expect(pol.firstIntersect(ls))
+  expect(pol.firstIntersection(ls))
     .not.toBeDefined();
 });
 
-test('firstIntersect should return closest point to p1 when multiple intercepts', () => {
-  expect(pol.firstIntersect(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
+test('firstIntersection should return closest point to p1 when multiple intercepts', () => {
+  expect(pol.firstIntersection(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
     .toEqual(Point.fromValues(0, 0.5));
 });
 

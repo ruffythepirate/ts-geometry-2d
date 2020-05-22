@@ -29,12 +29,12 @@ test('projectDistance should get projection distance', () => {
   expect(l.projectDistance(new Point(0.5, -2))).toBe(2);
 });
 
-test('intersects should return undefined if lines are parallel', () => {
-  expect(l.intersects(new Line(new Point(0, 1), new Vector(1, 0)))).not.toBeDefined();
+test('intersect should return undefined if lines are parallel', () => {
+  expect(l.intersect(new Line(new Point(0, 1), new Vector(1, 0)))).not.toBeDefined();
 });
 
-test('intersects should return intersecting point', () => {
+test('intersect should return intersecting point', () => {
   const l2 = new Line(new Point(1, 1), new Vector(0, 1));
 
-  expect(l.intersects(l2)).toEqual(new Point(1, 0));
+  expect(l.intersect(l2)).toEqual(new Point(1, 0));
 });

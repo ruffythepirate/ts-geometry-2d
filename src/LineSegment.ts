@@ -33,7 +33,7 @@ export class LineSegment {
   /**
    * Returns boolean whether this segment is placed to the right of given point.
    * This is defined as if whether a line segment starting at point p, and going
-   * to x = infinity, intersects this line segment.
+   * to x = infinity, intersect this line segment.
    * If the point is on the line segment, false is returned,
    * @param p
    * Point to check if line segemnt is to the right of
@@ -75,11 +75,11 @@ export class LineSegment {
    * Returns the point where the given line segments intersect, if such point exists.
    * @param ls2
    */
-  intersects(ls2: LineSegment) : Point | undefined {
+  intersect(ls2: LineSegment) : Point | undefined {
     const l1 = this.asLine();
     const l2 = ls2.asLine();
 
-    const intersect = l1.intersects(l2);
+    const intersect = l1.intersect(l2);
 
     if (intersect === undefined) {
       return undefined;
