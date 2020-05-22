@@ -10,10 +10,10 @@
     "lint": "npx tslint src/*",
     "lint:fix": "npx tslint src/* --fix",
     "docs": "npx typedoc src",
-    "test": "npx jest",
-    "test:coverage": "npx jest --coverage && npm run test:badge",
+    "test": "npx jest src",
+    "test:coverage": "npx jest --coverage src && npm run test:badge",
     "test:badge": "npx lcov-badge-generator -o coverage/badge.svg coverage/lcov.info",
-    "test:watch": "npx jest --watchAll"
+    "test:watch": "npx jest --watchAll src"
   },
   "jest": {
     "transform": {
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/jest": "^25.2.2",
     "@types/node": "^14.0.1",
-    "jest": "^24.9.0",
+    "jest": "^25",
     "ts-jest": "^25.5.1",
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
