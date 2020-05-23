@@ -4,7 +4,7 @@
   "description": "This is a simple library containing classes with immutable operations to use for 2d Geometry tasks.",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
-  "prepublish": "tsc && npm test",
+  "prepublish": "tsc && npm lint && npm test",
   "scripts": {
     "build": "npx tsc",
     "lint": "npx tslint src/*",
