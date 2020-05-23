@@ -66,6 +66,17 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Represents a value that might or might not be.
+							The API is inspired from Option in scala. You operate on this type
+							like you would on an array, allowing you to chain possible mappings operations
+							that will happen if a value is defined (of type Some),
+						and will not happen if the value is undefined (of type None).</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -117,19 +128,27 @@
 					<a name="filter" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> filter</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="optional.html" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">(</span>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="optional.html" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L13">core/Optional.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L35">core/Optional.ts:35</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Filters out value if it doesn&#39;t fulfill predicate. A Some value
+									then becomes None</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>f: <span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h5>
+									<h5>predicate: <span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -164,9 +183,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L11">core/Optional.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L28">core/Optional.ts:28</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Maps the contained value with a function that returns Optional<T>.
+											It functions like map, except it also flattens so that you don&#39;t
+									get a nested Optional&lt;Optional<T>&gt;</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -177,6 +203,8 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>f: <span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="optional.html" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -211,13 +239,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L15">core/Optional.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L43">core/Optional.ts:43</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Performs the operation on the given value, then return the option again.
+										This is unlike the Scala API, where Unit is returned. here it allows
+									for additional chaining of mappings etc.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>f: <span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -252,9 +289,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L17">core/Optional.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L48">core/Optional.ts:48</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets get value if exists, otherwise throws exception.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
 						</li>
 					</ul>
@@ -269,13 +311,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L19">core/Optional.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L54">core/Optional.ts:54</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the value if exists, otherwise returns inserted value.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>val: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
@@ -292,9 +341,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L21">core/Optional.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L59">core/Optional.ts:59</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if a value exists</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -309,9 +363,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L9">core/Optional.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L20">core/Optional.ts:20</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Maps the contained value if exists using the given function.</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -322,6 +381,8 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>f: <span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">A</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
@@ -356,9 +417,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L23">core/Optional.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L64">core/Optional.ts:64</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if a value doesn&#39;t exist.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -373,7 +439,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0d23541/src/core/Optional.ts#L2">core/Optional.ts:2</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0717d96/src/core/Optional.ts#L9">core/Optional.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>

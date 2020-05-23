@@ -12,7 +12,7 @@ test('constructor should create Matrix', () => {
   expect(m.get(1, 1)).toBe(0);
 });
 
-test('inverse should return undefined if inverse is not defined.', () => {
+test('inverse should return none if inverse is not defined.', () => {
   const m = new Matrix([[0, 0], [0, 0]]);
   expect(m.inverse()).toBe(none);
 });

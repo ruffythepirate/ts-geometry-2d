@@ -21,7 +21,7 @@ export class Line {
   }
 
   /**
-  * Finds the point where two lines intersect returns undefined if the lines are parallel.:w
+  * Finds the point where two lines intersect returns none if the lines are parallel.
    * @param l2
    * Other line we want to check intersection with.
    */

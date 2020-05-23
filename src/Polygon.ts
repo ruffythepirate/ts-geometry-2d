@@ -74,7 +74,7 @@ export class Polygon {
 
   /**
    * Returns the first segment that is intersected by the argument segment,
-   * and the point where they intersect. Returns undefined if no
+   * and the point where they intersect. Returns none if no
    * intersect exists.
    * @param ls
    */
