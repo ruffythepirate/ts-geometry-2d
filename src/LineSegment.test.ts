@@ -1,6 +1,7 @@
 import { Point } from './Point';
 import { LineSegment } from './LineSegment';
 import { Vector } from './Vector';
+import { none, some } from './core/Optional';
 
 const ls = new LineSegment(new Point(0, 0), new Point(1, 0));
 
@@ -32,14 +33,14 @@ test('intersect should return intersection point if lines intersect', () => {
   const ls1 = LineSegment.fromValues(0, 0, 0, 2);
   const ls2 = LineSegment.fromValues(-1, 1, 1, 1);
 
-  expect(ls1.intersect(ls2)).toEqual(new Point(0, 1));
+  expect(ls1.intersect(ls2)).toEqual(some(new Point(0, 1)));
 });
 
-test('intersect should return undefined if point is only both lines', () => {
+test('intersect should return none if point is only both lines', () => {
   const ls1 = LineSegment.fromValues(0, -2, 0, 0);
   const ls2 = LineSegment.fromValues(-3, 1, -1, 1);
 
-  expect(ls1.intersect(ls2)).not.toBeDefined();
+  expect(ls1.intersect(ls2)).toBe(none);
 });
 
 test('rightOfPoint should return false if line segment is not on same height.', () => {

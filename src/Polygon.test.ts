@@ -2,6 +2,7 @@ import { Point } from './Point';
 
 import { Polygon } from './Polygon';
 import { LineSegment } from './LineSegment';
+import { none, some } from './core/Optional';
 
 const pol = createPolygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
 
@@ -119,17 +120,17 @@ test('intersect should return all intersecting points', () => {
       Point.fromValues(1, 0.5)]));
 });
 
-test('firstIntersectionSegmentAndPoint should return undefined if no intersect', () => {
+test('firstIntersectionSegmentAndPoint should return none if no intersect', () => {
   const ls = LineSegment.fromValues(-1, -1, -2, -1);
   expect(pol.firstIntersectionSegmentAndPoint(ls))
-    .not.toBeDefined();
+    .toEqual(none);
 });
 
 test('firstIntersectionSegmentAndPoint should return closest point to p1 when multiple intercepts',
      () => {
        expect(pol.firstIntersectionSegmentAndPoint(LineSegment
                                              .fromValues(-1, 0.5, 2, 0.5)))
-    .toEqual([pol.lineSegments[0], Point.fromValues(0, 0.5)]);
+    .toEqual(some([pol.lineSegments[0], Point.fromValues(0, 0.5)]));
      });
 
 test('lineSegmentFromPoint should return line segment ends at point p', () => {
@@ -140,15 +141,15 @@ test('lineSegmentFromPoint should throw error if no line segment exists.', () =>
   expect(() => pol.lineSegmentFrom(Point.fromValues(-1, -1))).toThrow();
 });
 
-test('firstIntersection should return undefined if no intersect', () => {
+test('firstIntersection should return none if no intersect', () => {
   const ls = LineSegment.fromValues(-1, -1, -2, -1);
   expect(pol.firstIntersection(ls))
-    .not.toBeDefined();
+    .toBe(none);
 });
 
 test('firstIntersection should return closest point to p1 when multiple intercepts', () => {
   expect(pol.firstIntersection(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
-    .toEqual(Point.fromValues(0, 0.5));
+    .toEqual(some(Point.fromValues(0, 0.5)));
 });
 
 function equalLineSegment(x1: number, y1: number, x2: number, y2: number) {

@@ -2,6 +2,7 @@ import { Point } from './Point';
 import { Line } from './Line';
 import { Vector } from './Vector';
 import { Interval } from './Interval';
+import { Optional } from './core/Optional';
 
 /**
  * A LineSegment is defined by two points, it represents the line between these points.
@@ -75,21 +76,14 @@ export class LineSegment {
    * Returns the point where the given line segments intersect, if such point exists.
    * @param ls2
    */
-  intersect(ls2: LineSegment) : Point | undefined {
+  intersect(ls2: LineSegment) : Optional<Point> {
     const l1 = this.asLine();
     const l2 = ls2.asLine();
 
     const intersect = l1.intersect(l2);
 
-    if (intersect === undefined) {
-      return undefined;
-    }
-
-    if (! this.containsPoint(intersect as Point) || !ls2.containsPoint(intersect as Point)) {
-      return undefined;
-    }
-
-    return intersect;
+    return intersect.filter(intersect => this.containsPoint(intersect)
+      && ls2.containsPoint(intersect));
   }
 
   /**
@@ -104,7 +98,7 @@ export class LineSegment {
    * Returns if the given point exists on this line segment or not.
    * @param p
    */
-  containsPoint(p: Point): Boolean {
+  containsPoint(p: Point): boolean {
     const p1p = p.minus(this.p1);
     const p1p2 = this.p2.minus(this.p1);
     const dotProd = p1p.dot(p1p2);

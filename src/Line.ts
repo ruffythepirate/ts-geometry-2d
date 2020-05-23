@@ -1,6 +1,7 @@
 import { Vector } from './Vector';
 import { Point } from './Point';
 import { Matrix } from './Matrix';
+import { Optional } from './core/Optional';
 
 /**
  * A line is represented by a point and a vector, it is of infinite length.
@@ -24,16 +25,14 @@ export class Line {
    * @param l2
    * Other line we want to check intersection with.
    */
-  intersect(l2: Line): Point | undefined {
+  intersect(l2: Line): Optional<Point> {
     const matrix = Matrix.fromVectors(this.v, l2.v);
-    const inv = matrix.inverse();
+    const invOpt = matrix.inverse();
 
-    if (inv === undefined) {
-      return undefined;
-    }
-    const factor =  inv.times(l2.p.minus(this.p)).x;
-
-    return this.p.plus(this.v.scale(factor));
+    return invOpt.map((inv) => {
+      const factor =  inv.times(l2.p.minus(this.p)).x;
+      return this.p.plus(this.v.scale(factor));
+    });
   }
 
   /**

@@ -1,6 +1,7 @@
 import { LineSegment } from './LineSegment';
 import { Point } from './Point';
 import { Line } from './Line';
+import { none, Optional, some } from './core/Optional';
 
 /**
  * A polygon is defined by a number of line segments that enclose an area.
@@ -53,10 +54,10 @@ export class Polygon {
    * @param ls
    * The line segment to check intersection with.
    */
-  firstIntersection(ls: LineSegment): Point | undefined {
+  firstIntersection(ls: LineSegment): Optional<Point> {
     const intersections = this.intersect(ls);
     const sortedPoints = Array.from(intersections).sort((p1, p2) => p1.distanceSquare(p2));
-    return sortedPoints.length > 0 ? sortedPoints[sortedPoints.length - 1] : undefined;
+    return sortedPoints.length > 0 ? some(sortedPoints[sortedPoints.length - 1]) : none;
   }
 
   /**
@@ -66,9 +67,7 @@ export class Polygon {
   intersect(ls : LineSegment) : Set<Point> {
     return this.lineSegments.reduce((a, v) => {
       const p = v.intersect(ls);
-      if (p !== undefined) {
-        a.add(p);
-      }
+      p.foreach(p => a.add(p));
       return a;
     },                              new Set<Point>());
   }
@@ -79,10 +78,10 @@ export class Polygon {
    * intersect exists.
    * @param ls
    */
-  firstIntersectionSegmentAndPoint(ls: LineSegment): [LineSegment, Point] | undefined {
+  firstIntersectionSegmentAndPoint(ls: LineSegment): Optional<[LineSegment, Point]> {
     const intersections = this.intersectionSegmentAndPoints(ls);
     const sortedPoints = Array.from(intersections).sort((p1, p2) => p1[1].distanceSquare(p2[1]));
-    return sortedPoints.length > 0 ? sortedPoints[sortedPoints.length - 1] : undefined;
+    return sortedPoints.length > 0 ? some(sortedPoints[sortedPoints.length - 1]) : none;
   }
 
   /**
@@ -93,9 +92,7 @@ export class Polygon {
   intersectionSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
     return this.lineSegments.reduce((a, v) => {
       const p = v.intersect(ls);
-      if (p !== undefined) {
-        a.add([v, p]);
-      }
+      p.foreach(p => a.add([v, p]));
       return a;
     },                              new Set<[LineSegment, Point]>());
   }
@@ -161,8 +158,8 @@ export class Polygon {
     });
     const newPoints = lines.map((v, i, array) => {
       const nextIndex = (i + 1) % array.length;
-      return array[i].intersect(array[nextIndex]) as Point;
-    });
+      return array[i].intersect(array[nextIndex]);
+    }).filter(p => p.nonEmpty()).map(p => p.get());
 
     return Polygon.fromPoints(newPoints);
   }
@@ -216,17 +213,16 @@ function mergePolygons(pol1 : Polygon, pol2: Polygon): Polygon {
   function getNextStep(currentSegment: LineSegment,
                        thisPolygon: Polygon,
                        otherPolygon: Polygon) : [Point, LineSegment, Polygon, Polygon] {
-    const intersect = otherPolygon.firstIntersectionSegmentAndPoint(currentSegment);
-    if (intersect === undefined) {
-      return [currentSegment.p2,
-        thisPolygon.lineSegmentFrom(currentSegment.p2),
-        thisPolygon,
-        otherPolygon];
-    }
-    return [intersect[1],
-      intersect[0].startFrom(intersect[1]),
-      otherPolygon,
-      thisPolygon];
+    const intersectOpt = otherPolygon.firstIntersectionSegmentAndPoint(currentSegment);
+    return intersectOpt.map<[Point, LineSegment, Polygon, Polygon]>(intersection =>
+      [intersection[1],
+        intersection[0].startFrom(intersection[1]),
+        otherPolygon,
+        thisPolygon],
+    ).getOrElse([currentSegment.p2,
+      thisPolygon.lineSegmentFrom(currentSegment.p2),
+      thisPolygon,
+      otherPolygon]);
   }
   return Polygon.fromPoints(points);
 }

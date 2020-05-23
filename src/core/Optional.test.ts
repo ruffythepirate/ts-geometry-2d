@@ -1,4 +1,5 @@
 import { some, optional, none } from './Optional';
+import constants from 'constants';
 
 test('Optional.of should return Some if defined', () => {
   expect(optional(1).isEmpty()).toBeFalsy();
@@ -8,9 +9,41 @@ test('Optional.of should return None if undefined', () => {
   expect(optional<number>(undefined).isEmpty()).toBeTruthy();
 });
 
+test('None.filter should return None', () => {
+  expect(none.filter(a => false)).toBe(none);
+  expect(none.filter(a => true)).toBe(none);
+});
+
+test('Some.filter should return some if filter true else none', () => {
+  expect(some(2).filter(a => false)).toBe(none);
+  expect(some(2).filter(a => true)).toEqual(some(2));
+});
+
+test('Some.foreach should call method and return some again', () => {
+  let changedMe = 0;
+  const someVal = some(2);
+  expect(someVal.foreach(v => changedMe = v)).toEqual(someVal);
+  expect(changedMe).toEqual(2);
+});
+
 test('None.map should return None', () => {
   const none = optional<number>(undefined);
   expect(none.map(a => 2 * a)).toBe(none);
+});
+
+test('None.foreach should do nothing and return itself', () => {
+  let changedMe = 0
+  const noneVal = optional<number>(undefined);
+  expect(noneVal.foreach(a => changedMe = a)).toEqual(none);
+  expect(changedMe).toEqual(0)
+});
+
+test('None.nonEmpty should return false', () => {
+  expect(none.nonEmpty()).toBeFalsy();
+});
+
+test('Some.nonEmpty should return true', () => {
+  expect(some(2).nonEmpty()).toBeTruthy();
 });
 
 test('None.flatMap should return None', () => {

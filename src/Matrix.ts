@@ -2,6 +2,7 @@
  * Represents a 2x2 matrix.
  */
 import { Vector } from './Vector';
+import { none, Optional, some } from './core/Optional';
 
 export class Matrix {
   constructor(private elements: number[][]) {
@@ -39,16 +40,16 @@ export class Matrix {
   /**
    * Returns an inversed version of this matrix.
    */
-  inverse(): Matrix | undefined  {
+  inverse(): Optional<Matrix> {
     const det = this.det();
     if (det === 0) {
-      return undefined;
+      return none;
     }
 
     const unscaled = new Matrix([[this.get(1, 1), -this.get(1, 0)],
                                   [-this.get(0, 1), this.get(0, 0)]]);
 
-    return unscaled.scale(1 / det);
+    return some(unscaled.scale(1 / det));
   }
 
   /**

@@ -1,5 +1,6 @@
 import { Matrix } from './Matrix';
 import { Vector } from './Vector';
+import { none, some } from './core/Optional';
 
 test('constructor should create Matrix', () => {
 
@@ -13,13 +14,13 @@ test('constructor should create Matrix', () => {
 
 test('inverse should return undefined if inverse is not defined.', () => {
   const m = new Matrix([[0, 0], [0, 0]]);
-  expect(m.inverse()).toBe(undefined);
+  expect(m.inverse()).toBe(none);
 });
 
 test('inverse should inverse a matrix.', () => {
   const m = new Matrix([[1, 2], [3, 4]]);
 
-  expect(m.inverse()).toEqual(new Matrix([[-2, 1.5], [1, -0.5]]));
+  expect(m.inverse()).toEqual(some(new Matrix([[-2, 1.5], [1, -0.5]])));
 });
 
 test('det should return determinant of matrix', () => {
