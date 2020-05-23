@@ -2,7 +2,7 @@
  * Represents a 2x2 matrix.
  */
 import { Vector } from './Vector';
-import { none, Optional, some } from './core/Optional';
+import { none, Optional, some } from '@ruffy/ts-optional';
 
 export class Matrix {
   constructor(private elements: number[][]) {

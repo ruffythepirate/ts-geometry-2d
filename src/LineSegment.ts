@@ -2,7 +2,7 @@ import { Point } from './Point';
 import { Line } from './Line';
 import { Vector } from './Vector';
 import { Interval } from './Interval';
-import { Optional } from './core/Optional';
+import { Optional } from '@ruffy/ts-optional';
 
 /**
  * A LineSegment is defined by two points, it represents the line between these points.

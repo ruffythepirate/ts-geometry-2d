@@ -1,6 +1,6 @@
 {
   "name": "ts-2d-geometry",
-  "version": "1.0.4",
+  "version": "2.0.1",
   "description": "This is a simple library containing classes with immutable operations to use for 2d Geometry tasks.",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -41,5 +41,8 @@
     "tslint-config-airbnb": "^5.11.2",
     "typedoc": "^0.17.6",
     "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "@ruffy/ts-optional": "^1.0.0"
   }
 }

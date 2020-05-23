@@ -2,7 +2,7 @@ import { Point } from './Point';
 
 import { Polygon } from './Polygon';
 import { LineSegment } from './LineSegment';
-import { none, some } from './core/Optional';
+import { none, some } from '@ruffy/ts-optional';
 
 const pol = createPolygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
 

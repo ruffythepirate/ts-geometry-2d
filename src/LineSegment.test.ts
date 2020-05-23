@@ -1,7 +1,7 @@
 import { Point } from './Point';
 import { LineSegment } from './LineSegment';
 import { Vector } from './Vector';
-import { none, some } from './core/Optional';
+import { none, some } from '@ruffy/ts-optional';
 
 const ls = new LineSegment(new Point(0, 0), new Point(1, 0));
 

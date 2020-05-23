@@ -1,7 +1,7 @@
 import { Vector } from './Vector';
 import { Point } from './Point';
 import { Matrix } from './Matrix';
-import { Optional } from './core/Optional';
+import { Optional } from '@ruffy/ts-optional';
 
 /**
  * A line is represented by a point and a vector, it is of infinite length.

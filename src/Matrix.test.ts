@@ -1,6 +1,6 @@
 import { Matrix } from './Matrix';
 import { Vector } from './Vector';
-import { none, some } from './core/Optional';
+import { none, some } from '@ruffy/ts-optional';
 
 test('constructor should create Matrix', () => {
 

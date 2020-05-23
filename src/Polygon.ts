@@ -1,7 +1,7 @@
 import { LineSegment } from './LineSegment';
 import { Point } from './Point';
 import { Line } from './Line';
-import { none, Optional, some } from './core/Optional';
+import { none, Optional, some } from '@ruffy/ts-optional';
 
 /**
  * A polygon is defined by a number of line segments that enclose an area.

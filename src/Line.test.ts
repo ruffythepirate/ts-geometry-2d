@@ -1,7 +1,7 @@
 import { Line } from './Line';
 import { Vector } from './Vector';
 import { Point } from './Point';
-import { none, some } from './core/Optional';
+import { none, some } from '@ruffy/ts-optional';
 
 let l = new Line(new Point(0, 0), new Vector(1, 0));
 
