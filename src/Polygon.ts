@@ -3,6 +3,9 @@ import { Point } from './Point';
 import { Line } from './Line';
 import { none, Optional, some } from '@ruffy/ts-optional';
 
+/**
+ * Checks if any of the given line segments in an array intersect any of the other.
+ */
 function lineSegmentsIntersectThemselves(lineSegments: LineSegment[]) {
   for (let i = 0; i < lineSegments.length; i += 1) {
     const ls1 = lineSegments[i];
@@ -31,6 +34,17 @@ export class Polygon {
     }
   }
 
+  /**
+   * Creates a Polygon from the given points. The points should preferably be
+   * given clockwise for the polygon, but if they are not, the given line segments
+   * will be corrected to make sure that they are clockwise oriented. The points are
+   * also not allowed to define lines that intersect other lines in the polygon.
+   * Ie. giving [0,0], [1,1], [1,0], [0,1] would not be allowed since line segments would
+   * intersect in the point [0.5, 0.5].
+   * @param points
+   * The given points that define the polygon. Lines are defined between points next
+   * to each other in the array.
+   */
   static fromPoints(points: Point[]) {
     const lineSegments = points.reduce((a: LineSegment[], v, i) => {
       const nextIndex = (i + 1) % points.length;
