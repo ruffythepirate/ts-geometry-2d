@@ -36,12 +36,25 @@ test('intersect should return intersection point if lines intersect', () => {
   expect(ls1.intersect(ls2)).toEqual(some(new Point(0, 1)));
 });
 
-test('intersect should return none if point is only both lines', () => {
+test('intersect should return none if point not on both lines', () => {
   const ls1 = LineSegment.fromValues(0, -2, 0, 0);
   const ls2 = LineSegment.fromValues(-3, 1, -1, 1);
 
   expect(ls1.intersect(ls2)).toBe(none);
 });
+
+[
+  [[317, 128, 803, 460], [482, 180, 482, 424]],
+  [[317, 128, 803, 460], [680, 424, 680, 180]],
+].
+  forEach((p) => {
+    test(`intersect between ${p[0]} and ${p[1]} should exist`, () => {
+      const ls1 = LineSegment.fromArray(p[0]);
+      const ls2 = LineSegment.fromArray(p[1]);
+
+      expect(ls1.intersect(ls2)).not.toBe(none);
+    });
+  });
 
 test('rightOfPoint should return false if line segment is not on same height.', () => {
   const ls = LineSegment.fromValues(0, 0, 0, 1);

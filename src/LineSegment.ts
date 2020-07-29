@@ -16,6 +16,14 @@ export class LineSegment {
   }
 
   /**
+   * Creates a LineSegment from an array of numbers. The array must be at least 4 elements long
+   * and these first 4 values will be used as [x1, y1, x2, y2].
+   */
+  static fromArray(a: number[]) {
+    return new LineSegment(new Point(a[0], a[1]), new Point(a[2], a[3]));
+  }
+
+  /**
    * Gets the closest point on the line segment to the given point.
    * @param p2
    * Point to get closest point for.
@@ -102,7 +110,10 @@ export class LineSegment {
     const p1p = p.minus(this.p1);
     const p1p2 = this.p2.minus(this.p1);
     const dotProd = p1p.dot(p1p2);
-    return dotProd > 0 && dotProd <= p1p2.square() && p1p.cross(p1p2) === 0;
+    const crossProd = p1p.cross(p1p2);
+    return dotProd > 0
+    && dotProd <= p1p2.square()
+    && crossProd * crossProd < 0.001;
   }
 
   asLine() : Line {

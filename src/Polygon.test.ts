@@ -120,6 +120,19 @@ test('intersect should return all intersecting points', () => {
       Point.fromValues(1, 0.5)]));
 });
 
+test('interset should return two intersecting points', () => {
+  const pol1 = createPolygon(
+    [
+      [482, 180],
+      [482, 424],
+      [680, 424],
+      [680, 180],
+    ]);
+  const diagonal = LineSegment.fromValues(317, 180, 803, 424);
+
+  expect(pol1.intersect(diagonal).size).toEqual(2);
+});
+
 test('firstIntersectionSegmentAndPoint should return none if no intersect', () => {
   const ls = LineSegment.fromValues(-1, -1, -2, -1);
   expect(pol.firstIntersectionSegmentAndPoint(ls))
