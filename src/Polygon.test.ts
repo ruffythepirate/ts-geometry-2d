@@ -18,6 +18,12 @@ test('constructor should guarantee that line segments are clockwise oriented', (
   ).toBeDefined();
 });
 
+test('constructor should throw exception if polygon intersects itself', () => {
+  expect(() => {
+    const pol = createPolygon([[0, 0], [1, 1], [1, 0], [0, 1]]);
+  }).toThrow();
+});
+
 test('containsPoints should return true if point is inside Polygon.', () => {
   const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(0.5, 0.5))).toBeTruthy();

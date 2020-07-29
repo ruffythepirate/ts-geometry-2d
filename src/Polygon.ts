@@ -3,12 +3,29 @@ import { Point } from './Point';
 import { Line } from './Line';
 import { none, Optional, some } from '@ruffy/ts-optional';
 
+function lineSegmentsIntersectThemselves(lineSegments: LineSegment[]) {
+  for(let i = 0; i < lineSegments.length; i++) {
+    const ls1 = lineSegments[i];
+    for(let j = i+1; j < lineSegments.length; j++) {
+      const ls2 = lineSegments[j];
+      if(ls1.intersect(ls2).nonEmpty()) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 /**
  * A polygon is defined by a number of line segments that enclose an area.
  */
 export class Polygon {
 
   private constructor(public lineSegments: LineSegment[]) {
+    if(lineSegmentsIntersectThemselves(lineSegments)) {
+      throw Error('Points in polygon are intersecting themselves, this is not allowed!');
+    }
+
     if (!isClockwise(lineSegments)) {
       this.lineSegments = lineSegments.map(ls => ls.flip());
     }
