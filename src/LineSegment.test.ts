@@ -14,6 +14,13 @@ test('closestPoint should find closest point', () => {
   expect(ls.closestPoint(new Point(0.5, -1))).toEqual(new Point(0.5, 0));
   expect(ls.closestPoint(new Point(-1, -1))).toEqual(new Point(0, 0));
   expect(ls.closestPoint(new Point(2, -1))).toEqual(new Point(1, 0));
+
+  let newLs = new LineSegment(new Point(0, 0), new Point(10, 0));
+  expect(newLs.closestPoint(new Point(5, -5))).toEqual(new Point(5, 0));
+  newLs = new LineSegment(new Point(10, 0), new Point(10, 10));
+  expect(newLs.closestPoint(new Point(15, 5))).toEqual(new Point(10, 5));
+  newLs = new LineSegment(new Point(10, 10), new Point(0, 10));
+  expect(newLs.closestPoint(new Point(5, -5))).toEqual(new Point(5, 10));
 });
 
 test('asVector should return the vector from p1 to p2', () => {

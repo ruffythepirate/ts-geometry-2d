@@ -126,7 +126,7 @@ test('intersect should return all intersecting points', () => {
       Point.fromValues(1, 0.5)]));
 });
 
-test('interset should return two intersecting points', () => {
+test('intersect should return two intersecting points', () => {
   const pol1 = createPolygon(
     [
       [482, 180],
@@ -137,6 +137,22 @@ test('interset should return two intersecting points', () => {
   const diagonal = LineSegment.fromValues(317, 180, 803, 424);
 
   expect(pol1.intersect(diagonal).size).toEqual(2);
+});
+
+test('closestPoint should return closest point on perimiter.', () => {
+  const pol1 = createPolygon(
+    [
+      [0, 0],
+      [10, 0],
+      [10, 10],
+      [0, 10],
+    ]);
+
+  expect(pol1.closestPoint(new Point(-5, 5))).toEqual(new Point(0, 5));
+  expect(pol1.closestPoint(new Point(15, 5))).toEqual(new Point(10, 5));
+  expect(pol1.closestPoint(new Point(5, 15))).toEqual(new Point(5, 10));
+  expect(pol1.closestPoint(new Point(5, -5))).toEqual(new Point(5, 0));
+
 });
 
 test('firstIntersectionSegmentAndPoint should return none if no intersect', () => {

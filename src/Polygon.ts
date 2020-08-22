@@ -104,6 +104,25 @@ export class Polygon {
   }
 
   /**
+   * Returns the closest point on the polygon's perimiter to the given point.
+   * @param p
+   * The point that we want to get the closest point to.
+   */
+  closestPoint(p: Point): Point {
+    let closestDist = Number.MAX_SAFE_INTEGER;
+    let closestPoint = new Point(0, 0);
+    this.lineSegments.forEach((ls) => {
+      const bestPoint = ls.closestPoint(p);
+      const dist = p.distanceSquare(bestPoint);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestPoint = bestPoint;
+      }
+    });
+    return closestPoint;
+  }
+
+  /**
    * Returns the first segment that is intersected by the argument segment,
    * and the point where they intersect. Returns none if no
    * intersect exists.
