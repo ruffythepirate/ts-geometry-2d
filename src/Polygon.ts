@@ -123,6 +123,36 @@ export class Polygon {
   }
 
   /**
+   * Return the middle point of this polygon. This is given by finding the smallest possible
+   * rectangle that encompasses the polygon, and returning the middle of that.
+   */
+  middle(): Point {
+    const allPoints = this.lineSegments.reduce((acc: Point[], val: LineSegment) => {
+      acc.push(val.p1);
+      return acc;
+    },                                         []);
+
+    const minPoint = allPoints.reduce((acc: Point, val: Point) => {
+      return Point.fromValues(
+        Math.min(acc.x, val.x),
+        Math.min(acc.y, val.y),
+      );
+    },                                allPoints[0]);
+
+    const maxPoint = allPoints.reduce((acc: Point, val: Point) => {
+      if (acc == null) {
+        return val;
+      }
+      return Point.fromValues(
+        Math.max(acc.x, val.x),
+        Math.max(acc.y, val.y),
+      );
+    },                                allPoints[0]);
+
+    return minPoint.plus(maxPoint.minus(minPoint).scale(0.5));
+  }
+
+  /**
    * Returns the first segment that is intersected by the argument segment,
    * and the point where they intersect. Returns none if no
    * intersect exists.

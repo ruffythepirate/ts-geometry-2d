@@ -152,7 +152,26 @@ test('closestPoint should return closest point on perimiter.', () => {
   expect(pol1.closestPoint(new Point(15, 5))).toEqual(new Point(10, 5));
   expect(pol1.closestPoint(new Point(5, 15))).toEqual(new Point(5, 10));
   expect(pol1.closestPoint(new Point(5, -5))).toEqual(new Point(5, 0));
+});
 
+test('middle should find middle of polygon', () => {
+  expect(createPolygon(
+    [
+      [0, 0],
+      [10, 0],
+      [10, 10],
+      [0, 10],
+    ]).middle())
+    .toEqual(new Point(5, 5));
+
+  expect(createPolygon(
+    [
+      [0, 100],
+      [100, 50],
+      [10, 50],
+      [10, 10],
+    ]).middle())
+    .toEqual(new Point(50, 55));
 });
 
 test('firstIntersectionSegmentAndPoint should return none if no intersect', () => {
