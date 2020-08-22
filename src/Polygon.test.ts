@@ -1,17 +1,17 @@
 import { Point } from './Point';
 
-import { Polygon } from './Polygon';
+import { Polygon, polygon } from './Polygon';
 import { LineSegment } from './LineSegment';
 import { none, some } from '@ruffy/ts-optional';
 
-const pol = createPolygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
 
 test('constructor should initialize polygon', () => {
   expect(pol.lineSegments.length).toBe(4);
 });
 
 test('constructor should guarantee that line segments are clockwise oriented', () => {
-  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
 
   expect(pol.lineSegments.find(
       equalLineSegment(0, 0, 0, 1)),
@@ -20,17 +20,17 @@ test('constructor should guarantee that line segments are clockwise oriented', (
 
 test('constructor should throw exception if polygon intersects itself', () => {
   expect(() => {
-    const pol = createPolygon([[0, 0], [1, 1], [1, 0], [0, 1]]);
+    const pol = polygon([[0, 0], [1, 1], [1, 0], [0, 1]]);
   }).toThrow();
 });
 
 test('containsPoints should return true if point is inside Polygon.', () => {
-  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(0.5, 0.5))).toBeTruthy();
 });
 
 test('containsPoint should return false if point is outside', () => {
-  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(-0.5, 0.5))).toBeFalsy();
   expect(pol.containsPoint(Point.fromValues(1.5, 0.5))).toBeFalsy();
   expect(pol.containsPoint(Point.fromValues(0.5, -0.5))).toBeFalsy();
@@ -38,14 +38,14 @@ test('containsPoint should return false if point is outside', () => {
 });
 
 test('containsPoint should return false if point is tangent to line', () => {
-  const pol = createPolygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(-0.5, 1))).toBeFalsy();
 });
 
 test('swell should return a new bigger polygon.', () => {
   const newPol = pol.swell(1);
 
-  const expectedPolygon = createPolygon(
+  const expectedPolygon = polygon(
     [
             [-1, -1],
             [-1, 2],
@@ -57,7 +57,7 @@ test('swell should return a new bigger polygon.', () => {
 });
 
 test('merge should throw error if no overlap', () => {
-  const pol1 = createPolygon(
+  const pol1 = polygon(
     [
       [0, 0],
       [1, 0],
@@ -78,7 +78,7 @@ test('merge should return containing polygon if one contains the other.', () => 
 });
 
 test('merge should merge two diamond polygons', () => {
-  const pol1 = createPolygon(
+  const pol1 = polygon(
     [
       [-1, 0],
       [0, 1],
@@ -127,7 +127,7 @@ test('intersect should return all intersecting points', () => {
 });
 
 test('intersect should return two intersecting points', () => {
-  const pol1 = createPolygon(
+  const pol1 = polygon(
     [
       [482, 180],
       [482, 424],
@@ -140,7 +140,7 @@ test('intersect should return two intersecting points', () => {
 });
 
 test('closestPoint should return closest point on perimiter.', () => {
-  const pol1 = createPolygon(
+  const pol1 = polygon(
     [
       [0, 0],
       [10, 0],
@@ -155,7 +155,7 @@ test('closestPoint should return closest point on perimiter.', () => {
 });
 
 test('middle should find middle of polygon', () => {
-  expect(createPolygon(
+  expect(polygon(
     [
       [0, 0],
       [10, 0],
@@ -164,7 +164,7 @@ test('middle should find middle of polygon', () => {
     ]).middle())
     .toEqual(new Point(5, 5));
 
-  expect(createPolygon(
+  expect(polygon(
     [
       [0, 100],
       [100, 50],
@@ -211,9 +211,4 @@ function equalLineSegment(x1: number, y1: number, x2: number, y2: number) {
     && lineSegment.p1.y === y1
         && lineSegment.p2.x === x2
         && lineSegment.p2.y === y2;
-}
-
-function createPolygon(points: number[][]) {
-  const p = points.map(num => new Point(num[0], num[1]));
-  return Polygon.fromPoints(p);
 }

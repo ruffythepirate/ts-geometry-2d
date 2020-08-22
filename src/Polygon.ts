@@ -306,3 +306,14 @@ function mergePolygons(pol1 : Polygon, pol2: Polygon): Polygon {
   }
   return Polygon.fromPoints(points);
 }
+
+/**
+ * Creates a polygon based on the points that are given as an array of two dimensional
+ * arrays with numbers.
+ * @param points
+ * array of two dimensional arrays with points.
+ */
+export function polygon(points: number[][]) {
+  const p = points.map(num => new Point(num[0], num[1]));
+  return Polygon.fromPoints(p);
+}
