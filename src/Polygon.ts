@@ -140,9 +140,6 @@ export class Polygon {
     },                                allPoints[0]);
 
     const maxPoint = allPoints.reduce((acc: Point, val: Point) => {
-      if (acc == null) {
-        return val;
-      }
       return Point.fromValues(
         Math.max(acc.x, val.x),
         Math.max(acc.y, val.y),
