@@ -5,7 +5,7 @@ export class Point {
   }
 
   static fromValues(x: number, y: number) {
-    return new Point(x, y);
+    return point(x, y);
   }
 
   /**
@@ -41,4 +41,18 @@ export class Point {
   transpose(x: number, y: number) {
     return new Point(this.x + x, this.y + y);
   }
+
+  /**
+   * Returns true if this point and the other have the same coordinates within 1e-3 error.
+   * @param
+   * The other point to compare with.
+   */
+  equals(other: Point): boolean {
+    return Math.abs(this.x - other.x) < 1e-3
+    && Math.abs(this.y - other.y) < 1e-3;
+  }
+}
+
+export function point(x: number, y: number) {
+  return new Point(x, y);
 }

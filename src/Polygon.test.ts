@@ -1,10 +1,14 @@
-import { Point } from './Point';
+import { Point, point } from './Point';
 
-import { Polygon, polygon } from './Polygon';
+import { Polygon, polygon, lineSegmentsIntersectThemselves } from './Polygon';
 import { LineSegment } from './LineSegment';
 import { none, some } from '@ruffy/ts-optional';
 
-const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+let pol: Polygon = polygon([]);
+
+beforeEach(() => {
+  pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+});
 
 test('constructor should initialize polygon', () => {
   expect(pol.lineSegments.length).toBe(4);
@@ -204,6 +208,50 @@ test('firstIntersection should return none if no intersect', () => {
 test('firstIntersection should return closest point to p1 when multiple intercepts', () => {
   expect(pol.firstIntersection(LineSegment.fromValues(-1, 0.5, 2, 0.5)))
     .toEqual(some(Point.fromValues(0, 0.5)));
+});
+
+test('overlap should return false when polygons are separate', () => {
+  expect(polygon(
+    [
+      [0, 0],
+      [1, 0],
+      [1, 1],
+      [0, 1],
+    ]).overlap(
+    polygon([
+      [3, 0],
+      [4, 0],
+      [4, 1],
+      [3, 1],
+    ]))).toBeFalsy();
+});
+
+test('overlap should return true when polygons overlap', () => {
+  expect(polygon(
+    [
+      [0, 0],
+      [20, 0],
+      [20, 20],
+      [0, 20],
+    ]).overlap(
+    polygon([
+      [1, 1],
+      [2, 1],
+      [2, 2],
+      [1, 2],
+    ]))).toBeTruthy();
+});
+
+test('lineSegmentsIntersectThemselves should return false for simple square', () => {
+  const points = [[0, 0], [0, 1], [1, 1], [1, 0]].map(p => point(p[0], p[1]));
+  const lineSegments = points.reduce((a: LineSegment[], v, i) => {
+    const nextIndex = (i + 1) % points.length;
+    const ls = new LineSegment(points[i], points[nextIndex]);
+    a.push(ls);
+    return a;
+  },                                 []);
+
+  expect(lineSegmentsIntersectThemselves(lineSegments)).toBeFalsy();
 });
 
 function equalLineSegment(x1: number, y1: number, x2: number, y2: number) {

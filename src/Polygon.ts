@@ -1,3 +1,4 @@
+import { IntervalType } from './Interval';
 import { LineSegment } from './LineSegment';
 import { Point } from './Point';
 import { Line } from './Line';
@@ -6,12 +7,12 @@ import { none, Optional, some } from '@ruffy/ts-optional';
 /**
  * Checks if any of the given line segments in an array intersect any of the other.
  */
-function lineSegmentsIntersectThemselves(lineSegments: LineSegment[]) {
+export function lineSegmentsIntersectThemselves(lineSegments: LineSegment[]): boolean {
   for (let i = 0; i < lineSegments.length; i += 1) {
     const ls1 = lineSegments[i];
     for (let j = i + 1; j < lineSegments.length; j += 1) {
       const ls2 = lineSegments[j];
-      if (ls1.intersect(ls2).nonEmpty()) {
+      if (ls2.intersectHalfOpen(ls1).nonEmpty()) {
         return true;
       }
     }
@@ -65,7 +66,7 @@ export class Polygon {
    */
   containsPoint(p: Point): boolean {
     const intersectedLines = this.lineSegments.reduce((a, v) => {
-      return v.rightOfPoint(p) ? a + 1 : a;
+      return v.rightOfPoint(p, IntervalType.OpenStart) ? a + 1 : a;
     },                                                0);
     return intersectedLines % 2 === 1;
   }
@@ -168,7 +169,7 @@ export class Polygon {
    */
   intersectionSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
     return this.lineSegments.reduce((a, v) => {
-      const p = v.intersect(ls);
+      const p = v.intersectHalfOpen(ls);
       p.foreach(p => a.add([v, p]));
       return a;
     },                              new Set<[LineSegment, Point]>());
@@ -182,6 +183,16 @@ export class Polygon {
    */
   merge(otherPolygon: Polygon) : Polygon {
     return mergePolygons(this, otherPolygon);
+  }
+
+  /**
+   * Identifies if this polygon somehow overlaps the other polygon.
+   */
+  overlap(otherPolygon: Polygon) : boolean {
+    if (this.containsPolygonPoints(otherPolygon)) {
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -216,6 +227,16 @@ export class Polygon {
    */
   lineSegmentsAsSet(): Set<LineSegment> {
     return new Set<LineSegment>(this.lineSegments);
+  }
+
+  /**
+   * Checks if this polygon contains all of the points of the other polygon.
+   * @param other
+   * Polygon whose points are or are not part of this polygon.
+   */
+  containsPolygonPoints(other: Polygon): boolean {
+    const contained = other.lineSegments.find(ls => this.containsPoint(ls.p1));
+    return contained !== undefined;
   }
 
   /**
@@ -281,7 +302,7 @@ function mergePolygons(pol1 : Polygon, pol2: Polygon): Polygon {
   while (!circleComplete) {
     [newPoint, currentSegment, currentPol, otherPol] =
       getNextStep(currentSegment, currentPol, otherPol);
-    if (points.find(p => p === newPoint) === undefined) {
+    if (points.find(p => p.equals(newPoint)) === undefined) {
       points.push(newPoint);
     } else {
       circleComplete = true;
