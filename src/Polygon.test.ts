@@ -1,6 +1,6 @@
 import { Point, point } from './Point';
 
-import { Polygon, polygon, lineSegmentsIntersectThemselves } from './Polygon';
+import { Polygon, polygon, lineSegmentsIntersectThemselves, isClockwise } from './Polygon';
 import { LineSegment } from './LineSegment';
 import { none, some } from '@ruffy/ts-optional';
 
@@ -33,6 +33,18 @@ test('containsPoints should return true if point is inside Polygon.', () => {
   expect(pol.containsPoint(Point.fromValues(0.5, 0.5))).toBeTruthy();
 });
 
+test('containsPoint should return false if point is one border of Polygon.', () => {
+  const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  expect(pol.containsPoint(point(0, 0))).toBeFalsy();
+  expect(pol.containsPoint(point(1, 0))).toBeFalsy();
+  expect(pol.containsPoint(point(0, 1))).toBeFalsy();
+  expect(pol.containsPoint(point(1, 1))).toBeFalsy();
+  expect(pol.containsPoint(point(0, 0.5))).toBeFalsy();
+  expect(pol.containsPoint(point(0.5, 0))).toBeFalsy();
+  expect(pol.containsPoint(point(1, 0.5))).toBeFalsy();
+  expect(pol.containsPoint(point(0.5, 1))).toBeFalsy();
+});
+
 test('containsPoint should return false if point is outside', () => {
   const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(-0.5, 0.5))).toBeFalsy();
@@ -44,6 +56,20 @@ test('containsPoint should return false if point is outside', () => {
 test('containsPoint should return false if point is tangent to line', () => {
   const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(-0.5, 1))).toBeFalsy();
+});
+
+test('equals should return true when points are the same', () => {
+  const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+  expect(pol.equals(pol)).toBeTruthy();
+  const otherPol = pol.transpose(0, 0);
+  expect(pol.equals(otherPol)).toBeTruthy();
+});
+
+test('equals should return false when points are not the same', () => {
+  const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+  const pol2 = polygon([[0, 0], [0, 1], [1, 1], [1, 0], [0.5, -1]]);
+  expect(pol.transpose(0.5, 0).equals(pol)).toBeFalsy();
+  expect(pol.equals(pol2)).toBeFalsy();
 });
 
 test('swell should return a new bigger polygon.', () => {
@@ -226,20 +252,75 @@ test('overlap should return false when polygons are separate', () => {
     ]))).toBeFalsy();
 });
 
-test('overlap should return true when polygons overlap', () => {
-  expect(polygon(
+test('overlap should be true for self', () => {
+  const poly = polygon(
     [
       [0, 0],
       [20, 0],
       [20, 20],
       [0, 20],
-    ]).overlap(
-    polygon([
+    ]);
+  expect(poly.overlap(poly)).toBeTruthy();
+});
+
+test('overlap should return true when polygons contain each other', () => {
+  const pol1 = polygon(
+    [
+      [0, 0],
+      [20, 0],
+      [20, 20],
+      [0, 20],
+    ]);
+
+  const pol2 = polygon([
       [1, 1],
       [2, 1],
       [2, 2],
       [1, 2],
-    ]))).toBeTruthy();
+  ]);
+  expect(pol1.overlap(pol2)).toBeTruthy();
+  expect(pol2.overlap(pol1)).toBeTruthy();
+});
+
+test('overlap should return true when polygon lines intersect', () => {
+  const pol1 = polygon(
+    [
+      [0, 0],
+      [2, 0],
+      [2, 2],
+      [0, 2],
+    ]);
+  let pol2 = pol1.transpose(-1, 0);
+
+  expect(pol1.overlap(pol2)).toBeTruthy();
+  expect(pol2.overlap(pol1)).toBeTruthy();
+
+  pol2 = polygon(
+    [
+      [-1, 0],
+      [4, 0],
+      [4, 1],
+      [-1, 1],
+    ]);
+  expect(pol1.overlap(pol2)).toBeTruthy();
+});
+
+test('overlap should return false when polygons are adjacent', () => {
+  const pol1 = polygon(
+    [
+      [0, 0],
+      [2, 0],
+      [2, 2],
+      [0, 2],
+    ]);
+  const pol2 = pol1.transpose(-2, 0);
+  expect(pol1.overlap(pol2)).toBeFalsy();
+});
+
+test('transpose keeps orientation of lines', () => {
+  const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+  const newPol = pol.transpose(0, 0);
+  expect(pol.equals(newPol)).toBeTruthy();
 });
 
 test('lineSegmentsIntersectThemselves should return false for simple square', () => {
@@ -252,6 +333,30 @@ test('lineSegmentsIntersectThemselves should return false for simple square', ()
   },                                 []);
 
   expect(lineSegmentsIntersectThemselves(lineSegments)).toBeFalsy();
+});
+
+test('isClockwise should be false when not clockwise', () => {
+  const points = [[0, 0], [1, 0], [1, 1], [0, 1]].map(p => point(p[0], p[1]));
+  const lineSegments = points.reduce((a: LineSegment[], v, i) => {
+    const nextIndex = (i + 1) % points.length;
+    const ls = new LineSegment(points[i], points[nextIndex]);
+    a.push(ls);
+    return a;
+  },                                 []);
+
+  expect(isClockwise(lineSegments)).toBeFalsy();
+});
+
+test('isClockwise should be true when clockwise', () => {
+  const points = [[0, 0], [0, 1], [1, 1], [1, 0]].map(p => point(p[0], p[1]));
+  const lineSegments = points.reduce((a: LineSegment[], v, i) => {
+    const nextIndex = (i + 1) % points.length;
+    const ls = new LineSegment(points[i], points[nextIndex]);
+    a.push(ls);
+    return a;
+  },                                 []);
+
+  expect(isClockwise(lineSegments)).toBeTruthy();
 });
 
 function equalLineSegment(x1: number, y1: number, x2: number, y2: number) {

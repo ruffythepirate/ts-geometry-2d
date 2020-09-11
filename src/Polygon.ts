@@ -65,8 +65,12 @@ export class Polygon {
    * @param p
    */
   containsPoint(p: Point): boolean {
-    const intersectedLines = this.lineSegments.reduce((a, v) => {
-      return v.rightOfPoint(p, IntervalType.OpenStart) ? a + 1 : a;
+    if (this.lineSegments.find(ls => ls.containsPoint(p))) {
+      return false;
+    }
+    const intersectedLines = this.lineSegments.reduce((a, ls) => {
+      return ls.rightOfPoint(p, IntervalType.Closed)
+              && !ls.onLine(p) ? a + 1 : a;
     },                                                0);
     return intersectedLines % 2 === 1;
   }
@@ -189,10 +193,34 @@ export class Polygon {
    * Identifies if this polygon somehow overlaps the other polygon.
    */
   overlap(otherPolygon: Polygon) : boolean {
-    if (this.containsPolygonPoints(otherPolygon)) {
+    if (this.equals(otherPolygon)) {
       return true;
     }
-    return false;
+    if (this.containsAnyPolygonPoint(otherPolygon)
+       || otherPolygon.containsAnyPolygonPoint(this)) {
+      return true;
+    }
+    return this.lineSegments.find((ls) => {
+      const inter = otherPolygon.lineSegments.find(ls2 => ls.intersect(
+        ls2, IntervalType.Closed, IntervalType.Open)
+        .nonEmpty());
+      return inter !== undefined;
+    }) !== undefined;
+  }
+
+  /**
+   * Checks if this polygon and the other polygon contains the same points.
+   * @param other
+   * Polygon to compare with.
+   */
+  equals(other: Polygon): boolean {
+    if (this.lineSegments.length !== other.lineSegments.length) {
+      return false;
+    }
+
+    return this.lineSegments.reduce((a: boolean, v: LineSegment) => a
+                                    && other.lineSegments.find(ls => ls.equals(v)) !== undefined
+    ,                               true);
   }
 
   /**
@@ -230,11 +258,11 @@ export class Polygon {
   }
 
   /**
-   * Checks if this polygon contains all of the points of the other polygon.
+   * Checks if this polygon contains any of the points of the other polygon.
    * @param other
    * Polygon whose points are or are not part of this polygon.
    */
-  containsPolygonPoints(other: Polygon): boolean {
+  containsAnyPolygonPoint(other: Polygon): boolean {
     const contained = other.lineSegments.find(ls => this.containsPoint(ls.p1));
     return contained !== undefined;
   }
@@ -274,7 +302,7 @@ export class Polygon {
  * Array of line segments to check, note that they have to define a polygon by defining a
  * closed shape (ie. the last line must end where the first line starts.).
  */
-function isClockwise(lineSegments: LineSegment[]): Boolean {
+export function isClockwise(lineSegments: LineSegment[]): Boolean {
   return 0 > lineSegments
       .map(ls => ls.asVector())
       .reduce((sum, v, i, array) => {

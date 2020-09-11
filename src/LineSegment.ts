@@ -40,6 +40,18 @@ export class LineSegment {
   }
 
   /**
+   * Verifies if the given point is on the line that would be defined by p1 and p2 of this line
+   * segment.
+   * @param p
+   * The point to verify
+   */
+  onLine(p: Point): boolean {
+    const v1 = p.minus(this.p1);
+    const v2 = this.p2.minus(this.p1);
+    return Math.abs(v1.cross(v2)) < 1e-3;
+  }
+
+  /**
    * Returns boolean whether this segment is placed to the right of given point.
    * This is defined as if whether a line segment starting at point p, and going
    * to x = infinity, intersect this line segment.
@@ -159,8 +171,8 @@ export class LineSegment {
 
     const intersect = l1.intersect(l2);
 
-    return intersect.filter(intersect => this.containsPoint(intersect)
-      && ls2.containsPoint(intersect));
+    return intersect.filter(intersect => this.containsPoint(intersect, thisInterval)
+      && ls2.containsPoint(intersect, otherInterval));
   }
 
   /**
@@ -181,17 +193,38 @@ export class LineSegment {
   }
 
   /**
+   * Return true if the points of this line segment equals the points of the other line segment.
+   * @param ls
+   * Line segment to compare with.
+   */
+  equals(ls: LineSegment) : boolean {
+    return this.p1.equals(ls.p1) && this.p2.equals(ls.p2);
+  }
+
+  /**
    * Returns if the given point exists on this line segment or not.
    * @param p
    */
-  containsPoint(p: Point): boolean {
+  containsPoint(p: Point, interval: IntervalType = IntervalType.Closed): boolean {
     const p1p = p.minus(this.p1);
     const p1p2 = this.p2.minus(this.p1);
     const dotProd = p1p.dot(p1p2);
     const crossProd = p1p.cross(p1p2);
-    return dotProd >= 0
+
+    const pointOnSegment = dotProd >= 0
     && dotProd <= p1p2.square() + 1e-1
     && Math.abs(crossProd) < 1e-3;
+
+    if (!pointOnSegment) {
+      return false;
+    }  if (interval === IntervalType.Open) {
+      return !p.equals(this.p1) && !p.equals(this.p2) ;
+    }  if (interval === IntervalType.OpenEnd) {
+      return !p.equals(this.p2);
+    }  if (interval === IntervalType.OpenStart) {
+      return !p.equals(this.p1);
+    }
+    return true;
   }
 
   asLine() : Line {

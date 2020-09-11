@@ -30,6 +30,19 @@ test('asVector should return the vector from p1 to p2', () => {
   expect(v).toEqual(new Vector(1, 0));
 });
 
+test('onLine should return false if point is not on line defined by points', () => {
+  expect(ls.onLine(point(-5, 1))).toBeFalsy();
+});
+
+test('onLine should return true if point is on line defined by points', () => {
+  expect(ls.onLine(point(-5, 0))).toBeTruthy();
+});
+
+test('onLine should return true if point is on endpoints', () => {
+  expect(ls.onLine(point(0, 0))).toBeTruthy();
+  expect(ls.onLine(point(1, 0))).toBeTruthy();
+});
+
 test('flip should return a new line segment with p1 and p2 flipped', () => {
   const flipped = ls.flip();
 
@@ -147,11 +160,33 @@ test('containsPoint should return false when point is not on line segment', () =
   expect(ls1.containsPoint(new Point(0.1, 1))).toBeFalsy();
 });
 
+test('containsPoint should handle interval type', () => {
+  const ls1 = LineSegment.fromValues(0, 0, 0, 2);
+  expect(ls1.containsPoint(point(0, 0), IntervalType.Closed)).toBeTruthy();
+  expect(ls1.containsPoint(point(0, 0), IntervalType.OpenStart)).toBeFalsy();
+  expect(ls1.containsPoint(point(0, 0), IntervalType.OpenEnd)).toBeTruthy();
+  expect(ls1.containsPoint(point(0, 0), IntervalType.Open)).toBeFalsy();
+});
+
 test('startFrom should return new Line Segment starting from p', () => {
   const p = Point.fromValues(50, 23);
   const ls2 = ls.startFrom(p);
   expect(ls).not.toEqual(ls2);
   expect(ls2).toEqual(new LineSegment(p, ls.p2));
+});
+
+test('equals should return true when lines are equal', () => {
+  const ls = lineSegment(0, 0, 1, 0);
+  const ls2 = lineSegment(0, 0, 1, 0);
+  expect(ls.equals(ls)).toBeTruthy();
+  expect(ls.equals(ls2)).toBeTruthy();
+});
+
+test('equals should return false when lines are not equal', () => {
+  const ls = lineSegment(0, 0, 1, 0);
+  const ls2 = lineSegment(1, 0, 0, 0);
+  expect(ls.equals(ls.transpose(1, 0))).toBeFalsy();
+  expect(ls.equals(ls2)).toBeFalsy();
 });
 
 test('parallel should return true when lines are parallel', () => {
