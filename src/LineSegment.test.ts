@@ -121,6 +121,14 @@ test('rightOfPoint should return false if line segment is left of point', () => 
   expect(ls2.rightOfPoint(Point.fromValues(1, 0.5))).toBeFalsy();
 });
 
+test('rightOfPoint should handle end points', () => {
+  const ls1 = LineSegment.fromValues(0, 1, 0, 0);
+  expect(ls1.rightOfPoint(Point.fromValues(-1, 0), IntervalType.OpenStart)).toBeTruthy();
+  expect(ls1.rightOfPoint(Point.fromValues(-1, 0), IntervalType.OpenEnd)).toBeFalsy();
+  expect(ls1.rightOfPoint(Point.fromValues(-1, 0), IntervalType.Open)).toBeFalsy();
+  expect(ls1.rightOfPoint(Point.fromValues(-1, 0), IntervalType.Closed)).toBeTruthy();
+});
+
 test('transpose should create new line segment that is moved', () => {
   const transp = ls.transpose(1, 2);
   expect(transp.p1).toEqual(ls.p1.transpose(1, 2));
@@ -221,4 +229,6 @@ test('intersectAtEnds should return true if there is intersection and its on the
   expect(lineSegment(0, 0, 1, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
   expect(lineSegment(3, 0, 2, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
   expect(lineSegment(1, 0, 0, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
+  expect(lineSegment(1, 1, 1, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
+  expect(lineSegment(1, 0, 1, 1).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
 });
