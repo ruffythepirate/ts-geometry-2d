@@ -98,6 +98,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="interval.html#includemax" class="tsd-kind-icon">include<wbr>Max</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="interval.html#includemin" class="tsd-kind-icon">include<wbr>Min</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="interval.html#intervaltype" class="tsd-kind-icon">interval<wbr>Type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="interval.html#max" class="tsd-kind-icon">max</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="interval.html#min" class="tsd-kind-icon">min</a></li>
 							</ul>
@@ -117,13 +118,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Interval<span class="tsd-signature-symbol">(</span>min<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, max<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, includeMin<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, includeMax<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interval.html" class="tsd-signature-type">Interval</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Interval<span class="tsd-signature-symbol">(</span>min<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, max<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, intervalType<span class="tsd-signature-symbol">?: </span><a href="../enums/intervaltype.html" class="tsd-signature-type">IntervalType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interval.html" class="tsd-signature-type">Interval</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Interval.ts#L6">Interval.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L22">Interval.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -150,20 +151,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> includeMin: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>If the min value is included in the interval.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> includeMax: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>If the max value is included in the interval.</p>
-										</div>
-									</div>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> intervalType: <a href="../enums/intervaltype.html" class="tsd-signature-type">IntervalType</a><span class="tsd-signature-symbol"> = IntervalType.Closed</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interval.html" class="tsd-signature-type">Interval</a></h4>
@@ -179,14 +167,9 @@
 					<div class="tsd-signature tsd-kind-icon">include<wbr>Max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Interval.ts#L19">Interval.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L22">Interval.ts:22</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>If the max value is included in the interval.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="includemin" class="tsd-anchor"></a>
@@ -194,14 +177,19 @@
 					<div class="tsd-signature tsd-kind-icon">include<wbr>Min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Interval.ts#L19">Interval.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L21">Interval.ts:21</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>If the min value is included in the interval.</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="intervaltype" class="tsd-anchor"></a>
+					<h3>interval<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">interval<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="../enums/intervaltype.html" class="tsd-signature-type">IntervalType</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L36">Interval.ts:36</a></li>
+						</ul>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="max" class="tsd-anchor"></a>
@@ -209,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Interval.ts#L18">Interval.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L35">Interval.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -224,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Interval.ts#L18">Interval.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L35">Interval.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -246,7 +234,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Interval.ts#L31">Interval.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Interval.ts#L51">Interval.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,6 +267,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/intervaltype.html" class="tsd-kind-icon">Interval<wbr>Type</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -292,6 +283,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="interval.html#includemin" class="tsd-kind-icon">include<wbr>Min</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="interval.html#intervaltype" class="tsd-kind-icon">interval<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="interval.html#max" class="tsd-kind-icon">max</a>
@@ -328,10 +322,16 @@
 						<a href="../globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="../globals.html#linesegment" class="tsd-kind-icon">line<wbr>Segment</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="../globals.html#linesegmentsintersectthemselves" class="tsd-kind-icon">line<wbr>Segments<wbr>Intersect<wbr>Themselves</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#mergepolygons" class="tsd-kind-icon">merge<wbr>Polygons</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#point" class="tsd-kind-icon">point</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#polygon" class="tsd-kind-icon">polygon</a>

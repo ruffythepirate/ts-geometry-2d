@@ -101,7 +101,9 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#closestpoint" class="tsd-kind-icon">closest<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#containsanypolygonpoint" class="tsd-kind-icon">contains<wbr>Any<wbr>Polygon<wbr>Point</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#containspoint" class="tsd-kind-icon">contains<wbr>Point</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#firstintersection" class="tsd-kind-icon">first<wbr>Intersection</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#firstintersectionsegmentandpoint" class="tsd-kind-icon">first<wbr>Intersection<wbr>Segment<wbr>And<wbr>Point</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#intersect" class="tsd-kind-icon">intersect</a></li>
@@ -111,6 +113,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#merge" class="tsd-kind-icon">merge</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#middle" class="tsd-kind-icon">middle</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#nextlinesegment" class="tsd-kind-icon">next<wbr>Line<wbr>Segment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#overlap" class="tsd-kind-icon">overlap</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#swell" class="tsd-kind-icon">swell</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="polygon.html#transpose" class="tsd-kind-icon">transpose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="polygon.html#frompoints" class="tsd-kind-icon">from<wbr>Points</a></li>
@@ -131,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L25">Polygon.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L26">Polygon.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -153,7 +156,7 @@
 					<div class="tsd-signature tsd-kind-icon">line<wbr>Segments<span class="tsd-signature-symbol">:</span> <a href="linesegment.html" class="tsd-signature-type">LineSegment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L27">Polygon.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L28">Polygon.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -170,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L111">Polygon.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L116">Polygon.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,6 +195,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="containsanypolygonpoint" class="tsd-anchor"></a>
+					<h3>contains<wbr>Any<wbr>Polygon<wbr>Point</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">contains<wbr>Any<wbr>Polygon<wbr>Point<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="polygon.html" class="tsd-signature-type">Polygon</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L265">Polygon.ts:265</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if this polygon contains any of the points of the other polygon.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="polygon.html" class="tsd-signature-type">Polygon</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Polygon whose points are or are not part of this polygon.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="containspoint" class="tsd-anchor"></a>
 					<h3>contains<wbr>Point</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -201,7 +235,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L66">Polygon.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L67">Polygon.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,6 +259,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="equals" class="tsd-anchor"></a>
+					<h3>equals</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="polygon.html" class="tsd-signature-type">Polygon</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L216">Polygon.ts:216</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if this polygon and the other polygon contains the same points.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="polygon.html" class="tsd-signature-type">Polygon</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Polygon to compare with.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="firstintersection" class="tsd-anchor"></a>
 					<h3>first<wbr>Intersection</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -234,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L88">Polygon.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L93">Polygon.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -266,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L161">Polygon.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L163">Polygon.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -298,7 +363,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L98">Polygon.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L103">Polygon.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -328,7 +393,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L172">Polygon.ts:172</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L174">Polygon.ts:174</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -359,7 +424,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L209">Polygon.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L245">Polygon.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -390,7 +455,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L220">Polygon.ts:220</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L256">Polygon.ts:256</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -412,7 +477,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L186">Polygon.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L188">Polygon.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,7 +509,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L129">Polygon.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L134">Polygon.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -467,7 +532,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L195">Polygon.ts:195</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L231">Polygon.ts:231</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -489,6 +554,34 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="overlap" class="tsd-anchor"></a>
+					<h3>overlap</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">overlap<span class="tsd-signature-symbol">(</span>otherPolygon<span class="tsd-signature-symbol">: </span><a href="polygon.html" class="tsd-signature-type">Polygon</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L195">Polygon.ts:195</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Identifies if this polygon somehow overlaps the other polygon.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>otherPolygon: <a href="polygon.html" class="tsd-signature-type">Polygon</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="swell" class="tsd-anchor"></a>
 					<h3>swell</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -498,7 +591,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L229">Polygon.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L275">Polygon.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -529,7 +622,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L78">Polygon.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L83">Polygon.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -562,7 +655,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6ca2215/src/Polygon.ts#L48">Polygon.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/0f3d7f4/src/Polygon.ts#L49">Polygon.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -601,6 +694,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/intervaltype.html" class="tsd-kind-icon">Interval<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="interval.html" class="tsd-kind-icon">Interval</a>
 					</li>
@@ -631,7 +727,13 @@
 								<a href="polygon.html#closestpoint" class="tsd-kind-icon">closest<wbr>Point</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#containsanypolygonpoint" class="tsd-kind-icon">contains<wbr>Any<wbr>Polygon<wbr>Point</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#containspoint" class="tsd-kind-icon">contains<wbr>Point</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#equals" class="tsd-kind-icon">equals</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#firstintersection" class="tsd-kind-icon">first<wbr>Intersection</a>
@@ -661,6 +763,9 @@
 								<a href="polygon.html#nextlinesegment" class="tsd-kind-icon">next<wbr>Line<wbr>Segment</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="polygon.html#overlap" class="tsd-kind-icon">overlap</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="polygon.html#swell" class="tsd-kind-icon">swell</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -680,10 +785,16 @@
 						<a href="../globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="../globals.html#linesegment" class="tsd-kind-icon">line<wbr>Segment</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="../globals.html#linesegmentsintersectthemselves" class="tsd-kind-icon">line<wbr>Segments<wbr>Intersect<wbr>Themselves</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#mergepolygons" class="tsd-kind-icon">merge<wbr>Polygons</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#point" class="tsd-kind-icon">point</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#polygon" class="tsd-kind-icon">polygon</a>
