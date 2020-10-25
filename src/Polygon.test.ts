@@ -217,7 +217,7 @@ test('firstIntersectionSegmentAndPoint should return closest point to p1 when mu
     .toEqual(some([pol.lineSegments[0], Point.fromValues(0, 0.5)]));
      });
 
-test('lineSegmentFromPoint should return line segment starts at point p', () => {
+test('lineSegmentFromPoint should return line segment ends at point p', () => {
   pol.lineSegments.forEach(ls => expect(pol.lineSegmentFrom(ls.p1)).toBe(ls));
 });
 
