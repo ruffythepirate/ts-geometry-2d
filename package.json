@@ -1,6 +1,6 @@
 {
   "name": "ts-2d-geometry",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "This is a simple library containing classes with immutable operations to use for 2d Geometry tasks.",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
