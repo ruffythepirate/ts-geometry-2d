@@ -92,8 +92,9 @@ export class Polygon {
    */
   firstIntersection(ls: LineSegment): Optional<Point> {
     const intersections = this.intersect(ls);
-    const sortedPoints = Array.from(intersections).sort((p1, p2) => p1.distanceSquare(p2));
-    return sortedPoints.length > 0 ? some(sortedPoints[sortedPoints.length - 1]) : none;
+    const startPoint = ls.p1;
+    const sortedPoints = Array.from(intersections).sort((p1, p2) => startPoint.distanceSquare(p1) - startPoint.distanceSquare(p2));
+    return sortedPoints.length > 0 ? some(sortedPoints[0]) : none;
   }
 
   /**
@@ -162,8 +163,9 @@ export class Polygon {
    */
   firstIntersectionSegmentAndPoint(ls: LineSegment): Optional<[LineSegment, Point]> {
     const intersections = this.intersectionSegmentAndPoints(ls);
-    const sortedPoints = Array.from(intersections).sort((p1, p2) => p1[1].distanceSquare(p2[1]));
-    return sortedPoints.length > 0 ? some(sortedPoints[sortedPoints.length - 1]) : none;
+    const startPoint = ls.p1;
+    const sortedPoints = Array.from(intersections).sort((p1, p2) => startPoint.distanceSquare(p1[1]) - startPoint.distanceSquare(p2[1]));
+    return sortedPoints.length > 0 ? some(sortedPoints[0]) : none;
   }
 
   /**
