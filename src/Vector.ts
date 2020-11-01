@@ -8,6 +8,8 @@ export class Vector {
     return new Vector(a[0], a[1]);
   }
 
+  static null = new Vector(0, 0);
+
   /**
    * Gives the dot product between the two vectors.
    * @param v2
@@ -78,9 +80,23 @@ export class Vector {
   }
 
   /**
+   * Returns whether this vector is the null vector (x and y components are null) or not.
+   */
+  isNullVector(): boolean {
+    return this.x === 0 && this.y === 0;
+  }
+
+  /**
    * The euclidean length of this vector.
    */
   norm2(): number {
     return Math.sqrt(this.square());
   }
+}
+
+/**
+  * Creates a vector
+  */
+export function vector(x: number, y: number) {
+  return new Vector(x, y);
 }

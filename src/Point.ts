@@ -1,4 +1,5 @@
 import { Vector } from './Vector';
+import { Line } from './Line';
 
 export class Point {
   constructor(public x:number, public y:number) {
@@ -14,6 +15,13 @@ export class Point {
    */
   minus(p : Point) :Vector {
     return new Vector(this.x - p.x, this.y - p.y);
+  }
+
+  /**
+   * Defines a line by using this point and a vector.
+   */
+  asLine(v: Vector): Line {
+    return new Line(this, v);
   }
 
   /**
@@ -53,6 +61,9 @@ export class Point {
   }
 }
 
-export function point(x: number, y: number) {
+/**
+ * Creates a point.
+ */
+export function point(x: number, y: number): Point {
   return new Point(x, y);
 }

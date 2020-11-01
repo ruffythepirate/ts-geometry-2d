@@ -1,6 +1,6 @@
-import { Line } from './Line';
-import { Vector } from './Vector';
-import { Point } from './Point';
+import { Line, line } from './Line';
+import { Vector, vector } from './Vector';
+import { Point, point } from './Point';
 import { none, some } from '@ruffy/ts-optional';
 
 let l = new Line(new Point(0, 0), new Vector(1, 0));
@@ -28,6 +28,16 @@ test('projectDistanceSquare should get square of projection distance', () => {
 
 test('projectDistance should get projection distance', () => {
   expect(l.projectDistance(new Point(0.5, -2))).toBe(2);
+});
+
+test('line should throw exception if null vector', () => {
+  expect(() => {
+    line(0, 0, 0, 0);
+  }).toThrow();
+});
+
+test('line should define line', () => {
+  expect(line(0, 0, 1, 0)).toEqual(new Line(point(0, 0), vector(1, 0)));
 });
 
 test('intersect should return none if lines are parallel', () => {

@@ -1,5 +1,5 @@
-import { Vector } from './Vector';
-import { Point } from './Point';
+import { Vector, vector } from './Vector';
+import { Point, point } from './Point';
 import { Matrix } from './Matrix';
 import { Optional } from '@ruffy/ts-optional';
 
@@ -8,6 +8,9 @@ import { Optional } from '@ruffy/ts-optional';
  */
 export class Line {
   constructor(public p: Point, public v: Vector) {
+    if (v.isNullVector()) {
+      throw new Error('Null vector is not allowed when defining line.');
+    }
   }
 
   /**
@@ -66,4 +69,12 @@ export class Line {
   projectDistance(p2: Point) : number {
     return Math.sqrt(this.projectDistanceSquare(p2));
   }
+}
+
+/**
+ * Creates a line using the first two values as an initial point, and the last two values as
+ * the direction vector.
+ */
+export function line(x: number, y: number, vx: number, vy: number): Line {
+  return new Line(point(x, y), vector(vx, vy));
 }

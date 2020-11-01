@@ -5,6 +5,7 @@ let v = new Vector(1, 2);
 beforeEach(() => {
   v = new Vector(1, 2);
 });
+
 test('constructor should create Vector', () => {
 
   expect(v.x).toBe(1);
@@ -23,6 +24,18 @@ test('scale should return new vector by multiplying the vector with the factor',
   expect(v).not.toEqual(nv);
   expect(nv.x).toBe(2);
   expect(nv.y).toBe(4);
+});
+
+test('isNullVector should return false for non null vector', () => {
+  const v = new Vector(1, 0);
+
+  expect(v.isNullVector()).toBeFalsy();
+});
+
+test('isNullVector should return true for null vector', () => {
+  const v = new Vector(0, 0);
+
+  expect(v.isNullVector()).toBeTruthy();
 });
 
 test('square should return vector dot itself.', () => {

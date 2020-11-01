@@ -11,6 +11,10 @@ export class LineSegment {
   constructor(public p1: Point, public p2:Point) {
   }
 
+  /**
+   * Creates a LineSegment from four numbers. The first two being x and y from the start point
+   * of the line segment, the last two the x and y value of the end point.
+   */
   static fromValues(x1: number, y1: number, x2: number, y2: number) {
     return lineSegment(x1, y1, x2, y2);
   }
@@ -37,6 +41,46 @@ export class LineSegment {
       return this.p1;
     }
     return l.project(p2);
+  }
+
+  /**
+   * Moves the line segment in the direction of the Vector until it no longer
+   * overlaps the other line segment.
+   */
+  separateFrom(other:LineSegment, direction: Vector): LineSegment {
+    if (direction.isNullVector()) {
+      throw new Error('separateFrom must have a non null vector direction');
+    }
+    if (this.intersect(other).isEmpty()) {
+      return this;
+    }
+    const line = new Line(this.p1, direction);
+    const transpose =
+      findTranspose(this.p1, direction, other)
+      .or(() => findTranspose(this.p2, direction, other))
+      .or(() => findTranspose(other.p1, direction, this))
+      .or(() => findTranspose(other.p2, direction, this))
+      .get();
+
+    return this.transpose(transpose.x, transpose.y);
+
+    function findTranspose(p: Point, direction: Vector, other: LineSegment): Optional<Vector> {
+      const line = new Line(p, direction);
+      return other.intersectForLine(line)
+      .map((newP: Point) => newP.minus(p))
+      .filter(transp => transp.dot(direction) > 0);
+    }
+  }
+
+  /**
+   * Returns the point where the given line intersect this line segment, if such
+   * point exists. If the line and the line segment are parallel and on the same
+   * line, none is returned because there is no one unique point of intersect.
+   */
+  intersectForLine(l: Line): Optional<Point> {
+    const intersect = this.asLine().intersect(l);
+
+    return intersect.filter(p => this.containsPoint(p));
   }
 
   /**
@@ -239,6 +283,9 @@ export class LineSegment {
   }
 }
 
+/**
+ * Creates a line segment.
+ */
 export function lineSegment(x1: number, y1: number, x2: number, y2: number): LineSegment {
   return new LineSegment(new Point(x1, y1), new Point(x2, y2));
 }

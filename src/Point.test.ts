@@ -1,5 +1,6 @@
 import { Point, point } from './Point';
-import { Vector } from './Vector';
+import { Vector, vector } from './Vector';
+import { line } from './Line';
 
 let p = new Point(1, 2);
 beforeEach(() => {
@@ -21,6 +22,16 @@ test('plus should create Point', () => {
   const p1 = p.plus(new Vector(1, 1));
   expect(p1.x).toBe(2);
   expect(p1.y).toBe(3);
+});
+
+test('asLine should throw exception if null vector is given', () => {
+  expect(() => {
+    point(0, 0).asLine(Vector.null);
+  }).toThrow();
+});
+
+test('asLine define line from vector', () => {
+  expect(point(0, 0).asLine(vector(1, 0))).toEqual(line(0, 0, 1, 0));
 });
 
 test('transpose should create new Point', () => {

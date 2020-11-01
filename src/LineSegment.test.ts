@@ -1,7 +1,8 @@
 import { Point, point } from './Point';
 import { LineSegment, lineSegment } from './LineSegment';
+import { line } from './Line';
 import { IntervalType } from './Interval';
-import { Vector } from './Vector';
+import { Vector, vector } from './Vector';
 import { none, some } from '@ruffy/ts-optional';
 
 const ls = new LineSegment(new Point(0, 0), new Point(1, 0));
@@ -231,4 +232,43 @@ test('intersectAtEnds should return true if there is intersection and its on the
   expect(lineSegment(1, 0, 0, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
   expect(lineSegment(1, 1, 1, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
   expect(lineSegment(1, 0, 1, 1).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
+});
+
+test('separateFrom should throw exception when direction is null vector', () => {
+  expect(() => {
+    lineSegment(1, 0, 2, 0).separateFrom(lineSegment(0, 0, 0, 1), Vector.null);
+  }).toThrow();
+});
+
+test('separateFrom returns lineSegment if there is no overlap', () => {
+  const result = lineSegment(1, 0, 2, 0).separateFrom(lineSegment(0, 0, 0, 1), vector(1, 0));
+
+  expect(result).toEqual(lineSegment(1, 0, 2, 0));
+});
+
+[
+  { v: vector(1, 0), expectedResult: lineSegment(0, 0, 2, 0) },
+  { v: vector(-1, 0), expectedResult: lineSegment(-2, 0, 0, 0) },
+  { v: vector(0, 1), expectedResult: lineSegment(-1, 1, 1, 1) },
+  { v: vector(0, -1), expectedResult: lineSegment(-1, -1, 1, -1) },
+].forEach(({ v, expectedResult }) => {
+  test(`separateFrom returns moved lineSegment in direction ${v.x}, ${v.y}`, () => {
+    const result = lineSegment(-1, 0, 1, 0).separateFrom(lineSegment(0, -1, 0, 1), v);
+
+    expect(result).toEqual(expectedResult);
+  });
+});
+
+// We need to test parallel line segments. Both when direction follows their direcion and otherwise.
+
+[
+  { l: line(0, 0, 1, 0), p: some(point(0, 0)) },
+  { l: line(0, 1, 1, 0), p: some(point(0, 1)) },
+  { l: line(0, -1, 1, 0), p: some(point(0, -1)) },
+  { l: line(0, 2, 1, 0), p: none },
+].forEach(({ l, p }) => {
+  test(`intersectForLine for line (${l.p.x}, ${l.p.y} ${l.v.x}, ${l.v.y}) is correct`, () => {
+    const ls = lineSegment(0, -1, 0, 1);
+    expect(ls.intersectForLine(l)).toEqual(p);
+  });
 });
