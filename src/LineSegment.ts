@@ -51,8 +51,13 @@ export class LineSegment {
     if (direction.isNullVector()) {
       throw new Error('separateFrom must have a non null vector direction');
     }
-    if (this.intersect(other).isEmpty()) {
+    if (!this.overlap(other)) {
       return this;
+    }
+    if (this.parallel(other)) {
+      if (direction.cross(this.asVector()) <= 1e-3) {
+
+      }
     }
     const line = new Line(this.p1, direction);
     const transpose =
@@ -136,10 +141,24 @@ export class LineSegment {
    * The line segment to do the comparison on.
    */
   parallel(other: LineSegment): boolean {
-    const v1 = this.p2.minus(this.p1);
-    const v2 = other.p2.minus(other.p1);
+    const v1 = this.asVector();
+    const v2 = other.asVector();
 
     return Math.abs(v1.cross(v2)) < 1e-3;
+  }
+
+  /**
+   * Checks if there is any overlapping point between the two line segments.
+   * This is like intersect, but returns a boolean and will also return
+   * true if the line segments are parallel and share one or more common points.
+   */
+  overlap(other: LineSegment): boolean {
+    const intersect = this.intersect(other).nonEmpty();
+    const overlap = intersect
+    || other.containsPoint(this.p1)
+    || other.containsPoint(this.p2)
+    || this.containsPoint(other.p1);
+    return overlap;
   }
 
   /**
@@ -174,6 +193,13 @@ export class LineSegment {
     return this.intersect(other)
     .filter(p => p.equals(other.p1) || p.equals(other.p2))
     .nonEmpty();
+  }
+
+  /**
+   * Gives a string representing this line segment that's readable.
+   */
+  toString(): string {
+    return `(${this.p1.toString()} -> ${this.p2.toString()})`;
   }
 
   private getHeightInterval(paramIntervalType: IntervalType) : Interval {
@@ -256,7 +282,7 @@ export class LineSegment {
     const crossProd = p1p.cross(p1p2);
 
     const pointOnSegment = dotProd >= 0
-    && dotProd <= p1p2.square() + 1e-1
+    && dotProd <= p1p2.square() + 1e-6
     && Math.abs(crossProd) < 1e-3;
 
     if (!pointOnSegment) {

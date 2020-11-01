@@ -164,6 +164,7 @@ test('containsPoint should return false when point is not on line segment', () =
   expect(ls1.containsPoint(new Point(0, -1))).toBeFalsy();
   expect(ls1.containsPoint(new Point(0, 3))).toBeFalsy();
   expect(ls1.containsPoint(new Point(0, -3))).toBeFalsy();
+  expect(ls2.containsPoint(new Point(2.1, 0))).toBeFalsy();
   expect(ls2.containsPoint(new Point(3, 0))).toBeFalsy();
   expect(ls2.containsPoint(new Point(3, 0))).toBeFalsy();
   expect(ls1.containsPoint(new Point(0.1, 1))).toBeFalsy();
@@ -259,7 +260,30 @@ test('separateFrom returns lineSegment if there is no overlap', () => {
   });
 });
 
+// test(`parallel lines move to after one another if direction is also parallel`, () => {
+//  const ls1 = lineSegment(0, 0, 2, 0);
+//  const ls2 = ls1.transpose(0,0);
+//
+//  const moved = ls2.separateFrom(ls1, vector(1,0));
+//
+//  expect(moved).toEqual(lineSegment(2,0, 4, 0));
+// });
+
 // We need to test parallel line segments. Both when direction follows their direcion and otherwise.
+
+[
+  { ls1: lineSegment(-1, 0, 1, 0), ls2: lineSegment(0, -1, 0, 1), overlap: true },
+  { ls1: lineSegment(-1, 2, 1, 2), ls2: lineSegment(0, -1, 0, 1), overlap: false },
+  { ls1: lineSegment(0, 0, 1, 0), ls2: lineSegment(.5, 0, 1.5, 0), overlap: true },
+  { ls1: lineSegment(0, 0, 1, 0), ls2: lineSegment(1, 0, 2, 0), overlap: true },
+  { ls1: lineSegment(0, 0, 1, 0), ls2: lineSegment(1.1, 0, 2, 0), overlap: false },
+  { ls1: lineSegment(0, 0, 10, 0), ls2: lineSegment(2, 0, 3, 0), overlap: true },
+].forEach(({ ls1, ls2, overlap }) => {
+  test(`${ls1} ${ls2} should have overlap=${overlap}`, () => {
+    const result = ls1.overlap(ls2);
+    expect(result).toBe(overlap);
+  });
+});
 
 [
   { l: line(0, 0, 1, 0), p: some(point(0, 0)) },

@@ -59,6 +59,13 @@ export class Point {
     return Math.abs(this.x - other.x) < 1e-3
     && Math.abs(this.y - other.y) < 1e-3;
   }
+
+  /**
+   * Gives a readable string representing this point.
+   */
+  toString(): string {
+    return `[${this.x}, ${this.y}]`;
+  }
 }
 
 /**
