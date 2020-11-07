@@ -260,16 +260,34 @@ test('separateFrom returns lineSegment if there is no overlap', () => {
   });
 });
 
-// test(`parallel lines move to after one another if direction is also parallel`, () => {
-//  const ls1 = lineSegment(0, 0, 2, 0);
-//  const ls2 = ls1.transpose(0,0);
-//
-//  const moved = ls2.separateFrom(ls1, vector(1,0));
-//
-//  expect(moved).toEqual(lineSegment(2,0, 4, 0));
-// });
+test('parallel lines move to after one another if direction is also parallel', () => {
+  const ls1 = lineSegment(0, 0, 2, 0);
+  const ls2 = ls1.transpose(0, 0);
 
-// We need to test parallel line segments. Both when direction follows their direcion and otherwise.
+  const moved = ls2.separateFrom(ls1, vector(1, 0));
+
+  expect(moved).toEqual(lineSegment(2, 0, 4, 0));
+});
+
+test('parallel lines move in direction so that the distance is above minimum distance', () => {
+  const ls1 = lineSegment(0, 0, 2, 0);
+  const ls2 = ls1.transpose(0, 0);
+
+  const moved = ls2.separateFrom(ls1, vector(0, 1));
+
+  expect(moved.p1.y).toBeGreaterThan(ls1.p1.y);
+  expect(moved.overlap(ls1)).toBeFalsy();
+});
+
+[
+  { ls: lineSegment(-1, 0, 1, 0), v: vector(-1, 0), reversed: true },
+  { ls: lineSegment(-1, 0, 1, 0), v: vector(1, 0), reversed: false },
+].forEach(({ ls, v, reversed }) => {
+  test(`when ${ls} orientAs ${v}, return line segments should be reversed: ${reversed}`, () => {
+    const result = ls.orientAs(v);
+    expect(result.equals(ls)).not.toBe(reversed);
+  });
+});
 
 [
   { ls1: lineSegment(-1, 0, 1, 0), ls2: lineSegment(0, -1, 0, 1), overlap: true },

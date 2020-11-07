@@ -1,4 +1,4 @@
-import { Vector } from './Vector';
+import { Vector, vector } from './Vector';
 import { Point } from './Point';
 
 let v = new Vector(1, 2);
@@ -24,6 +24,59 @@ test('scale should return new vector by multiplying the vector with the factor',
   expect(v).not.toEqual(nv);
   expect(nv.x).toBe(2);
   expect(nv.y).toBe(4);
+});
+
+test('parallel should return true when vector points in same direction', () => {
+  const v1 = vector(1, 0);
+  const v2 = vector(2, 0);
+
+  expect(v1.parallel(v2)).toBeTruthy();
+});
+
+test('parallel should return true when vector points in opposite direction', () => {
+  const v1 = vector(1, 0);
+  const v2 = vector(-2, 0);
+
+  expect(v1.parallel(v2)).toBeTruthy();
+});
+
+test('parallel should return false when vector points in other direction', () => {
+  const v1 = vector(1, 0);
+  const v2 = vector(2, 1);
+
+  expect(v1.parallel(v2)).toBeFalsy();
+  expect(v1.parallel(v2.reverse())).toBeFalsy();
+});
+
+const xVector = vector(1, 0);
+[
+  { v: vector(2, 1), expected: vector(0, 1) },
+  { v: vector(2, 3), expected: vector(0, 3) },
+  { v: vector(2, -3), expected: vector(0, -3) },
+].forEach(({ v, expected }) => {
+  test(`perpendicularComponentTo ${xVector} is ${expected} for ${v}`, () => {
+    expect(v.perpendicularComponentTo(xVector)).toEqual(expected);
+  });
+});
+
+[
+  { v1: vector(2, 1), v2: vector(0, 1), expected: vector(2, 2) },
+  { v1: vector(4, 2), v2: vector(1, -1), expected: vector(5, 1) },
+  { v1: vector(2, 1), v2: vector(0, 0), expected: vector(2, 1) },
+].forEach(({ v1, v2, expected }) => {
+  test(`plus of ${v1} and ${v2} equals ${expected}`, () => {
+    expect(v1.plus(v2)).toEqual(expected);
+  });
+});
+
+[
+  { v1: vector(2, 1), v2: vector(0, 1), expected: vector(2, 0) },
+  { v1: vector(4, 2), v2: vector(1, -1), expected: vector(3, 3) },
+  { v1: vector(2, 1), v2: vector(0, 0), expected: vector(2, 1) },
+].forEach(({ v1, v2, expected }) => {
+  test(`minus of ${v1} and ${v2} equals ${expected}`, () => {
+    expect(v1.minus(v2)).toEqual(expected);
+  });
 });
 
 test('isNullVector should return false for non null vector', () => {

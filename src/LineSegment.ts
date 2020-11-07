@@ -44,6 +44,23 @@ export class LineSegment {
   }
 
   /**
+   * Orients this line segment to point in the same direction as the
+   * given vector. If the vector is perpendicular to this line segment
+   * or a null vector, an exception is thrown. Otherwise a line segment
+   * is returned so that p1->p2 of the line segment has a positive dot
+   * product to the given vector.
+   */
+  orientAs(v: Vector): LineSegment {
+    const dotProduct = this.asVector().dot(v);
+
+    if (Math.abs(dotProduct) <= 1e-3) {
+      throw Error(`Can't orient line segment ${this} with ${v}, they are perpendicular`);
+    }
+
+    return dotProduct > 0 ? this : this.flip();
+  }
+
+  /**
    * Moves the line segment in the direction of the Vector until it no longer
    * overlaps the other line segment.
    */
@@ -55,8 +72,16 @@ export class LineSegment {
       return this;
     }
     if (this.parallel(other)) {
-      if (direction.cross(this.asVector()) <= 1e-3) {
-
+      if (direction.parallel(this.asVector())) {
+        const thisLs = this.orientAs(direction);
+        const otherLs = other.orientAs(direction);
+        const transpose = otherLs.p2.minus(thisLs.p1);
+        return this.transpose(transpose.x, transpose.y);
+      }  {
+        const perpendicular = direction.perpendicularComponentTo(this.asVector());
+        const factor = direction.norm2() / perpendicular.norm2();
+        const moveVector = direction.scale(1e-3 * factor);
+        return this.transpose(moveVector.x, moveVector.y);
       }
     }
     const line = new Line(this.p1, direction);

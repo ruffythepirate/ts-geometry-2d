@@ -26,6 +26,14 @@ export class Vector {
   }
 
   /**
+   * Return true if this vector is pointing in the same direction
+   * as the other vector.
+   */
+  parallel(other: Vector): boolean {
+    return Math.abs(this.cross(other)) <= 1e-3;
+  }
+
+  /**
    * Returns the scalar value of the cross product between this vector and v2.
    * Normally cross product is performed in three dimensions, but here we assume
    * z value equals 0, and returns then the size of the resulting z dimension.
@@ -33,6 +41,25 @@ export class Vector {
    */
   cross(v2: Vector) : number {
     return this.x * v2.y - this.y * v2.x;
+  }
+
+  /**
+   * Returns the perpendicular component vector of this vector compared to another vector.
+   */
+  perpendicularComponentTo(other: Vector): Vector {
+    if (other.isNullVector()) {
+      return this;
+    }
+    const otherNormed = other.normed();
+    const factor = this.dot(otherNormed);
+    return this.minus(otherNormed.scale(factor));
+  }
+
+  /**
+   * Returns this vector in string form.
+   */
+  toString(): String {
+    return `[${this.x}, ${this.y}]`;
   }
 
   /**
@@ -91,6 +118,20 @@ export class Vector {
    */
   norm2(): number {
     return Math.sqrt(this.square());
+  }
+
+  /**
+   * Returns the vector that is this vector plus another one.
+   */
+  plus(other: Vector): Vector {
+    return vector(this.x + other.x, this.y + other.y);
+  }
+
+  /**
+   * Returns this vector minus the other vector.
+   */
+  minus(other: Vector): Vector {
+    return this.plus(other.reverse());
   }
 }
 
