@@ -89,11 +89,13 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#line" class="tsd-kind-icon">line</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#linesegment" class="tsd-kind-icon">line<wbr>Segment</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#linesegmentsintersectthemselves" class="tsd-kind-icon">line<wbr>Segments<wbr>Intersect<wbr>Themselves</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#mergepolygons" class="tsd-kind-icon">merge<wbr>Polygons</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#point" class="tsd-kind-icon">point</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#polygon" class="tsd-kind-icon">polygon</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#vector" class="tsd-kind-icon">vector</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,7 +113,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Polygon.ts#L309">Polygon.ts:309</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Polygon.ts#L309">Polygon.ts:309</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -139,6 +141,44 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="line" class="tsd-anchor"></a>
+					<h3>line</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">line<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, vx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, vy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/line.html" class="tsd-signature-type">Line</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Line.ts#L78">Line.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a line using the first two values as an initial point, and the last two values as
+									the direction vector.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>vx: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>vy: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="classes/line.html" class="tsd-signature-type">Line</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="linesegment" class="tsd-anchor"></a>
 					<h3>line<wbr>Segment</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -148,9 +188,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/LineSegment.ts#L242">LineSegment.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/LineSegment.ts#L340">LineSegment.ts:340</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a line segment.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -180,7 +225,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Polygon.ts#L10">Polygon.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Polygon.ts#L10">Polygon.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -208,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Polygon.ts#L318">Polygon.ts:318</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Polygon.ts#L318">Polygon.ts:318</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -234,9 +279,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Point.ts#L56">Point.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Point.ts#L74">Point.ts:74</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a point.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -260,7 +310,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Polygon.ts#L366">Polygon.ts:366</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Polygon.ts#L366">Polygon.ts:366</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,6 +329,37 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="classes/polygon.html" class="tsd-signature-type">Polygon</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="vector" class="tsd-anchor"></a>
+					<h3>vector</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">vector<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/vector.html" class="tsd-signature-type">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L141">Vector.ts:141</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a vector</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="classes/vector.html" class="tsd-signature-type">Vector</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -322,6 +403,9 @@
 						<a href="globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#line" class="tsd-kind-icon">line</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#linesegment" class="tsd-kind-icon">line<wbr>Segment</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -335,6 +419,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#polygon" class="tsd-kind-icon">polygon</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#vector" class="tsd-kind-icon">vector</a>
 					</li>
 				</ul>
 			</nav>
@@ -355,6 +442,7 @@
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
@@ -365,6 +453,5 @@
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

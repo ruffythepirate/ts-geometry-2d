@@ -89,6 +89,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="vector.html#x" class="tsd-kind-icon">x</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="vector.html#y" class="tsd-kind-icon">y</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="vector.html#null" class="tsd-kind-icon">null</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -98,11 +99,17 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#clockwiseperpendicular" class="tsd-kind-icon">clockwise<wbr>Perpendicular</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#cross" class="tsd-kind-icon">cross</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#dot" class="tsd-kind-icon">dot</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#isnullvector" class="tsd-kind-icon">is<wbr>Null<wbr>Vector</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#minus" class="tsd-kind-icon">minus</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#norm2" class="tsd-kind-icon">norm2</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#normed" class="tsd-kind-icon">normed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#parallel" class="tsd-kind-icon">parallel</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#perpendicularcomponentto" class="tsd-kind-icon">perpendicular<wbr>Component<wbr>To</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#plus" class="tsd-kind-icon">plus</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#reverse" class="tsd-kind-icon">reverse</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#scale" class="tsd-kind-icon">scale</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#square" class="tsd-kind-icon">square</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="vector.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a></li>
 							</ul>
 						</section>
@@ -121,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L3">Vector.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L3">Vector.ts:3</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -146,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L4">Vector.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L4">Vector.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,7 +163,17 @@
 					<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L4">Vector.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L4">Vector.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="null" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> null</h3>
+					<div class="tsd-signature tsd-kind-icon">null<span class="tsd-signature-symbol">:</span> <a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol"> = new Vector(0, 0)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L11">Vector.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L22">Vector.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L24">Vector.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -195,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L42">Vector.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L71">Vector.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -220,7 +237,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L32">Vector.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L42">Vector.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -252,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L15">Vector.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L17">Vector.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -273,6 +290,56 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isnullvector" class="tsd-anchor"></a>
+					<h3>is<wbr>Null<wbr>Vector</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Null<wbr>Vector<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L112">Vector.ts:112</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether this vector is the null vector (x and y components are null) or not.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="minus" class="tsd-anchor"></a>
+					<h3>minus</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">minus<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L133">Vector.ts:133</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns this vector minus the other vector.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="norm2" class="tsd-anchor"></a>
 					<h3>norm2</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -282,7 +349,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L83">Vector.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L119">Vector.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -304,7 +371,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L57">Vector.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L86">Vector.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -313,6 +380,91 @@
 									direction as this vector.</p>
 								</div>
 							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="parallel" class="tsd-anchor"></a>
+					<h3>parallel</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">parallel<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L32">Vector.ts:32</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return true if this vector is pointing in the same direction
+									as the other vector.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="perpendicularcomponentto" class="tsd-anchor"></a>
+					<h3>perpendicular<wbr>Component<wbr>To</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">perpendicular<wbr>Component<wbr>To<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L49">Vector.ts:49</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the perpendicular component vector of this vector compared to another vector.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="plus" class="tsd-anchor"></a>
+					<h3>plus</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">plus<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L126">Vector.ts:126</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the vector that is this vector plus another one.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
 						</li>
 					</ul>
@@ -327,7 +479,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L49">Vector.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L78">Vector.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,7 +501,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L69">Vector.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L98">Vector.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,7 +531,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L76">Vector.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L105">Vector.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -388,6 +540,28 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="tostring" class="tsd-anchor"></a>
+					<h3>to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">String</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L61">Vector.ts:61</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns this vector in string form.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">String</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -401,7 +575,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/6e39800/src/Vector.ts#L7">Vector.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/b890efd/src/Vector.ts#L7">Vector.ts:7</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -461,6 +635,9 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="vector.html#y" class="tsd-kind-icon">y</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="vector.html#null" class="tsd-kind-icon">null</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector.html#aspoint" class="tsd-kind-icon">as<wbr>Point</a>
 							</li>
@@ -474,10 +651,25 @@
 								<a href="vector.html#dot" class="tsd-kind-icon">dot</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector.html#isnullvector" class="tsd-kind-icon">is<wbr>Null<wbr>Vector</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector.html#minus" class="tsd-kind-icon">minus</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector.html#norm2" class="tsd-kind-icon">norm2</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector.html#normed" class="tsd-kind-icon">normed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector.html#parallel" class="tsd-kind-icon">parallel</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector.html#perpendicularcomponentto" class="tsd-kind-icon">perpendicular<wbr>Component<wbr>To</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector.html#plus" class="tsd-kind-icon">plus</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector.html#reverse" class="tsd-kind-icon">reverse</a>
@@ -488,6 +680,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector.html#square" class="tsd-kind-icon">square</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="vector.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a>
 							</li>
@@ -497,6 +692,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#isclockwise" class="tsd-kind-icon">is<wbr>Clockwise</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#line" class="tsd-kind-icon">line</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#linesegment" class="tsd-kind-icon">line<wbr>Segment</a>
@@ -512,6 +710,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#polygon" class="tsd-kind-icon">polygon</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#vector" class="tsd-kind-icon">vector</a>
 					</li>
 				</ul>
 			</nav>
@@ -532,6 +733,7 @@
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
@@ -542,6 +744,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
