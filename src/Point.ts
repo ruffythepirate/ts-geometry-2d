@@ -1,5 +1,6 @@
 import { Vector } from './Vector';
 import { Line } from './Line';
+import GlobalConfig from './GlobalConfig';
 
 export class Point {
   constructor(public x:number, public y:number) {
@@ -51,13 +52,14 @@ export class Point {
   }
 
   /**
-   * Returns true if this point and the other have the same coordinates within 1e-3 error.
+   * Returns true if this point and the other have the same coordinates within
+   * GlobalConfig.precision error.
    * @param
    * The other point to compare with.
    */
   equals(other: Point): boolean {
-    return Math.abs(this.x - other.x) < 1e-3
-    && Math.abs(this.y - other.y) < 1e-3;
+    return Math.abs(this.x - other.x) < GlobalConfig.precision
+    && Math.abs(this.y - other.y) < GlobalConfig.precision;
   }
 
   /**

@@ -2,6 +2,7 @@ import { Point } from './Point';
 import { Line } from './Line';
 import { Vector } from './Vector';
 import { Interval, IntervalType } from './Interval';
+import GlobalConfig from './GlobalConfig';
 import { Optional } from '@ruffy/ts-optional';
 
 /**
@@ -53,7 +54,7 @@ export class LineSegment {
   orientAs(v: Vector): LineSegment {
     const dotProduct = this.asVector().dot(v);
 
-    if (Math.abs(dotProduct) <= 1e-3) {
+    if (Math.abs(dotProduct) <= GlobalConfig.precisionSquared) {
       throw Error(`Can't orient line segment ${this} with ${v}, they are perpendicular`);
     }
 
@@ -80,7 +81,7 @@ export class LineSegment {
       }  {
         const perpendicular = direction.perpendicularComponentTo(this.asVector());
         const factor = direction.norm2() / perpendicular.norm2();
-        const moveVector = direction.scale(1e-3 * factor);
+        const moveVector = direction.scale(GlobalConfig.precision * factor);
         return this.transpose(moveVector.x, moveVector.y);
       }
     }
@@ -122,7 +123,7 @@ export class LineSegment {
   onLine(p: Point): boolean {
     const v1 = p.minus(this.p1);
     const v2 = this.p2.minus(this.p1);
-    return Math.abs(v1.cross(v2)) < 1e-3;
+    return Math.abs(v1.cross(v2)) < GlobalConfig.precisionSquared;
   }
 
   /**
@@ -169,7 +170,7 @@ export class LineSegment {
     const v1 = this.asVector();
     const v2 = other.asVector();
 
-    return Math.abs(v1.cross(v2)) < 1e-3;
+    return Math.abs(v1.cross(v2)) < GlobalConfig.precisionSquared;
   }
 
   /**
@@ -307,8 +308,8 @@ export class LineSegment {
     const crossProd = p1p.cross(p1p2);
 
     const pointOnSegment = dotProd >= 0
-    && dotProd <= p1p2.square() + 1e-6
-    && Math.abs(crossProd) < 1e-3;
+    && dotProd <= p1p2.square() + GlobalConfig.precisionSquared
+    && Math.abs(crossProd) < GlobalConfig.precision;
 
     if (!pointOnSegment) {
       return false;

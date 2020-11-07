@@ -1,4 +1,5 @@
 import { Point } from './Point';
+import GlobalConfig from './GlobalConfig';
 
 export class Vector {
   constructor(public x: number, public y: number) {
@@ -30,7 +31,7 @@ export class Vector {
    * as the other vector.
    */
   parallel(other: Vector): boolean {
-    return Math.abs(this.cross(other)) <= 1e-3;
+    return Math.abs(this.cross(other)) <= GlobalConfig.precisionSquared;
   }
 
   /**

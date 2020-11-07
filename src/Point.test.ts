@@ -47,7 +47,7 @@ test('distanceSquare should return the distance between points squared', () => {
   expect(p2.distanceSquare(p1)).toBe(8);
 });
 
-test('equals should return true if points are within 1e-3 in L_inf norm from each other.' , () => {
+test('equals should return true if points are within config.precision in L_inf norm from each other.' , () => {
   expect(point(0, 0).equals(point(0, 0))).toBeTruthy();
   expect(point(0, 0).equals(point(1e-4, 0))).toBeTruthy();
   expect(point(0, 0).equals(point(0, -1e-4))).toBeTruthy();
