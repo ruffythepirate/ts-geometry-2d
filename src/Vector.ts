@@ -51,9 +51,20 @@ export class Vector {
     if (other.isNullVector()) {
       return this;
     }
+    const projectedOnto = this.projectOnto(other);
+    return this.minus(projectedOnto);
+  }
+
+  /**
+   * Returns this vector projected onto the other vector.
+   */
+  projectOnto(other: Vector): Vector {
+    if (other.isNullVector()) {
+      return this;
+    }
     const otherNormed = other.normed();
     const factor = this.dot(otherNormed);
-    return this.minus(otherNormed.scale(factor));
+    return otherNormed.scale(factor);
   }
 
   /**

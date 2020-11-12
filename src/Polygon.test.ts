@@ -1,5 +1,5 @@
 import { Point, point } from './Point';
-
+import { vector, Vector } from './Vector';
 import { Polygon, polygon, lineSegmentsIntersectThemselves, isClockwise } from './Polygon';
 import { LineSegment } from './LineSegment';
 import { none, some } from '@ruffy/ts-optional';
@@ -183,6 +183,36 @@ test('closestPoint should return closest point on perimiter.', () => {
   expect(pol1.closestPoint(new Point(5, 15))).toEqual(new Point(5, 10));
   expect(pol1.closestPoint(new Point(5, -5))).toEqual(new Point(5, 0));
 });
+
+test('separateFrom should return given polygon if no overlap found.', () => {
+  const pol2 = pol.transpose(3, 0);
+
+  expect(pol.separateFrom(pol2, vector(1, 0))).toEqual(pol);
+});
+
+[
+  { direction: vector(1, 0), expectedMove: vector(1, 0) },
+  { direction: vector(2, 0), expectedMove: vector(1, 0) },
+].forEach(({ direction, expectedMove }) => {
+  test(`separateFrom should move polygon in direction ${direction}`, () => {
+    expect(pol.separateFrom(pol, direction)).toEqual(pol.transpose(expectedMove.x,
+                                                                   expectedMove.y));
+  });
+});
+
+[
+  { direction: vector(1, 0), expected: vector(0.5, 0) },
+  { direction: vector(-1, 0), expected: vector(-0.5, 0) },
+  { direction: vector(0, 2), expected: vector(0, 0.5) },
+].forEach(({ direction, expected }) => {
+  test(`furthestProjection should be ${expected} for ${direction}`, () => {
+    expect(pol.furthestProjection(direction)).toEqual(expected);
+  });
+});
+
+// test('fromMap should handle simple cube', () => {
+  // expect(Polygon.fromMap('1').lineSegmentsAsSet()).toEqual(pol.lineSegmentsAsSet());
+// });
 
 test('middle should find middle of polygon', () => {
   expect(polygon(

@@ -1,6 +1,7 @@
 import { IntervalType } from './Interval';
 import { LineSegment } from './LineSegment';
 import { Point } from './Point';
+import { Vector } from './Vector';
 import { Line } from './Line';
 import { none, Optional, some } from '@ruffy/ts-optional';
 
@@ -55,6 +56,17 @@ export class Polygon {
     },
                                        []);
     return new Polygon(lineSegments);
+  }
+
+  /**
+   * Creates a polygon based on a maps of characters. 1 means that the polygon should be there,
+   * 0 means it should not. This only handles perpendicular lines in the polygon, ie.
+   * you can't define diagonal lines using the function. One '1' has 1 in width and height.
+   */
+  static fromMap(map: string): Polygon {
+    const dots = map.split('\n');
+
+    return new Polygon([]);
   }
 
   /**
@@ -269,6 +281,52 @@ export class Polygon {
   containsAnyPolygonPoint(other: Polygon): boolean {
     const contained = other.lineSegments.find(ls => this.containsPoint(ls.p1));
     return contained !== undefined;
+  }
+
+  /**
+   * Returns a polygon that has the same shape as this polygon, that is moved in the given
+   * direction so that it no longer overlaps the other polygon. If the polygons don't
+   * overlap, this polygon is returned.
+   * @param other
+   * The other polygon that we should no longer overlap
+   * @param direction
+   * The direction that this polygon should be moved until it no longer overlaps the
+   * other polygon
+   */
+  separateFrom(other: Polygon, direction: Vector): Polygon {
+    if (! this.overlap(other)) {
+      return this;
+    }
+    const projectionOther = other.furthestProjection(direction);
+    const projectionThis = this.furthestProjection(direction.reverse());
+
+    const transpose = projectionOther.minus(projectionThis);
+    return this.transpose(transpose.x, transpose.y);
+  }
+
+  /**
+   * Starts in the middle of this polygon and the projection of the point that isClockwise
+   * futhest away in the given direction onto the direction.
+   * @param direction
+   * The vector to project points onto.
+   */
+  furthestProjection(direction: Vector): Vector {
+    const middle = this.middle();
+    const furthestProjection = this.getPoints()
+      .map((p) => {
+        const projection = p.minus(middle).projectOnto(direction);
+        const distance = projection.dot(direction);
+        return { projection, distance };
+      }).sort((proj1, proj2) => proj2.distance - proj1.distance)
+      [0].projection;
+    return furthestProjection;
+  }
+
+  /**
+   * Returns the points that constitute this polygon as an array.
+   */
+  private getPoints(): Point[] {
+    return this.lineSegments.map(ls => ls.p1);
   }
 
   /**

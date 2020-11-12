@@ -59,6 +59,26 @@ const xVector = vector(1, 0);
   });
 });
 
+test('perpendicularComponentTo null vector is input vector', () => {
+  const v = vector(12, 3);
+  expect(v.perpendicularComponentTo(Vector.null)).toEqual(v);
+});
+
+[
+  { v: vector(2, 1), expected: vector(2, 0) },
+  { v: vector(2, 3), expected: vector(2, 0) },
+  { v: vector(2, -3), expected: vector(2, 0) },
+].forEach(({ v, expected }) => {
+  test(`projectOnto ${xVector} is ${expected} for ${v}`, () => {
+    expect(v.projectOnto(xVector)).toEqual(expected);
+  });
+});
+
+test('projectOnto null vector is input vector', () => {
+  const v = vector(12, 3);
+  expect(v.projectOnto(Vector.null)).toEqual(v);
+});
+
 [
   { v1: vector(2, 1), v2: vector(0, 1), expected: vector(2, 2) },
   { v1: vector(4, 2), v2: vector(1, -1), expected: vector(5, 1) },
