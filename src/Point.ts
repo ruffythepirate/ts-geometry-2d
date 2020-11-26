@@ -2,6 +2,9 @@ import { Vector } from './Vector';
 import { Line } from './Line';
 import GlobalConfig from './GlobalConfig';
 
+/**
+ * Represents a single point with x, y coordinates.
+ */
 export class Point {
   constructor(public x:number, public y:number) {
   }
