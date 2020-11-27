@@ -98,6 +98,31 @@ export class Polygon {
   }
 
   /**
+   * Returns a transposed version of this polygon with all points transposed.
+   */
+  transposeVector(v: Vector): Polygon {
+    return this.transpose(v.x, v.y);
+  }
+
+  /**
+   * Finds the shortest distance, if it exists, that would make the
+   * point p hit this polygons perimiter when going in the defined direction.
+   */
+  distanceToPerimiter(p: Point, direction: Vector): Optional<number> {
+    const line = p.asLine(direction);
+    const shortestDistanceSquared: Optional<number> =
+      this.lineSegments.reduce((a: Optional<number>, ls: LineSegment) => {
+        const intersectPoint = ls.intersectForLine(line);
+        return intersectPoint
+        .filter(ip => ip.minus(p).dot(direction) >= 0) // verify that inters. is in vector direction
+        .map(ip => ip.distanceSquare(p))
+        .filter(dist => a.getOrElse(dist) >= dist)
+        .or(() => a);
+      },                       none);
+    return shortestDistanceSquared.map(d => Math.sqrt(d));
+  }
+
+  /**
    * Returns the first point where the line segment intersect the polygon.
    * This is defined as the point closest to p1 in the line segment.
    * @param ls
@@ -140,6 +165,14 @@ export class Polygon {
       }
     });
     return closestPoint;
+  }
+
+  /**
+   * Gives a readable representation of this polygon.
+   */
+  toString(): string {
+    const points = this.getPoints();
+    return `${points}`;
   }
 
   /**
@@ -295,14 +328,35 @@ export class Polygon {
    * other polygon
    */
   separateFrom(other: Polygon, direction: Vector): Polygon {
-    if (! this.overlap(other)) {
+    const thisBounds = this.getBounds();
+    const otherBounds = other.getBounds();
+    if (!thisBounds.overlap(otherBounds) && ! this.overlap(other)) {
       return this;
     }
-    const projectionOther = other.furthestProjection(direction);
-    const projectionThis = this.furthestProjection(direction.reverse());
 
-    const transpose = projectionOther.minus(projectionThis);
-    return this.transpose(transpose.x, transpose.y);
+    const separateVector = thisBounds.separateFrom(otherBounds, direction);
+    const thisMovedFar = this.transposeVector(separateVector);
+    const distancesFromThisToOther = thisMovedFar.getPoints()
+      .map(p => other.distanceToPerimiter(p, direction.reverse()));
+
+    const distancesFromOtherToThis = other.getPoints()
+      .map(p => thisMovedFar.distanceToPerimiter(p, direction));
+
+    const allDistances = distancesFromOtherToThis
+    .concat(distancesFromThisToOther)
+    .filter(distOpt => distOpt.nonEmpty())
+    .map(distOpt => distOpt.get())
+    .sort();
+
+    const shortestDistance = allDistances[0];
+
+    const transposeVector = separateVector.plus(
+      direction
+        .reverse()
+        .normed()
+        .scale(shortestDistance));
+
+    return this.transposeVector(transposeVector);
   }
 
   /**

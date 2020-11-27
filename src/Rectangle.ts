@@ -1,6 +1,8 @@
-import { Point } from './Point';
+import { Point, point } from './Point';
 import { Vector } from './Vector';
 import { Optional, none, some } from '@ruffy/ts-optional';
+import { Polygon } from './Polygon';
+
 /**
  * A rectangle is defined by two points, the top left point, called topLeft,
  * and the bottom right point called bottomRight.
@@ -10,6 +12,20 @@ export class Rectangle {
     if (topLeft.x > bottomRight.x || topLeft.y > bottomRight.y) {
       throw Error(`${topLeft} must be top left compared to ${bottomRight}`);
     }
+  }
+
+  toPolygon(): Polygon {
+    const points = [
+      this.topLeft,
+      point(this.bottomRight.x, this.topLeft.y),
+      this.bottomRight,
+      point(this.topLeft.x, this.bottomRight.y),
+    ];
+    return Polygon.fromPoints(points);
+  }
+
+  toString(): string {
+    return `tl: ${this.topLeft}, br: ${this.bottomRight}`;
   }
 
   /**

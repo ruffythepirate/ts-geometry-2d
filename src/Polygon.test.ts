@@ -202,9 +202,46 @@ test('separateFrom should return given polygon if no overlap found.', () => {
   { direction: vector(2, 0), expectedMove: vector(1, 0) },
 ].forEach(({ direction, expectedMove }) => {
   test(`separateFrom should move polygon in direction ${direction}`, () => {
-    expect(pol.separateFrom(pol, direction)).toEqual(pol.transpose(expectedMove.x,
-                                                                   expectedMove.y));
+    expect(pol.separateFrom(pol, direction)).toEqual(
+      pol.transposeVector(expectedMove));
   });
+});
+
+[
+  { direction: vector(1, 0), expectedMove: vector(2, 0) },
+].forEach(({ direction, expectedMove }) => {
+  test(`separateFrom should manage complicated shapes in direction ${direction}.`, () => {
+    const pol1 = rectangle(0, 0, 2, 2).toPolygon();
+    const pol2 = polygon([[1, 0], [2, 1], [1, 2], [0, 1]]);
+
+    const result = pol2.separateFrom(pol1, direction);
+    expect(result.equals(pol2.transposeVector(expectedMove)))
+      .toBeTruthy();
+  });
+});
+
+test('getBounds should return outer bounds', () => {
+  const pol = polygon([[1, 0], [2, 1], [1, 2], [0, 1]]);
+
+  expect(pol.getBounds()).toEqual(rectangle(0, 0, 2, 2));
+  expect(rectangle(0, 0, 2, 2).toPolygon().getBounds()).toEqual(rectangle(0, 0, 2, 2));
+});
+
+[
+  { p: point(0, 0), v: vector(1, 0), expected: some(0) },
+  { p: point(1, 0), v: vector(1, 0), expected: some(1) },
+  { p: point(-5, 0), v: vector(1, 0), expected: some(5) },
+  { p: point(0, -5), v: vector(0, 1), expected: some(5) },
+  { p: point(0, 5), v: vector(0, 1), expected: none },
+].forEach(({ p, v, expected }) => {
+  test(`distanceToPerimiter should give ${expected} when going from ${p} in direction ${v}.`,
+       () => {
+         const pol = rectangle(0, 0, 2, 2).toPolygon();
+
+         const result = pol.distanceToPerimiter(p, v);
+
+         expect(result).toEqual(expected);
+       });
 });
 
 [
@@ -216,10 +253,6 @@ test('separateFrom should return given polygon if no overlap found.', () => {
     expect(pol.furthestProjection(direction)).toEqual(expected);
   });
 });
-
-// test('fromMap should handle simple cube', () => {
-  // expect(Polygon.fromMap('1').lineSegmentsAsSet()).toEqual(pol.lineSegmentsAsSet());
-// });
 
 test('middle should find middle of polygon', () => {
   expect(polygon(
