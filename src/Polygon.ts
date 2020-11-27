@@ -1,6 +1,6 @@
 import { IntervalType } from './Interval';
 import { LineSegment } from './LineSegment';
-import { Point } from './Point';
+import { Point, point } from './Point';
 import { Vector } from './Vector';
 import { Line } from './Line';
 import { none, Optional, some } from '@ruffy/ts-optional';
@@ -100,7 +100,7 @@ export class Polygon {
   /**
    * Returns a transposed version of this polygon with all points transposed.
    */
-  transposeVector(v: Vector): Polygon {
+  transposeByVector(v: Vector): Polygon {
     return this.transpose(v.x, v.y);
   }
 
@@ -128,7 +128,7 @@ export class Polygon {
    * @param ls
    * The line segment to check intersection with.
    */
-  firstIntersection(ls: LineSegment): Optional<Point> {
+  private firstIntersection(ls: LineSegment): Optional<Point> {
     const intersections = this.intersect(ls);
     const startPoint = ls.p1;
     const sortedPoints = Array.from(intersections)
@@ -140,7 +140,7 @@ export class Polygon {
    * Returns the points where a line intersect this polygon.
    * @param ls
    */
-  intersect(ls : LineSegment) : Set<Point> {
+  private intersect(ls : LineSegment) : Set<Point> {
     return this.lineSegments.reduce((a, v) => {
       const p = v.intersect(ls);
       p.foreach(p => a.add(p));
@@ -171,7 +171,7 @@ export class Polygon {
    * Gives a readable representation of this polygon.
    */
   toString(): string {
-    const points = this.getPoints();
+    const points = this.points();
     return `${points}`;
   }
 
@@ -180,26 +180,9 @@ export class Polygon {
    * rectangle that encompasses the polygon, and returning the middle of that.
    */
   middle(): Point {
-    const allPoints = this.lineSegments.reduce((acc: Point[], val: LineSegment) => {
-      acc.push(val.p1);
-      return acc;
-    },                                         []);
-
-    const minPoint = allPoints.reduce((acc: Point, val: Point) => {
-      return Point.fromValues(
-        Math.min(acc.x, val.x),
-        Math.min(acc.y, val.y),
-      );
-    },                                allPoints[0]);
-
-    const maxPoint = allPoints.reduce((acc: Point, val: Point) => {
-      return Point.fromValues(
-        Math.max(acc.x, val.x),
-        Math.max(acc.y, val.y),
-      );
-    },                                allPoints[0]);
-
-    return minPoint.plus(maxPoint.minus(minPoint).scale(0.5));
+    const bounds = this.bounds();
+    return point((bounds.topLeft.x + bounds.bottomRight.x) / 2,
+                 (bounds.topLeft.y + bounds.bottomRight.y) / 2);
   }
 
   /**
@@ -208,7 +191,7 @@ export class Polygon {
    * intersect exists.
    * @param ls
    */
-  firstIntersectionSegmentAndPoint(ls: LineSegment): Optional<[LineSegment, Point]> {
+  private firstIntersectionSegmentAndPoint(ls: LineSegment): Optional<[LineSegment, Point]> {
     const intersections = this.intersectionSegmentAndPoints(ls);
     const startPoint = ls.p1;
     const sortedPoints = Array.from(intersections)
@@ -221,7 +204,7 @@ export class Polygon {
    * corresponding line segment where they intersect.
    * @param ls
    */
-  intersectionSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
+  private intersectionSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
     return this.lineSegments.reduce((a, v) => {
       const p = v.intersectHalfOpen(ls);
       p.foreach(p => a.add([v, p]));
@@ -232,11 +215,53 @@ export class Polygon {
   /**
    * Merges this polygon and the other polygon into one shape. If no overlap is found
    * between the polygons exception is thrown.
-   * @param otherPolygon
+   * @param other
    * Polygon to merge this polygon with.
    */
-  merge(otherPolygon: Polygon) : Polygon {
-    return mergePolygons(this, otherPolygon);
+  merge(other: Polygon): Polygon {
+    /* tslint:disable */
+    const pol1: Polygon = this;
+    /* tslint:enable */
+    const pol2 = other;
+    let currentSegment = pol1.lineSegments.find(ls => !pol2.containsPoint(ls.p1));
+    if (currentSegment === undefined) {
+      return pol2;
+    }
+    const otherInitial = pol2.lineSegments.find(ls => !pol1.containsPoint(ls.p1));
+    if (otherInitial === undefined) {
+      return pol1;
+    }
+
+    let circleComplete = false;
+    let newPoint: Point;
+    const points: Point[] = [];
+    points.push(currentSegment.p1);
+    let currentPol = pol1;
+    let otherPol = pol2;
+    while (!circleComplete) {
+      [newPoint, currentSegment, currentPol, otherPol] =
+        getNextStep(currentSegment, currentPol, otherPol);
+      if (points.find(p => p.equals(newPoint)) === undefined) {
+        points.push(newPoint);
+      } else {
+        circleComplete = true;
+      }
+    }
+    function getNextStep(currentSegment: LineSegment,
+                         thisPolygon: Polygon,
+                         otherPolygon: Polygon) : [Point, LineSegment, Polygon, Polygon] {
+      const intersectOpt = otherPolygon.firstIntersectionSegmentAndPoint(currentSegment);
+      return intersectOpt.map<[Point, LineSegment, Polygon, Polygon]>(intersection =>
+        [intersection[1],
+          intersection[0].startFrom(intersection[1]),
+          otherPolygon,
+          thisPolygon],
+      ).getOrElse([currentSegment.p2,
+        thisPolygon.lineSegmentFrom(currentSegment.p2),
+        thisPolygon,
+        otherPolygon]);
+    }
+    return Polygon.fromPoints(points);
   }
 
   /**
@@ -278,7 +303,7 @@ export class Polygon {
    * If inputted line segment is not defined in polygon, error is thrown.
    * @param ls
    */
-  nextLineSegment(ls: LineSegment): LineSegment {
+  private nextLineSegment(ls: LineSegment): LineSegment {
     const lsIndex = this.lineSegments.indexOf(ls);
     if (lsIndex === -1) {
       throw Error('The line segment given is not from this polygon!');
@@ -292,7 +317,7 @@ export class Polygon {
    * if no such line segment exists.
    * @param p
    */
-  lineSegmentFrom(p: Point): LineSegment {
+  private lineSegmentFrom(p: Point): LineSegment {
     const ls = this.lineSegments.find(ls => ls.p1.x === p.x && ls.p1.y === p.y);
     if (ls) {
       return ls;
@@ -303,7 +328,7 @@ export class Polygon {
   /**
    * Returns all line segments as a set, to easier be able to compare two polygons for equality.
    */
-  lineSegmentsAsSet(): Set<LineSegment> {
+  private lineSegmentsAsSet(): Set<LineSegment> {
     return new Set<LineSegment>(this.lineSegments);
   }
 
@@ -312,34 +337,35 @@ export class Polygon {
    * @param other
    * Polygon whose points are or are not part of this polygon.
    */
-  containsAnyPolygonPoint(other: Polygon): boolean {
+  private containsAnyPolygonPoint(other: Polygon): boolean {
     const contained = other.lineSegments.find(ls => this.containsPoint(ls.p1));
     return contained !== undefined;
   }
 
   /**
-   * Returns a polygon that has the same shape as this polygon, that is moved in the given
-   * direction so that it no longer overlaps the other polygon. If the polygons don't
-   * overlap, this polygon is returned.
+   * Finds the smallest possible vector in the given direction that this
+   * polygon can be transposed so that it no longer overlaps the
+   * other polygon. If they already don't overlap, a null vector
+   * is returned.
    * @param other
    * The other polygon that we should no longer overlap
    * @param direction
    * The direction that this polygon should be moved until it no longer overlaps the
    * other polygon
    */
-  separateFrom(other: Polygon, direction: Vector): Polygon {
-    const thisBounds = this.getBounds();
-    const otherBounds = other.getBounds();
+  separationVector(other: Polygon, direction: Vector): Vector {
+    const thisBounds = this.bounds();
+    const otherBounds = other.bounds();
     if (!thisBounds.overlap(otherBounds) && ! this.overlap(other)) {
-      return this;
+      return Vector.null;
     }
 
     const separateVector = thisBounds.separateFrom(otherBounds, direction);
-    const thisMovedFar = this.transposeVector(separateVector);
-    const distancesFromThisToOther = thisMovedFar.getPoints()
+    const thisMovedFar = this.transposeByVector(separateVector);
+    const distancesFromThisToOther = thisMovedFar.points()
       .map(p => other.distanceToPerimiter(p, direction.reverse()));
 
-    const distancesFromOtherToThis = other.getPoints()
+    const distancesFromOtherToThis = other.points()
       .map(p => thisMovedFar.distanceToPerimiter(p, direction));
 
     const allDistances = distancesFromOtherToThis
@@ -356,36 +382,18 @@ export class Polygon {
         .normed()
         .scale(shortestDistance));
 
-    return this.transposeVector(transposeVector);
-  }
-
-  /**
-   * Starts in the middle of this polygon and the projection of the point that isClockwise
-   * futhest away in the given direction onto the direction.
-   * @param direction
-   * The vector to project points onto.
-   */
-  furthestProjection(direction: Vector): Vector {
-    const middle = this.middle();
-    const furthestProjection = this.getPoints()
-      .map((p) => {
-        const projection = p.minus(middle).projectOnto(direction);
-        const distance = projection.dot(direction);
-        return { projection, distance };
-      }).sort((proj1, proj2) => proj2.distance - proj1.distance)
-      [0].projection;
-    return furthestProjection;
+    return transposeVector;
   }
 
   /**
    * Returns the points that constitute this polygon as an array.
    */
-  private getPoints(): Point[] {
+  private points(): Point[] {
     return this.lineSegments.map(ls => ls.p1);
   }
 
-  getBounds(): Rectangle {
-    const points = this.getPoints();
+  bounds(): Rectangle {
+    const points = this.points();
     const coords = points.reduce((a, v) => {
       a[0] = Math.min(v.x, a[0]);
       a[1] = Math.min(v.y, a[1]);
@@ -439,48 +447,6 @@ export function isClockwise(lineSegments: LineSegment[]): Boolean {
         const nextIndex = (i + 1) % array.length;
         return sum + array[i].cross(array[nextIndex]);
       },      0);
-}
-
-function mergePolygons(pol1 : Polygon, pol2: Polygon): Polygon {
-  let currentSegment = pol1.lineSegments.find(ls => !pol2.containsPoint(ls.p1));
-  if (currentSegment === undefined) {
-    return pol2;
-  }
-  const otherInitial = pol2.lineSegments.find(ls => !pol1.containsPoint(ls.p1));
-  if (otherInitial === undefined) {
-    return pol1;
-  }
-
-  let circleComplete = false;
-  let newPoint: Point;
-  const points: Point[] = [];
-  points.push(currentSegment.p1);
-  let currentPol = pol1;
-  let otherPol = pol2;
-  while (!circleComplete) {
-    [newPoint, currentSegment, currentPol, otherPol] =
-      getNextStep(currentSegment, currentPol, otherPol);
-    if (points.find(p => p.equals(newPoint)) === undefined) {
-      points.push(newPoint);
-    } else {
-      circleComplete = true;
-    }
-  }
-  function getNextStep(currentSegment: LineSegment,
-                       thisPolygon: Polygon,
-                       otherPolygon: Polygon) : [Point, LineSegment, Polygon, Polygon] {
-    const intersectOpt = otherPolygon.firstIntersectionSegmentAndPoint(currentSegment);
-    return intersectOpt.map<[Point, LineSegment, Polygon, Polygon]>(intersection =>
-      [intersection[1],
-        intersection[0].startFrom(intersection[1]),
-        otherPolygon,
-        thisPolygon],
-    ).getOrElse([currentSegment.p2,
-      thisPolygon.lineSegmentFrom(currentSegment.p2),
-      thisPolygon,
-      otherPolygon]);
-  }
-  return Polygon.fromPoints(points);
 }
 
 /**
