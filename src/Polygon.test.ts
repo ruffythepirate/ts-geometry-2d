@@ -3,6 +3,7 @@ import { vector, Vector } from './Vector';
 import { Polygon, polygon, lineSegmentsIntersectThemselves, isClockwise } from './Polygon';
 import { LineSegment } from './LineSegment';
 import { none, some } from '@ruffy/ts-optional';
+import { rectangle } from './Rectangle';
 
 let pol: Polygon = polygon([]);
 
@@ -70,6 +71,12 @@ test('equals should return false when points are not the same', () => {
   const pol2 = polygon([[0, 0], [0, 1], [1, 1], [1, 0], [0.5, -1]]);
   expect(pol.transpose(0.5, 0).equals(pol)).toBeFalsy();
   expect(pol.equals(pol2)).toBeFalsy();
+});
+
+test('getBounds should return bounds that encompasses polygon', () => {
+  const pol = polygon([[1, 0], [2, 1], [1, 2], [0, 1]]);
+
+  expect(pol.getBounds()).toEqual(rectangle(0, 0, 2, 2));
 });
 
 test('swell should return a new bigger polygon.', () => {

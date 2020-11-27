@@ -4,6 +4,7 @@ import { Point } from './Point';
 import { Vector } from './Vector';
 import { Line } from './Line';
 import { none, Optional, some } from '@ruffy/ts-optional';
+import { Rectangle, rectangle } from './Rectangle';
 
 /**
  * Checks if any of the given line segments in an array intersect any of the other.
@@ -327,6 +328,19 @@ export class Polygon {
    */
   private getPoints(): Point[] {
     return this.lineSegments.map(ls => ls.p1);
+  }
+
+  getBounds(): Rectangle {
+    const points = this.getPoints();
+    const coords = points.reduce((a, v) => {
+      a[0] = Math.min(v.x, a[0]);
+      a[1] = Math.min(v.y, a[1]);
+      a[2] = Math.max(v.x, a[2]);
+      a[3] = Math.max(v.y, a[3]);
+      return a;
+    },                           [points[0].x, points[0].y, points[0].x, points[0].y]);
+
+    return rectangle(coords[0], coords[1], coords[2], coords[3]);
   }
 
   /**
