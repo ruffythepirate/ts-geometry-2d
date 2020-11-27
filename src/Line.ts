@@ -44,7 +44,7 @@ export class Line {
    * @param p2
    * Point whose projection we get the factor for.
    */
-  private projectFactor(p2: Point) : number {
+  projectFactor(p2: Point) : number {
     const pp2 = p2.minus(this.p);
     return pp2.dot(this.v) / this.v.square();
   }
