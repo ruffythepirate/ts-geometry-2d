@@ -123,32 +123,6 @@ export class Polygon {
   }
 
   /**
-   * Returns the first point where the line segment intersect the polygon.
-   * This is defined as the point closest to p1 in the line segment.
-   * @param ls
-   * The line segment to check intersection with.
-   */
-  private firstIntersection(ls: LineSegment): Optional<Point> {
-    const intersections = this.intersect(ls);
-    const startPoint = ls.p1;
-    const sortedPoints = Array.from(intersections)
-    .sort((p1, p2) => startPoint.distanceSquare(p1) - startPoint.distanceSquare(p2));
-    return sortedPoints.length > 0 ? some(sortedPoints[0]) : none;
-  }
-
-  /**
-   * Returns the points where a line intersect this polygon.
-   * @param ls
-   */
-  private intersect(ls : LineSegment) : Set<Point> {
-    return this.lineSegments.reduce((a, v) => {
-      const p = v.intersect(ls);
-      p.foreach(p => a.add(p));
-      return a;
-    },                              new Set<Point>());
-  }
-
-  /**
    * Returns the closest point on the polygon's perimiter to the given point.
    * @param p
    * The point that we want to get the closest point to.
@@ -296,20 +270,6 @@ export class Polygon {
     return this.lineSegments.reduce((a: boolean, v: LineSegment) => a
                                     && other.lineSegments.find(ls => ls.equals(v)) !== undefined
     ,                               true);
-  }
-
-  /**
-   * Returns the line segment following the given line segment.
-   * If inputted line segment is not defined in polygon, error is thrown.
-   * @param ls
-   */
-  private nextLineSegment(ls: LineSegment): LineSegment {
-    const lsIndex = this.lineSegments.indexOf(ls);
-    if (lsIndex === -1) {
-      throw Error('The line segment given is not from this polygon!');
-    }
-    const nextIndex = (lsIndex + 1) % this.lineSegments.length;
-    return this.lineSegments[nextIndex];
   }
 
   /**
