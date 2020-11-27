@@ -32,7 +32,7 @@ export class Rectangle {
    * Method that gets the vector needed to separate this rectangle from another rectangle.
    * If there is no overlap a null vector is returned.
    */
-  separateFrom(other: Rectangle, direction: Vector): Vector {
+  separationVector(other: Rectangle, direction: Vector): Vector {
     if (!this.overlap(other)) {
       return Vector.null;
     }

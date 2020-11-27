@@ -45,65 +45,6 @@ export class LineSegment {
   }
 
   /**
-   * Orients this line segment to point in the same direction as the
-   * given vector. If the vector is perpendicular to this line segment
-   * or a null vector, an exception is thrown. Otherwise a line segment
-   * is returned so that p1->p2 of the line segment has a positive dot
-   * product to the given vector.
-   */
-  orientAs(v: Vector): LineSegment {
-    const dotProduct = this.asVector().dot(v);
-
-    if (Math.abs(dotProduct) <= GlobalConfig.precisionSquared) {
-      throw Error(`Can't orient line segment ${this} with ${v}, they are perpendicular`);
-    }
-
-    return dotProduct > 0 ? this : this.flip();
-  }
-
-  /**
-   * Moves the line segment in the direction of the Vector until it no longer
-   * overlaps the other line segment.
-   */
-  separateFrom(other:LineSegment, direction: Vector): LineSegment {
-    if (direction.isNullVector()) {
-      throw new Error('separateFrom must have a non null vector direction');
-    }
-    if (!this.overlap(other)) {
-      return this;
-    }
-    if (this.parallel(other)) {
-      if (direction.parallel(this.asVector())) {
-        const thisLs = this.orientAs(direction);
-        const otherLs = other.orientAs(direction);
-        const transpose = otherLs.p2.minus(thisLs.p1);
-        return this.transpose(transpose.x, transpose.y);
-      }  {
-        const perpendicular = direction.perpendicularComponentTo(this.asVector());
-        const factor = direction.norm2() / perpendicular.norm2();
-        const moveVector = direction.scale(GlobalConfig.precision * factor);
-        return this.transpose(moveVector.x, moveVector.y);
-      }
-    }
-    const line = new Line(this.p1, direction);
-    const transpose =
-      findTranspose(this.p1, direction, other)
-      .or(() => findTranspose(this.p2, direction, other))
-      .or(() => findTranspose(other.p1, direction, this))
-      .or(() => findTranspose(other.p2, direction, this))
-      .get();
-
-    return this.transpose(transpose.x, transpose.y);
-
-    function findTranspose(p: Point, direction: Vector, other: LineSegment): Optional<Vector> {
-      const line = new Line(p, direction);
-      return other.intersectForLine(line)
-      .map((newP: Point) => newP.minus(p))
-      .filter(transp => transp.dot(direction) > 0);
-    }
-  }
-
-  /**
    * Returns the point where the given line intersect this line segment, if such
    * point exists. If the line and the line segment are parallel and on the same
    * line, none is returned because there is no one unique point of intersect.
@@ -188,40 +129,6 @@ export class LineSegment {
   }
 
   /**
-   * Check if this line segments endpoint (p2), is located inside the interval (other.p1, other.p2).
-   * notice that this interval excludes other.p1 and other.p2. I.e. we are not checking for the
-   * interval [other.p1, other.p2].
-   * @param other
-   * The line where this.p2 should be contained.
-   */
-  endsInside(other: LineSegment): boolean {
-    return other.containsPoint(this.p2)
-    && !this.p2.equals(other.p1)
-    && !this.p2.equals(other.p2);
-  }
-
-  /**
-   * Checks if this line intersects the other line once, and if that intersection is at one of the
-   * endpoints of the other line segment.
-   */
-  intersectAtEnds(other: LineSegment): boolean {
-    const areParallel = this.parallel(other);
-
-    if (areParallel) {
-      const dotProd = this.asVector().dot(other.asVector());
-      if (dotProd > 0) {
-        return this.p1.equals(other.p2) || this.p2.equals(other.p1);
-      }
-      return this.p1.equals(other.p1) || this.p2.equals(other.p2);
-
-    }
-
-    return this.intersect(other)
-    .filter(p => p.equals(other.p1) || p.equals(other.p2))
-    .nonEmpty();
-  }
-
-  /**
    * Gives a string representing this line segment that's readable.
    */
   toString(): string {
@@ -269,15 +176,6 @@ export class LineSegment {
 
     return intersect.filter(intersect => this.containsPoint(intersect, thisInterval)
       && ls2.containsPoint(intersect, otherInterval));
-  }
-
-  /**
-   * Returns the point where the given line segments intersect given the intervals
-   * (this.p1, this.p2], (other.p1, other.p2]. (notice this line segment has a
-   * half open interval.).
-   */
-  intersectHalfOpen(other: LineSegment): Optional<Point> {
-    return this.intersect(other).filter(p => !p.equals(this.p1) && !p.equals(other.p1));
   }
 
   /**

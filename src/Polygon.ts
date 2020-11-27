@@ -14,7 +14,7 @@ export function lineSegmentsIntersectThemselves(lineSegments: LineSegment[]): bo
     const ls1 = lineSegments[i];
     for (let j = i + 1; j < lineSegments.length; j += 1) {
       const ls2 = lineSegments[j];
-      if (ls2.intersectHalfOpen(ls1).nonEmpty()) {
+      if (ls2.intersect(ls1, IntervalType.OpenStart, IntervalType.OpenStart).nonEmpty()) {
         return true;
       }
     }
@@ -206,7 +206,7 @@ export class Polygon {
    */
   private intersectionSegmentAndPoints(ls: LineSegment): Set<[LineSegment, Point]> {
     return this.lineSegments.reduce((a, v) => {
-      const p = v.intersectHalfOpen(ls);
+      const p = v.intersect(ls, IntervalType.OpenStart, IntervalType.OpenStart);
       p.foreach(p => a.add([v, p]));
       return a;
     },                              new Set<[LineSegment, Point]>());
@@ -360,7 +360,7 @@ export class Polygon {
       return Vector.null;
     }
 
-    const separateVector = thisBounds.separateFrom(otherBounds, direction);
+    const separateVector = thisBounds.separationVector(otherBounds, direction);
     const thisMovedFar = this.transposeByVector(separateVector);
     const distancesFromThisToOther = thisMovedFar.points()
       .map(p => other.distanceToPerimiter(p, direction.reverse()));

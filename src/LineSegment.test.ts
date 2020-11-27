@@ -136,19 +136,6 @@ test('transpose should create new line segment that is moved', () => {
   expect(transp.p2).toEqual(ls.p2.transpose(1, 2));
 });
 
-test('intersectHalfOpen should return intersect if intersection exists and is not at this.p1',
-     () => {
-       expect(lineSegment(0, 0, 0, 2).intersectHalfOpen(
-           lineSegment(1, 1, -1, 1))).toEqual(some(new Point(0, 1)));
-       expect(lineSegment(0, 0, 0, 2).intersectHalfOpen(
-           lineSegment(1, 2, -1, 2))).toEqual(some(new Point(0, 2)));
-     });
-
-test('intersectHalfOpen should return none if intersection exists but is at this.p1', () => {
-  expect(lineSegment(0, 0, 0, 2).intersectHalfOpen(
-           lineSegment(1, 0, -1, 0))).toEqual(none);
-});
-
 test('containsPoint should return true when point is on line segment', () => {
   const ls1 = LineSegment.fromValues(0, 0, 0, 2);
 
@@ -207,86 +194,6 @@ test('parallel should return true when lines are parallel', () => {
 
 test('parallel should return false when lines are not parallel', () => {
   expect(lineSegment(0, 0, 1, 0).parallel(lineSegment(0, 1, 1, 2))).toBeFalsy();
-});
-
-test('endsInside should return true when this.p2 is inside other line segment.', () => {
-  expect(lineSegment(0, 0, 1, 0).endsInside(lineSegment(0, 0, 2, 0))).toBeTruthy();
-});
-
-test('endsInside should return false if this.p2 is not on other line segment', () => {
-  expect(lineSegment(0, 0, 1, 3).endsInside(lineSegment(0, 0, 2, 0))).toBeFalsy();
-});
-
-test('endsInside should return false if this.p2 is on the endpoints of other line segment', () => {
-  expect(lineSegment(0, 0, 1, 0).endsInside(lineSegment(1, 0, 2, 0))).toBeFalsy();
-  expect(lineSegment(1, 0, 2, 0).endsInside(lineSegment(0, 0, 1, 0))).toBeFalsy();
-});
-
-test('intersectAtEnds should return false if there is no intersect', () => {
-  expect(lineSegment(0, 0, 1, 0).intersectAtEnds(lineSegment(1, 1, 2, 1))).toBeFalsy();
-});
-
-test('intersectAtEnds should return true if there is intersection and its on the end', () => {
-  expect(lineSegment(2, 0, 3, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
-  expect(lineSegment(0, 0, 1, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
-  expect(lineSegment(3, 0, 2, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
-  expect(lineSegment(1, 0, 0, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
-  expect(lineSegment(1, 1, 1, 0).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
-  expect(lineSegment(1, 0, 1, 1).intersectAtEnds(lineSegment(1, 0, 2, 0))).toBeTruthy();
-});
-
-test('separateFrom should throw exception when direction is null vector', () => {
-  expect(() => {
-    lineSegment(1, 0, 2, 0).separateFrom(lineSegment(0, 0, 0, 1), Vector.null);
-  }).toThrow();
-});
-
-test('separateFrom returns lineSegment if there is no overlap', () => {
-  const result = lineSegment(1, 0, 2, 0).separateFrom(lineSegment(0, 0, 0, 1), vector(1, 0));
-
-  expect(result).toEqual(lineSegment(1, 0, 2, 0));
-});
-
-[
-  { v: vector(1, 0), expectedResult: lineSegment(0, 0, 2, 0) },
-  { v: vector(-1, 0), expectedResult: lineSegment(-2, 0, 0, 0) },
-  { v: vector(0, 1), expectedResult: lineSegment(-1, 1, 1, 1) },
-  { v: vector(0, -1), expectedResult: lineSegment(-1, -1, 1, -1) },
-].forEach(({ v, expectedResult }) => {
-  test(`separateFrom returns moved lineSegment in direction ${v.x}, ${v.y}`, () => {
-    const result = lineSegment(-1, 0, 1, 0).separateFrom(lineSegment(0, -1, 0, 1), v);
-
-    expect(result).toEqual(expectedResult);
-  });
-});
-
-test('parallel lines move to after one another if direction is also parallel', () => {
-  const ls1 = lineSegment(0, 0, 2, 0);
-  const ls2 = ls1.transpose(0, 0);
-
-  const moved = ls2.separateFrom(ls1, vector(1, 0));
-
-  expect(moved).toEqual(lineSegment(2, 0, 4, 0));
-});
-
-test('parallel lines move in direction so that the distance is above minimum distance', () => {
-  const ls1 = lineSegment(0, 0, 2, 0);
-  const ls2 = ls1.transpose(0, 0);
-
-  const moved = ls2.separateFrom(ls1, vector(0, 1));
-
-  expect(moved.p1.y).toBeGreaterThan(ls1.p1.y);
-  expect(moved.overlap(ls1)).toBeFalsy();
-});
-
-[
-  { ls: lineSegment(-1, 0, 1, 0), v: vector(-1, 0), reversed: true },
-  { ls: lineSegment(-1, 0, 1, 0), v: vector(1, 0), reversed: false },
-].forEach(({ ls, v, reversed }) => {
-  test(`when ${ls} orientAs ${v}, return line segments should be reversed: ${reversed}`, () => {
-    const result = ls.orientAs(v);
-    expect(result.equals(ls)).not.toBe(reversed);
-  });
 });
 
 [

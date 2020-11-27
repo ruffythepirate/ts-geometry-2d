@@ -25,8 +25,8 @@ test('constructor should throw error if first arg isnt top left in y', () => {
   }).toThrow();
 });
 
-test('separateFrom should return null vector if there is no overlap', () => {
-  expect(rectangle(0, 0, 1, 1).separateFrom(rectangle(1, 1, 2, 2), vector(1, 0)))
+test('separationVector should return null vector if there is no overlap', () => {
+  expect(rectangle(0, 0, 1, 1).separationVector(rectangle(1, 1, 2, 2), vector(1, 0)))
     .toBe(Vector.null);
 });
 
@@ -38,7 +38,7 @@ test('separateFrom should return null vector if there is no overlap', () => {
   { direction: vector(2, 1), expected: vector(2, 1) },
 ].forEach(({ direction, expected }) => {
   test(`separteFrom should be ${expect} when separateing in direction ${direction}`, () => {
-    expect(rectangle(0, 0, 3, 3).separateFrom(rectangle(1, 1, 2, 2), direction))
+    expect(rectangle(0, 0, 3, 3).separationVector(rectangle(1, 1, 2, 2), direction))
       .toEqual(expected);
   });
 });
