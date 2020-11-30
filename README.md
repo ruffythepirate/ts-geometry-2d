@@ -23,7 +23,7 @@ Refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d
 
 ## Usage
 
-You can install the package using
+You can install the package using. NOTE: The github name and the npm install names are different.
 
 ```bash
 npm i -S ts-2d-geometry
