@@ -348,7 +348,7 @@ export class Polygon {
   /**
    * Returns the points that constitute this polygon as an array.
    */
-  private points(): Point[] {
+  points(): Point[] {
     return this.lineSegments.map(ls => ls.p1);
   }
 
