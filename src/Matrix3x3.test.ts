@@ -1,5 +1,5 @@
 import { Matrix3x3 } from './Matrix3x3';
-import { Vector } from './Vector';
+import { Vector, vector } from './Vector';
 import { none, some } from '@ruffy/ts-optional';
 
 test('constructor should create Matrix', () => {
@@ -39,6 +39,12 @@ test('constructor should create Matrix', () => {
     const ma = Matrix3x3.fromArray(m);
     expect(ma.inverse()).toEqual(im.map(m => Matrix3x3.fromArray(m)));
   });
+});
+
+test('translation matrix should move a vector accordingly', () => {
+  const m = Matrix3x3.translation(5, 4);
+
+  expect(m.times(vector(0, 0))).toEqual(vector(5, 4));
 });
 
 [

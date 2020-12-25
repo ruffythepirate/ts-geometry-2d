@@ -30,6 +30,25 @@ export class Matrix3x3 {
   }
 
   /**
+   * Returns a transform matrix that moves a point
+   * by x, y.
+   */
+  static translation(x: number, y: number): Matrix3x3 {
+    const components = [
+      0,
+      0,
+      x,
+      0,
+      0,
+      y,
+      0,
+      0,
+      1,
+    ];
+    return Matrix3x3.fromArray(components);
+  }
+
+  /**
    * Returns a 3x3 Matrix from an array. The element
    * in the array are given in the following places:
    * [(0,0), (1,0), (2,0), (0,1), (1,1), (2,1),
