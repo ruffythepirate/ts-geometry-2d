@@ -26,7 +26,7 @@ export class Vector {
   }
 
   static fromArray(a: number[]) {
-    return new Vector(a[0], a[1]);
+    return new Vector(a[0], a[1], a[2]);
   }
 
   static null = new Vector(0, 0);
@@ -37,6 +37,13 @@ export class Vector {
    */
   dot(v2: Vector) : number {
     return this.x * v2.x + this.y * v2.y;
+  }
+
+  /**
+   * Returns this vector as an array of numbers as [x, y, w]
+   */
+  asArray(): number[] {
+    return [this.x, this.y, this.w as number];
   }
 
   /**
