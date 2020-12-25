@@ -1,7 +1,7 @@
 import { Vector } from './Vector';
 import { Line } from './Line';
 import GlobalConfig from './GlobalConfig';
-import { Matrix } from './Matrix';
+import { Matrix2x2 } from './Matrix2x2';
 
 /**
  * Represents a single point with x, y coordinates.
@@ -71,7 +71,7 @@ export class Point {
    * negative values are ok)
    */
   rotate(pivotPoint: Point, degrees: number): Point {
-    const rotationMatrix = Matrix.rotationDegrees(degrees);
+    const rotationMatrix = Matrix2x2.rotationDegrees(degrees);
 
     return rotationMatrix.times(this.asVector()).asPoint();
   }

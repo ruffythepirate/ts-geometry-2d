@@ -1,31 +1,18 @@
-/**
- * Represents a 2x2 matrix.
- */
 import { Vector } from './Vector';
 import { none, Optional, some } from '@ruffy/ts-optional';
 
-export class Matrix {
+/**
+ * Represents a 2x2 matrix.
+ */
+export class Matrix2x2 {
   constructor(private elements: number[][]) {
-  }
-
-  /**
-   * Returns a 2x2 Matrix from an array. The elements
-   * in the array are given the following places in the
-   * matrix: [(0,0), (1,0), (0,1), (1,1)].
-   */
-  static fromArray(a: number[]): Matrix {
-    return new Matrix([[a[0], a[1]], [a[2], a[3]]]);
-  }
-
-  static fromVectors(v1: Vector, v2: Vector): Matrix {
-    return new Matrix([[v1.x, v1.y], [v2.x, v2.y]]);
   }
 
   /**
    * Returns a rotation matrix with the given degrees. that rotates
    * Vectors clockwise.
    */
-  static rotationDegrees(degrees: number): Matrix {
+  static rotationDegrees(degrees: number): Matrix2x2 {
     const radians = degrees * Math.PI / 180.0;
     const negativeRadians = - radians; // rotation matrix is counter clockwise.
     const components = [
@@ -34,7 +21,20 @@ export class Matrix {
       Math.sin(negativeRadians),
       Math.cos(negativeRadians),
     ];
-    return Matrix.fromArray(components);
+    return Matrix2x2.fromArray(components);
+  }
+
+  /**
+   * Returns a 2x2 Matrix from an array. The element
+   * in the array are given in the following places:
+   * [(0,0), (1,0), (0,1), (1,1)]
+   */
+  static fromArray(a: number[]): Matrix2x2 {
+    return new Matrix2x2([[a[0], a[1]], [a[2], a[3]]]);
+  }
+
+  static fromVectors(v1: Vector, v2: Vector): Matrix2x2 {
+    return new Matrix2x2([[v1.x, v1.y], [v2.x, v2.y]]);
   }
 
     /**
@@ -61,13 +61,13 @@ export class Matrix {
   /**
    * Returns an inversed version of this matrix.
    */
-  inverse(): Optional<Matrix> {
+  inverse(): Optional<Matrix2x2> {
     const det = this.det();
     if (det === 0) {
       return none;
     }
 
-    const unscaled = new Matrix([[this.get(1, 1), -this.get(1, 0)],
+    const unscaled = new Matrix2x2([[this.get(1, 1), -this.get(1, 0)],
                                   [-this.get(0, 1), this.get(0, 0)]]);
 
     return some(unscaled.scale(1 / det));
@@ -77,8 +77,8 @@ export class Matrix {
    * Returns a matrix with the scaled by the given factor.
    * @param factor
    */
-  scale(factor: number): Matrix {
-    return new Matrix(this.elements.map(a => a.map(v => v * factor)));
+  scale(factor: number): Matrix2x2 {
+    return new Matrix2x2(this.elements.map(a => a.map(v => v * factor)));
   }
 
   /**

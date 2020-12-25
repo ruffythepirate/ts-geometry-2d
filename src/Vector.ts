@@ -1,8 +1,28 @@
 import { Point } from './Point';
 import GlobalConfig from './GlobalConfig';
 
+/**
+ * Represents a 2 dimensional vector.
+ */
 export class Vector {
-  constructor(public x: number, public y: number) {
+  /**
+   * Constructs a vector.
+   *
+   * @param w
+   * This is the third component in the vector. This component is used when
+   * for example performing transformations. Then a matrix multiplication might
+   * result in the w component becoming not equal to 1. In this case one should
+   * normalize the vector so that w becomes one again to have a valid vector.
+   *
+   * Why does this happen with matrix multiplications? Well most often it doesn't,
+   * for example translate operations or rotations don't cause this. But if you use
+   * Skew operations, this is might happen. I'd need to read up on it more myself
+   * to have a better answer.
+   */
+  constructor(public x: number, public y: number, public w?: number) {
+    if (this.w === undefined) {
+      this.w = 1;
+    }
   }
 
   static fromArray(a: number[]) {

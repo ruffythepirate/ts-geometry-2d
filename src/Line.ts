@@ -1,6 +1,6 @@
 import { Vector, vector } from './Vector';
 import { Point, point } from './Point';
-import { Matrix } from './Matrix';
+import { Matrix2x2 } from './Matrix2x2';
 import { Optional } from '@ruffy/ts-optional';
 
 /**
@@ -29,7 +29,7 @@ export class Line {
    * Other line we want to check intersection with.
    */
   intersect(l2: Line): Optional<Point> {
-    const matrix = Matrix.fromVectors(this.v, l2.v);
+    const matrix = Matrix2x2.fromVectors(this.v, l2.v);
     const invOpt = matrix.inverse();
 
     return invOpt.map((inv) => {

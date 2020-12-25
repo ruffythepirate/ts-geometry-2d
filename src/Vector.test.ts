@@ -12,6 +12,15 @@ test('constructor should create Vector', () => {
   expect(v.y).toBe(2);
 });
 
+test('constructor should initialize w to 1 if not defined', () => {
+  expect(v.w).toBe(1);
+});
+
+test('constructor should initialize w if defined', () => {
+  v = new Vector(1, 2, 2);
+  expect(v.w).toBe(2);
+});
+
 test('dot should do dot product with vector', () => {
   const scalar = v.dot(v);
 
