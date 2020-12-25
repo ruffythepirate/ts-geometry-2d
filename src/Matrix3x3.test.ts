@@ -19,16 +19,27 @@ test('constructor should create Matrix', () => {
   expect(m.get(2, 2)).toBe(8);
 });
 
-// test('inverse should return none if inverse is not defined.', () => {
-//   const m = new Matrix3x3([[0, 0], [0, 0]]);
-//   expect(m.inverse()).toBe(none);
-// });
+[
+  { m: [1, 0, 0, 0, 1, 0, 0, 0, 1], tm: [1, 0, 0, 0, 1, 0, 0, 0, 1] },
+  { m: [1, 2, 3, 4, 5, 6, 7, 8, 9], tm: [1, 4, 7, 2, 5, 8, 3, 6, 9] },
+].forEach(({ m, tm }) => {
+  test(`transpose should transpose ${m} to ${tm}`, () => {
+    const ma = Matrix3x3.fromArray(m);
+    expect(ma.transpose()).toEqual(Matrix3x3.fromArray(tm));
+  });
+});
 
-// test('inverse should inverse a matrix.', () => {
-//   const m = new Matrix3x3([[1, 2], [3, 4]]);
-
-//   expect(m.inverse()).toEqual(some(new Matrix3x3([[-2, 1.5], [1, -0.5]])));
-// });
+[
+  { m: [1, 0, 0, 0, 1, 0, 0, 0, 1], im: some([1, 0, 0, 0, 1, 0, 0, 0, 1]) },
+  { m: [1, 0, 0, 0, 1, 0, 0, 0, 2], im: some([1, 0, 0, 0, 1, 0, 0, 0, 1 / 2.0]) },
+  { m: [1, 2, 3, 4, 5, 6, 7, 8, 10], im: some([-2, -4, 3, -2, 11, -6, 3, -6, 3]
+                                              .map(v => v / 3.0)) },
+].forEach(({ m, im }) => {
+  test('inverse should return inverse of matrix', () => {
+    const ma = Matrix3x3.fromArray(m);
+    expect(ma.inverse()).toEqual(im.map(m => Matrix3x3.fromArray(m)));
+  });
+});
 
 [
   { ma: [1, 0, 0, 0, 1, 0, 0, 0, 1], d: 1 },
