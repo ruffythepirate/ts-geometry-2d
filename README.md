@@ -16,6 +16,10 @@ There are many other geometry repositories already, why create another one? Beca
 
 Refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d/globals.html) to see available classes and their functions.
 
+## Details
+
+The library assumes a coordinate system where positive `x` goes to the right, and positive `y` goes to the left. Most often one doesn't need to consider this, but for example with rotation this is good to know.
+
 ## Requirements
 
 * Node and npm

@@ -34,6 +34,12 @@ test('asLine define line from vector', () => {
   expect(point(0, 0).asLine(vector(1, 0))).toEqual(line(0, 0, 1, 0));
 });
 
+test('rotate should create a new point thats rotated', () => {
+  const rotated = point(1, 0).rotate(point(0, 0), 90);
+  expect(rotated.x).toBeCloseTo(0, 2);
+  expect(rotated.y).toBeCloseTo(-1, 2);
+});
+
 test('transpose should create new Point', () => {
   const p1 = p.transpose(3, 2);
   expect(p1.x).toBe(p.x + 3);

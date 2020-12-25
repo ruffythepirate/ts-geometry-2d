@@ -1,6 +1,7 @@
 import { Vector } from './Vector';
 import { Line } from './Line';
 import GlobalConfig from './GlobalConfig';
+import { Matrix } from './Matrix';
 
 /**
  * Represents a single point with x, y coordinates.
@@ -29,6 +30,13 @@ export class Point {
   }
 
   /**
+   * Returns the coordinates of this point as a vector.
+   */
+  asVector(): Vector {
+    return new Vector(this.x, this.y);
+  }
+
+  /**
    * Returns the point reached when starting at this point and then moving according to vector.
    * @param v
    */
@@ -52,6 +60,20 @@ export class Point {
    */
   transpose(x: number, y: number) {
     return new Point(this.x + x, this.y + y);
+  }
+
+  /**
+   * Rotates this point around a pivotPoint by a certain number of degrees.
+   * @param pivotPoint
+   * The point around which this point should rotate
+   * @param degrees
+   * The number of degrees that the point should rotate (a circle covers 360 degrees,
+   * negative values are ok)
+   */
+  rotate(pivotPoint: Point, degrees: number): Point {
+    const rotationMatrix = Matrix.rotationDegrees(degrees);
+
+    return rotationMatrix.times(this.asVector()).asPoint();
   }
 
   /**

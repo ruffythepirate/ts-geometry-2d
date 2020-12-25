@@ -8,12 +8,33 @@ export class Matrix {
   constructor(private elements: number[][]) {
   }
 
+  /**
+   * Returns a 2x2 Matrix from an array. The elements
+   * in the array are given the following places in the
+   * matrix: [(0,0), (1,0), (0,1), (1,1)].
+   */
   static fromArray(a: number[]): Matrix {
     return new Matrix([[a[0], a[1]], [a[2], a[3]]]);
   }
 
   static fromVectors(v1: Vector, v2: Vector): Matrix {
     return new Matrix([[v1.x, v1.y], [v2.x, v2.y]]);
+  }
+
+  /**
+   * Returns a rotation matrix with the given degrees. that rotates
+   * Vectors clockwise.
+   */
+  static rotationDegrees(degrees: number): Matrix {
+    const radians = degrees * Math.PI / 180.0;
+    const negativeRadians = - radians; // rotation matrix is counter clockwise.
+    const components = [
+      Math.cos(negativeRadians),
+      -Math.sin(negativeRadians),
+      Math.sin(negativeRadians),
+      Math.cos(negativeRadians),
+    ];
+    return Matrix.fromArray(components);
   }
 
     /**
