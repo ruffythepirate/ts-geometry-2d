@@ -47,6 +47,13 @@ test('translation matrix should move a vector accordingly', () => {
   expect(m.times(vector(0, 0))).toEqual(vector(5, 4));
 });
 
+test('rotation matrix should transform a vector accordingly', () => {
+  const m = Matrix3x3.rotationDegrees(90);
+
+  expect(m.times(vector(1, 0)).x).toBeCloseTo(0, 2);
+  expect(m.times(vector(1, 0)).y).toBeCloseTo(-1, 2);
+});
+
 [
   { ma: [1, 0, 0, 0, 1, 0, 0, 0, 1], d: 1 },
   { ma: [1, 0, 0, 0, -1, 0, 0, 0, 1], d: -1 },
