@@ -91,6 +91,27 @@ export class Matrix3x3 {
    * Calculates the determinant of the matrix.
    */
   det(): number {
-    throw 'not implemented';
+    let sum = 0;
+    for (let i = 0; i < 3; i += 1) {
+      let posVal = 1;
+      let negVal = 1;
+      for (let k = 0; k < 3; k += 1) {
+        posVal *= this.get(bound(i + k), k);
+        negVal *= this.get(bound(i - k), k);
+      }
+      sum += posVal - negVal;
+    }
+    return sum;
+
+    function bound(i: number): number {
+      let j = i;
+      while (j < 0) {
+        j += 3;
+      }
+      while (j > 2) {
+        j -= 3;
+      }
+      return j;
+    }
   }
 }
