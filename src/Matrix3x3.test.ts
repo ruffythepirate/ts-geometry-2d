@@ -1,5 +1,4 @@
 import { Matrix3x3 } from './Matrix3x3';
-import { Vector, vector } from './Vector';
 import { none, some } from '@ruffy/ts-optional';
 
 test('constructor should create Matrix', () => {
@@ -44,14 +43,14 @@ test('constructor should create Matrix', () => {
 test('translation matrix should move a vector accordingly', () => {
   const m = Matrix3x3.translation(5, 4);
 
-  expect(m.times(vector(0, 0))).toEqual(vector(5, 4));
+  expect(m.times([0, 0, 1])).toEqual([5, 4, 1]);
 });
 
 test('rotation matrix should transform a vector accordingly', () => {
   const m = Matrix3x3.rotationDegrees(90);
 
-  expect(m.times(vector(1, 0)).x).toBeCloseTo(0, 2);
-  expect(m.times(vector(1, 0)).y).toBeCloseTo(-1, 2);
+  expect(m.times([1, 0, 1])[0]).toBeCloseTo(0, 2);
+  expect(m.times([1, 0, 1])[1]).toBeCloseTo(-1, 2);
 });
 
 [
@@ -85,16 +84,7 @@ test('times should multiply vector with matrix', () => {
   const m = Matrix3x3.fromArray([1, 0 , 0,
     0, 2, 0,
     0, 0, 3]);
-  const v = new Vector(1, 1, 1);
+  const v = [1, 1, 1];
 
-  expect(m.times(v)).toEqual(new Vector(1, 2, 3));
-});
-
-test('times should multiply vector with matrix', () => {
-  const m = Matrix3x3.fromArray([1, 0 , 0,
-    0, 2, 0,
-    0, 0, 3]);
-  const v = new Vector(1, 1, 1);
-
-  expect(m.times(v)).toEqual(new Vector(1, 2, 3));
+  expect(m.times(v)).toEqual([1, 2, 3]);
 });

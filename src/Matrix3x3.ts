@@ -1,5 +1,4 @@
 import { Matrix2x2 } from './Matrix2x2';
-import { Vector } from './Vector';
 import { none, Optional, some } from '@ruffy/ts-optional';
 import GlobalConfig from './GlobalConfig';
 
@@ -12,7 +11,7 @@ export class Matrix3x3 {
 
   /**
    * Returns a rotation matrix with the given degrees. that rotates
-   * Vectors clockwise.
+   * a vector clockwise.
    */
   static rotationDegrees(degrees: number): Matrix3x3 {
     const radians = degrees * Math.PI / 180.0;
@@ -90,15 +89,13 @@ export class Matrix3x3 {
   }
 
   /**
-   * Multiplies this matrix with a vector.
-   * @param v
+   * Multiplies this matrix with an array of numbers.
+   * @param vArray
    */
-  times(v: Vector): Vector {
-    const vArray = v.asArray();
-
+  times(vArray: number[]): number[] {
     const newArray = this.elements.map(a => a.reduce((a, v, i) => a + v * vArray[i]));
 
-    return Vector.fromArray(newArray);
+    return newArray;
   }
 
   /**
