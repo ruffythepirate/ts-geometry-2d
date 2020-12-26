@@ -48,6 +48,24 @@ export class Matrix3x3 {
   }
 
   /**
+   * Returns an identity matrix 3x3.
+   */
+  static identity(): Matrix3x3 {
+    const components = [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+    ];
+    return Matrix3x3.fromArray(components);
+  }
+
+  /**
    * Returns a 3x3 Matrix from an array. The element
    * in the array are given in the following places:
    * [(0,0), (1,0), (2,0), (0,1), (1,1), (2,1),
