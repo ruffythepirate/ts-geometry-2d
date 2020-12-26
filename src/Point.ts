@@ -73,7 +73,8 @@ export class Point {
   rotate(pivotPoint: Point, degrees: number): Point {
     const rotationMatrix = Matrix2x2.rotationDegrees(degrees);
 
-    return rotationMatrix.times(this.asVector()).asPoint();
+    const rotated = rotationMatrix.times([this.x, this.y]);
+    return new Point(rotated[0], rotated[1]);
   }
 
   /**

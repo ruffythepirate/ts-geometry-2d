@@ -1,5 +1,4 @@
 import { Matrix2x2 } from './Matrix2x2';
-import { Vector } from './Vector';
 import { none, some } from '@ruffy/ts-optional';
 
 test('constructor should create Matrix', () => {
@@ -37,7 +36,6 @@ test('scale should multiply each element by factor', () => {
 
 test('times should multiply vector with matrix', () => {
   const m = Matrix2x2.fromArray([2, 0 , 0, 1]);
-  const v = new Vector(2, 3);
 
-  expect(m.times(v)).toEqual(new Vector(4, 3));
+  expect(m.times([2, 3])).toEqual([4, 3]);
 });

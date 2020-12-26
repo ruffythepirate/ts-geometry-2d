@@ -1,4 +1,3 @@
-import { Vector } from './Vector';
 import { none, Optional, some } from '@ruffy/ts-optional';
 
 /**
@@ -33,10 +32,6 @@ export class Matrix2x2 {
     return new Matrix2x2([[a[0], a[1]], [a[2], a[3]]]);
   }
 
-  static fromVectors(v1: Vector, v2: Vector): Matrix2x2 {
-    return new Matrix2x2([[v1.x, v1.y], [v2.x, v2.y]]);
-  }
-
     /**
      * Returns the element in the given position.
      * @param y
@@ -52,9 +47,9 @@ export class Matrix2x2 {
    * Multiplies this matrix with a vector.
    * @param v
    */
-  times(v: Vector): Vector {
-    return new Vector(this.get(0, 0) * v.x + this.get(0, 1) * v.y,
-                      this.get(1, 0) * v.x + this.get(1, 1) * v.y);
+  times(v: number[]): number[] {
+    return [this.get(0, 0) * v[0] + this.get(0, 1) * v[1],
+      this.get(1, 0) * v[0] + this.get(1, 1) * v[1]];
 
   }
 
@@ -85,6 +80,7 @@ export class Matrix2x2 {
    * Calculates the determinant of the matrix.
    */
   det(): number {
-    return Vector.fromArray(this.elements[0]).cross(Vector.fromArray(this.elements[1]));
+    return this.elements[0][0] * this.elements[1][1] -
+      this.elements[1][0] * this.elements[0][1];
   }
 }
