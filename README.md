@@ -14,7 +14,7 @@ There are many other geometry repositories already, why create another one? Beca
 
 ## Features
 
-* The library contains some basic 2d shapes:
+* The library contains some basic 2d geometry concepts:
   - Point
   - Vector
   - Line
