@@ -60,17 +60,6 @@ export class Polygon {
   }
 
   /**
-   * Creates a polygon based on a maps of characters. 1 means that the polygon should be there,
-   * 0 means it should not. This only handles perpendicular lines in the polygon, ie.
-   * you can't define diagonal lines using the function. One '1' has 1 in width and height.
-   */
-  static fromMap(map: string): Polygon {
-    const dots = map.split('\n');
-
-    return new Polygon([]);
-  }
-
-  /**
    * Verifies whether a point reside inside this polygon or not.
    * If the point is positioned at the periphery,
    * it should be
@@ -283,13 +272,6 @@ export class Polygon {
       return ls;
     }
     throw Error(`No line segment found starting from ${p.x}, ${p.y}!`);
-  }
-
-  /**
-   * Returns all line segments as a set, to easier be able to compare two polygons for equality.
-   */
-  private lineSegmentsAsSet(): Set<LineSegment> {
-    return new Set<LineSegment>(this.lineSegments);
   }
 
   /**

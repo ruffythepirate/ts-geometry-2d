@@ -59,6 +59,11 @@ test('containsPoint should return false if point is tangent to line', () => {
   expect(pol.containsPoint(Point.fromValues(-0.5, 1))).toBeFalsy();
 });
 
+test('toString should return string', () => {
+  const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
+  expect(pol.toString()).toBeDefined();
+});
+
 test('equals should return true when points are the same', () => {
   const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
   expect(pol.equals(pol)).toBeTruthy();
