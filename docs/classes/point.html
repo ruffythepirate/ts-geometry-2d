@@ -102,10 +102,12 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#asline" class="tsd-kind-icon">as<wbr>Line</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#asvector" class="tsd-kind-icon">as<wbr>Vector</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#distancesquare" class="tsd-kind-icon">distance<wbr>Square</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#minus" class="tsd-kind-icon">minus</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#plus" class="tsd-kind-icon">plus</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#rotate" class="tsd-kind-icon">rotate</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="point.html#transpose" class="tsd-kind-icon">transpose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="point.html#fromvalues" class="tsd-kind-icon">from<wbr>Values</a></li>
@@ -126,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L8">Point.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L9">Point.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -151,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L9">Point.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L10">Point.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -161,7 +163,7 @@
 					<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L9">Point.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L10">Point.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -178,7 +180,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L27">Point.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L28">Point.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -197,6 +199,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="asvector" class="tsd-anchor"></a>
+					<h3>as<wbr>Vector</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">as<wbr>Vector<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L35">Point.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the coordinates of this point as a vector.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="distancesquare" class="tsd-anchor"></a>
 					<h3>distance<wbr>Square</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -206,7 +230,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L43">Point.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L51">Point.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L63">Point.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L86">Point.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -265,7 +289,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L20">Point.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L21">Point.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,7 +319,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L35">Point.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L43">Point.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -316,6 +340,44 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rotate" class="tsd-anchor"></a>
+					<h3>rotate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rotate<span class="tsd-signature-symbol">(</span>pivotPoint<span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a>, degrees<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L73">Point.ts:73</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Rotates this point around a pivotPoint by a certain number of degrees.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pivotPoint: <a href="point.html" class="tsd-signature-type">Point</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The point around which this point should rotate</p>
+									</div>
+								</li>
+								<li>
+									<h5>degrees: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The number of degrees that the point should rotate (a circle covers 360 degrees,
+										negative values are ok)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="point.html" class="tsd-signature-type">Point</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="tostring" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -325,7 +387,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L71">Point.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L94">Point.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -347,7 +409,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L53">Point.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L61">Point.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -381,7 +443,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Point.ts#L12">Point.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Point.ts#L13">Point.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -425,7 +487,10 @@
 						<a href="linesegment.html" class="tsd-kind-icon">Line<wbr>Segment</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="matrix.html" class="tsd-kind-icon">Matrix</a>
+						<a href="matrix2x2.html" class="tsd-kind-icon">Matrix2x2</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="matrix3x3.html" class="tsd-kind-icon">Matrix3x3</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -445,6 +510,9 @@
 								<a href="point.html#asline" class="tsd-kind-icon">as<wbr>Line</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="point.html#asvector" class="tsd-kind-icon">as<wbr>Vector</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="point.html#distancesquare" class="tsd-kind-icon">distance<wbr>Square</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -455,6 +523,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="point.html#plus" class="tsd-kind-icon">plus</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="point.html#rotate" class="tsd-kind-icon">rotate</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="point.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
@@ -474,6 +545,12 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="rectangle.html" class="tsd-kind-icon">Rectangle</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transformation.html" class="tsd-kind-icon">Transformation</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transformationbuilder.html" class="tsd-kind-icon">Transformation<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="vector.html" class="tsd-kind-icon">Vector</a>

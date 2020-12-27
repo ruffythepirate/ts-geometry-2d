@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Rectangle | ts-2d-geometry</title>
+	<title>TransformationBuilder | ts-2d-geometry</title>
 	<meta name="description" content="Documentation for ts-2d-geometry">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="rectangle.html">Rectangle</a>
+					<a href="transformationbuilder.html">TransformationBuilder</a>
 				</li>
 			</ul>
-			<h1>Class Rectangle</h1>
+			<h1>Class TransformationBuilder</h1>
 		</div>
 	</div>
 </header>
@@ -69,8 +69,10 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A rectangle is defined by two points, the top left point, called topLeft,
-						and the bottom right point called bottomRight.</p>
+						<p>Builds a transformation by stringing together an array of
+							transformation matrices. With the first one defined in the
+							builder being the first one that is applied to the geometrical
+						shape etc.</p>
 					</div>
 				</div>
 			</section>
@@ -78,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Rectangle</span>
+						<span class="target">TransformationBuilder</span>
 					</li>
 				</ul>
 			</section>
@@ -89,23 +91,23 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="rectangle.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="transformationbuilder.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="rectangle.html#bottomright" class="tsd-kind-icon">bottom<wbr>Right</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="rectangle.html#topleft" class="tsd-kind-icon">top<wbr>Left</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="transformationbuilder.html#operations" class="tsd-kind-icon">operations</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rectangle.html#overlap" class="tsd-kind-icon">overlap</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rectangle.html#separationvector" class="tsd-kind-icon">separation<wbr>Vector</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rectangle.html#topolygon" class="tsd-kind-icon">to<wbr>Polygon</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="rectangle.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#build" class="tsd-kind-icon">build</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="transformationbuilder.html#createnewbuilder" class="tsd-kind-icon">create<wbr>New<wbr>Builder</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withrotationdegrees" class="tsd-kind-icon">with<wbr>Rotation<wbr>Degrees</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withtranslation" class="tsd-kind-icon">with<wbr>Translation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="transformationbuilder.html#fromoperations" class="tsd-kind-icon">from<wbr>Operations</a></li>
 							</ul>
 						</section>
 					</div>
@@ -117,25 +119,16 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Rectangle<span class="tsd-signature-symbol">(</span>topLeft<span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a>, bottomRight<span class="tsd-signature-symbol">: </span><a href="point.html" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="rectangle.html" class="tsd-signature-type">Rectangle</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Transformation<wbr>Builder<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L10">Rectangle.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L47">Transformation.ts:47</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>topLeft: <a href="point.html" class="tsd-signature-type">Point</a></h5>
-								</li>
-								<li>
-									<h5>bottomRight: <a href="point.html" class="tsd-signature-type">Point</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="rectangle.html" class="tsd-signature-type">Rectangle</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -143,22 +136,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="bottomright" class="tsd-anchor"></a>
-					<h3>bottom<wbr>Right</h3>
-					<div class="tsd-signature tsd-kind-icon">bottom<wbr>Right<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
+					<a name="operations" class="tsd-anchor"></a>
+					<h3>operations</h3>
+					<div class="tsd-signature tsd-kind-icon">operations<span class="tsd-signature-symbol">:</span> <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L11">Rectangle.ts:11</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="topleft" class="tsd-anchor"></a>
-					<h3>top<wbr>Left</h3>
-					<div class="tsd-signature tsd-kind-icon">top<wbr>Left<span class="tsd-signature-symbol">:</span> <a href="point.html" class="tsd-signature-type">Point</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L11">Rectangle.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L47">Transformation.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,96 +149,114 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="overlap" class="tsd-anchor"></a>
-					<h3>overlap</h3>
+					<a name="build" class="tsd-anchor"></a>
+					<h3>build</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">overlap<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="rectangle.html" class="tsd-signature-type">Rectangle</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">build<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformation.html" class="tsd-signature-type">Transformation</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L65">Rectangle.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L53">Transformation.ts:53</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Check if there is an overlap between this and another rectangle.</p>
-								</div>
-							</div>
+							<h4 class="tsd-returns-title">Returns <a href="transformation.html" class="tsd-signature-type">Transformation</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="createnewbuilder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> create<wbr>New<wbr>Builder</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>New<wbr>Builder<span class="tsd-signature-symbol">(</span>additionalOperation<span class="tsd-signature-symbol">: </span><a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L77">Transformation.ts:77</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="rectangle.html" class="tsd-signature-type">Rectangle</a></h5>
+									<h5>additionalOperation: <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Boolean</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="separationvector" class="tsd-anchor"></a>
-					<h3>separation<wbr>Vector</h3>
+					<a name="withrotationdegrees" class="tsd-anchor"></a>
+					<h3>with<wbr>Rotation<wbr>Degrees</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">separation<wbr>Vector<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="rectangle.html" class="tsd-signature-type">Rectangle</a>, direction<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Rotation<wbr>Degrees<span class="tsd-signature-symbol">(</span>degrees<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L35">Rectangle.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L65">Transformation.ts:65</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Method that gets the vector needed to separate this rectangle from another rectangle.
-									If there is no overlap a null vector is returned.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>other: <a href="rectangle.html" class="tsd-signature-type">Rectangle</a></h5>
-								</li>
-								<li>
-									<h5>direction: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+									<h5>degrees: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="topolygon" class="tsd-anchor"></a>
-					<h3>to<wbr>Polygon</h3>
+					<a name="withtranslation" class="tsd-anchor"></a>
+					<h3>with<wbr>Translation</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Polygon<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="polygon.html" class="tsd-signature-type">Polygon</a></li>
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Translation<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L17">Rectangle.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L71">Transformation.ts:71</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="polygon.html" class="tsd-signature-type">Polygon</a></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="tostring" class="tsd-anchor"></a>
-					<h3>to<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="fromoperations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> from<wbr>Operations</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Operations<span class="tsd-signature-symbol">(</span>operations<span class="tsd-signature-symbol">: </span><a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Rectangle.ts#L27">Rectangle.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L59">Transformation.ts:59</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>operations: <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -298,42 +299,42 @@
 					<li class=" tsd-kind-class">
 						<a href="polygon.html" class="tsd-kind-icon">Polygon</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="rectangle.html" class="tsd-kind-icon">Rectangle</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transformation.html" class="tsd-kind-icon">Transformation</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="rectangle.html" class="tsd-kind-icon">Rectangle</a>
+						<a href="transformationbuilder.html" class="tsd-kind-icon">Transformation<wbr>Builder</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="rectangle.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="transformationbuilder.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="rectangle.html#bottomright" class="tsd-kind-icon">bottom<wbr>Right</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="rectangle.html#topleft" class="tsd-kind-icon">top<wbr>Left</a>
+								<a href="transformationbuilder.html#operations" class="tsd-kind-icon">operations</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="rectangle.html#overlap" class="tsd-kind-icon">overlap</a>
+								<a href="transformationbuilder.html#build" class="tsd-kind-icon">build</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="transformationbuilder.html#createnewbuilder" class="tsd-kind-icon">create<wbr>New<wbr>Builder</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="rectangle.html#separationvector" class="tsd-kind-icon">separation<wbr>Vector</a>
+								<a href="transformationbuilder.html#withrotationdegrees" class="tsd-kind-icon">with<wbr>Rotation<wbr>Degrees</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="rectangle.html#topolygon" class="tsd-kind-icon">to<wbr>Polygon</a>
+								<a href="transformationbuilder.html#withtranslation" class="tsd-kind-icon">with<wbr>Translation</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="rectangle.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="transformationbuilder.html#fromoperations" class="tsd-kind-icon">from<wbr>Operations</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="transformation.html" class="tsd-kind-icon">Transformation</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="transformationbuilder.html" class="tsd-kind-icon">Transformation<wbr>Builder</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="vector.html" class="tsd-kind-icon">Vector</a>
 					</li>

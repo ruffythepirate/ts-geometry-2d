@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Matrix | ts-2d-geometry</title>
+	<title>Matrix2x2 | ts-2d-geometry</title>
 	<meta name="description" content="Documentation for ts-2d-geometry">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,21 +56,28 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="matrix.html">Matrix</a>
+					<a href="matrix2x2.html">Matrix2x2</a>
 				</li>
 			</ul>
-			<h1>Class Matrix</h1>
+			<h1>Class Matrix2x2</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Represents a 2x2 matrix.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Matrix</span>
+						<span class="target">Matrix2x2</span>
 					</li>
 				</ul>
 			</section>
@@ -81,25 +88,25 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="matrix.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="matrix2x2.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="matrix.html#elements" class="tsd-kind-icon">elements</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="matrix2x2.html#elements" class="tsd-kind-icon">elements</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix.html#det" class="tsd-kind-icon">det</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix.html#inverse" class="tsd-kind-icon">inverse</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix.html#scale" class="tsd-kind-icon">scale</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix.html#times" class="tsd-kind-icon">times</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="matrix.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="matrix.html#fromvectors" class="tsd-kind-icon">from<wbr>Vectors</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix2x2.html#det" class="tsd-kind-icon">det</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix2x2.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix2x2.html#inverse" class="tsd-kind-icon">inverse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix2x2.html#scale" class="tsd-kind-icon">scale</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="matrix2x2.html#times" class="tsd-kind-icon">times</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="matrix2x2.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="matrix2x2.html#rotationdegrees" class="tsd-kind-icon">rotation<wbr>Degrees</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,13 +118,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Matrix<span class="tsd-signature-symbol">(</span>elements<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type">Matrix</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Matrix2x2<span class="tsd-signature-symbol">(</span>elements<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L7">Matrix.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L6">Matrix2x2.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -126,7 +133,7 @@
 									<h5>elements: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type">Matrix</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -139,7 +146,7 @@
 					<div class="tsd-signature tsd-kind-icon">elements<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L8">Matrix.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L7">Matrix2x2.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,7 +163,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L66">Matrix.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L82">Matrix2x2.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -178,7 +185,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L26">Matrix.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L42">Matrix2x2.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -209,13 +216,13 @@
 					<a name="inverse" class="tsd-anchor"></a>
 					<h3>inverse</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">inverse<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Optional</span><span class="tsd-signature-symbol">&lt;</span><a href="matrix.html" class="tsd-signature-type">Matrix</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">inverse<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Optional</span><span class="tsd-signature-symbol">&lt;</span><a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L43">Matrix.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L59">Matrix2x2.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -223,7 +230,7 @@
 									<p>Returns an inversed version of this matrix.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Optional</span><span class="tsd-signature-symbol">&lt;</span><a href="matrix.html" class="tsd-signature-type">Matrix</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Optional</span><span class="tsd-signature-symbol">&lt;</span><a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -231,13 +238,13 @@
 					<a name="scale" class="tsd-anchor"></a>
 					<h3>scale</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">scale<span class="tsd-signature-symbol">(</span>factor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type">Matrix</a></li>
+						<li class="tsd-signature tsd-kind-icon">scale<span class="tsd-signature-symbol">(</span>factor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L59">Matrix.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L75">Matrix2x2.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +260,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type">Matrix</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -261,13 +268,13 @@
 					<a name="times" class="tsd-anchor"></a>
 					<h3>times</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">times<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a></li>
+						<li class="tsd-signature tsd-kind-icon">times<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L34">Matrix.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L50">Matrix2x2.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,12 +285,12 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>v: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+									<h5>v: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type">Vector</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -291,48 +298,58 @@
 					<a name="fromarray" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Array</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>Array<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type">Matrix</a></li>
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Array<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L11">Matrix.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L31">Matrix2x2.ts:31</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a 2x2 Matrix from an array. The element
+										in the array are given in the following places:
+									[(0,0), (1,0), (0,1), (1,1)]</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>a: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type">Matrix</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="fromvectors" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Vectors</h3>
+					<a name="rotationdegrees" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> rotation<wbr>Degrees</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>Vectors<span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a>, v2<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type">Matrix</a></li>
+						<li class="tsd-signature tsd-kind-icon">rotation<wbr>Degrees<span class="tsd-signature-symbol">(</span>degrees<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/2cb6399/src/Matrix.ts#L15">Matrix.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Matrix2x2.ts#L14">Matrix2x2.ts:14</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a rotation matrix with the given degrees. that rotates
+									Vectors clockwise.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>v1: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
-								</li>
-								<li>
-									<h5>v2: <a href="vector.html" class="tsd-signature-type">Vector</a></h5>
+									<h5>degrees: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type">Matrix</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="matrix2x2.html" class="tsd-signature-type">Matrix2x2</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -366,39 +383,42 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="matrix.html" class="tsd-kind-icon">Matrix</a>
+						<a href="matrix2x2.html" class="tsd-kind-icon">Matrix2x2</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="matrix.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="matrix2x2.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="matrix.html#elements" class="tsd-kind-icon">elements</a>
+								<a href="matrix2x2.html#elements" class="tsd-kind-icon">elements</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="matrix.html#det" class="tsd-kind-icon">det</a>
+								<a href="matrix2x2.html#det" class="tsd-kind-icon">det</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="matrix.html#get" class="tsd-kind-icon">get</a>
+								<a href="matrix2x2.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="matrix.html#inverse" class="tsd-kind-icon">inverse</a>
+								<a href="matrix2x2.html#inverse" class="tsd-kind-icon">inverse</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="matrix.html#scale" class="tsd-kind-icon">scale</a>
+								<a href="matrix2x2.html#scale" class="tsd-kind-icon">scale</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="matrix.html#times" class="tsd-kind-icon">times</a>
+								<a href="matrix2x2.html#times" class="tsd-kind-icon">times</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="matrix.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a>
+								<a href="matrix2x2.html#fromarray" class="tsd-kind-icon">from<wbr>Array</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="matrix.html#fromvectors" class="tsd-kind-icon">from<wbr>Vectors</a>
+								<a href="matrix2x2.html#rotationdegrees" class="tsd-kind-icon">rotation<wbr>Degrees</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="matrix3x3.html" class="tsd-kind-icon">Matrix3x3</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="point.html" class="tsd-kind-icon">Point</a>
 					</li>
@@ -407,6 +427,12 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="rectangle.html" class="tsd-kind-icon">Rectangle</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transformation.html" class="tsd-kind-icon">Transformation</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="transformationbuilder.html" class="tsd-kind-icon">Transformation<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="vector.html" class="tsd-kind-icon">Vector</a>
