@@ -14,7 +14,18 @@ There are many other geometry repositories already, why create another one? Beca
 
 ## Features
 
-Refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d/globals.html) to see available classes and their functions.
+* The library contains some basic 2d shapes:
+  - Point
+  - Vector
+  - Line
+  - LineSegment
+  - Polygon
+* Transformations of the given shapes can be performed by using the `Transformation` class. This uses matrices to transform coordinates. 
+* The classes are immutable which fits working with Functional Programming.
+* Focus on easy accessibility. The library tries to use simple functions to make writing code using the library fast.
+
+
+For full information, please refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d/globals.html) to see available classes and their functions.
 
 ## Details
 
