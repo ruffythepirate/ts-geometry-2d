@@ -102,6 +102,13 @@ class TransformationBuilder {
   }
 
   /**
+   * Adds an arbitrary transformation matrix to the builder.
+   */
+  withMatrix(m: Matrix3x3): TransformationBuilder {
+    return this.createNewBuilder(m);
+  }
+
+  /**
    * Scales the coordinate with the given factors. If only xFactor is given, the same factor
    * will be used to scale in y direction.
    * @param xFactor
