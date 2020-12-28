@@ -62,16 +62,37 @@ class TransformationBuilder {
     return builder;
   }
 
+  /**
+   * Rotates the coordinates the given amount of degrees around origo.
+   */
   withRotationDegrees(degrees: number): TransformationBuilder {
     const rotationMatrix = Matrix3x3.rotationDegrees(degrees);
 
     return this.createNewBuilder(rotationMatrix);
   }
 
+  /**
+   * Moves the points the given distance in x and y.
+   */
   withTranslation(x: number, y: number): TransformationBuilder {
     const translationMatrix = Matrix3x3.translation(x, y);
 
     return this.createNewBuilder(translationMatrix);
+  }
+
+  /**
+   * Scales the coordinate with the given factors. If only xFactor is given, the same factor
+   * will be used to scale in y direction.
+   * @param xFactor
+   * The factor that coordinates should be multiplied in the x-axis
+   * @param yFactor
+   * The factor that coordintaes should be multiplied in the y-axis
+   */
+  withScale(xFactor: number, yFactor?: number): TransformationBuilder {
+    const yScale = yFactor ? yFactor : xFactor;
+    const a = [xFactor, 0, 0, 0, yScale, 0, 0, 0, 1];
+    const scaleMatrix = Matrix3x3.fromArray(a);
+    return this.createNewBuilder(scaleMatrix);
   }
 
   private createNewBuilder(additionalOperation: Matrix3x3): TransformationBuilder {

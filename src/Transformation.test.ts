@@ -27,6 +27,19 @@ test('Transformation should rotate and move point', () => {
   expect(res.y).toBeCloseTo(-2, 2);
 });
 
+test('Transformation should scale point', () => {
+  const p = point(1, 1);
+
+  const t = Transformation.builder()
+    .withScale(2, 3)
+    .build();
+
+  const res = t.applyToPoint(p);
+
+  expect(res.x).toBeCloseTo(2, 2);
+  expect(res.y).toBeCloseTo(3, 2);
+});
+
 test('Transformation should rotate point', () => {
   const p = point(1, 0);
 
