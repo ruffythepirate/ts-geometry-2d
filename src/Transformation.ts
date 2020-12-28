@@ -101,7 +101,7 @@ class TransformationBuilder {
    */
   withVectorRotation(vec: Vector): TransformationBuilder {
     const v = vec.normed();
-    
+
     const rotationMatrix = Matrix3x3.fromArray([v.x, -v.y, 0, v.y, v.x, 0, 0, 0, 1]);
 
     return this.createNewBuilder(rotationMatrix);
