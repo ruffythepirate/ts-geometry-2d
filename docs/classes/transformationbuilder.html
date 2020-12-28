@@ -106,6 +106,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#build" class="tsd-kind-icon">build</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="transformationbuilder.html#createnewbuilder" class="tsd-kind-icon">create<wbr>New<wbr>Builder</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withrotationdegrees" class="tsd-kind-icon">with<wbr>Rotation<wbr>Degrees</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withscale" class="tsd-kind-icon">with<wbr>Scale</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withtranslation" class="tsd-kind-icon">with<wbr>Translation</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="transformationbuilder.html#fromoperations" class="tsd-kind-icon">from<wbr>Operations</a></li>
 							</ul>
@@ -125,7 +126,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L47">Transformation.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L68">Transformation.ts:68</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
@@ -141,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">operations<span class="tsd-signature-symbol">:</span> <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L47">Transformation.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L68">Transformation.ts:68</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -158,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L53">Transformation.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L74">Transformation.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="transformation.html" class="tsd-signature-type">Transformation</a></h4>
@@ -175,7 +176,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L77">Transformation.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L119">Transformation.ts:119</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -198,13 +199,56 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L65">Transformation.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L89">Transformation.ts:89</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Rotates the coordinates the given amount of degrees around origo.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>degrees: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="withscale" class="tsd-anchor"></a>
+					<h3>with<wbr>Scale</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Scale<span class="tsd-signature-symbol">(</span>xFactor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, yFactor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L112">Transformation.ts:112</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Scales the coordinate with the given factors. If only xFactor is given, the same factor
+									will be used to scale in y direction.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>xFactor: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The factor that coordinates should be multiplied in the x-axis</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> yFactor: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The factor that coordintaes should be multiplied in the y-axis</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
@@ -221,9 +265,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L71">Transformation.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L98">Transformation.ts:98</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Moves the points the given distance in x and y.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -247,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/67614fc/src/Transformation.ts#L59">Transformation.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L80">Transformation.ts:80</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -324,6 +373,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="transformationbuilder.html#withrotationdegrees" class="tsd-kind-icon">with<wbr>Rotation<wbr>Degrees</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="transformationbuilder.html#withscale" class="tsd-kind-icon">with<wbr>Scale</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="transformationbuilder.html#withtranslation" class="tsd-kind-icon">with<wbr>Translation</a>
