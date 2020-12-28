@@ -96,8 +96,12 @@ class TransformationBuilder {
   /**
    * Rotates so that the positive x axis points in the direction
    * of the given vector direction.
+   * @param vec
+   * The vector that will become the new x-axis in the new coordinate system.
    */
-  withVectorRotation(v: Vector): TransformationBuilder {
+  withVectorRotation(vec: Vector): TransformationBuilder {
+    const v = vec.normed();
+    
     const rotationMatrix = Matrix3x3.fromArray([v.x, -v.y, 0, v.y, v.x, 0, 0, 0, 1]);
 
     return this.createNewBuilder(rotationMatrix);

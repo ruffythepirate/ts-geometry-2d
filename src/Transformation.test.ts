@@ -74,7 +74,7 @@ test('Transformation should rotate point', () => {
 
 test('Transformation should rotate point according to vector', () => {
   const t = Transformation.builder()
-  .withVectorRotation(vector(0, -1))
+  .withVectorRotation(vector(0, -2))
   .build();
 
   expect(t.applyToPoint(point(1, 0))).toEqual(point(0, -1));
