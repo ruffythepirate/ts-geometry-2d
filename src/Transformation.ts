@@ -1,5 +1,6 @@
 import { Matrix3x3 } from './Matrix3x3';
 import { Point } from './Point';
+import { Polygon } from './Polygon';
 /**
  * A transformation can be applied to geometrical shaped to move them according to specific rules.
  *
@@ -27,14 +28,34 @@ export class Transformation {
   /**
    * Applies this transformation to a point.
    */
-  applyToPoint(p: Point) {
-    const v = [p.x, p.y, 1];
+  applyToPoint(p: Point): Point {
+    const a = [p.x, p.y, 1];
 
-    const result = this.m.times(v);
+    const result = this.m.times(a);
 
     return Point.fromValues(result[0], result[1]);
   }
 
+  /**
+   * Returns a string representation of the matrix that represents this
+   * transformation.
+   */
+  toString(): string {
+    return this.m.toString();
+  }
+
+  /**
+   * Applies this transformation to a polygon.
+   */
+  applyToPolygon(pol: Polygon): Polygon {
+    const points = pol.points();
+
+    const newPoints = points.map(p => [p.x, p.y, 1])
+      .map(a => this.m.times(a))
+      .map(res => Point.fromValues(res[0], res[1]));
+
+    return Polygon.fromPoints(newPoints);
+  }
 }
 
 /**

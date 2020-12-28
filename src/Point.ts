@@ -53,12 +53,12 @@ export class Point {
   }
 
   /**
-   * Returns new point that is transposed by x, y.
+   * Returns new point that is moved by x, y.
    * Same function as plus, but here taking number instead of vector.
    * @param x
    * @param y
    */
-  transpose(x: number, y: number) {
+  translate(x: number, y: number) {
     return new Point(this.x + x, this.y + y);
   }
 

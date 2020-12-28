@@ -34,11 +34,11 @@ export class Matrix3x3 {
    */
   static translation(x: number, y: number): Matrix3x3 {
     const components = [
-      0,
+      1,
       0,
       x,
       0,
-      0,
+      1,
       y,
       0,
       0,
@@ -98,7 +98,7 @@ export class Matrix3x3 {
       for (let j = 0; j < 3; j += 1) {
         newMatrixArray[i][j] = 0;
         for (let k = 0; k < 3; k += 1) {
-          newMatrixArray[i][k] += this.elements[i][k] *
+          newMatrixArray[i][j] += this.elements[i][k] *
             m.elements[k][j];
         }
       }
@@ -111,9 +111,17 @@ export class Matrix3x3 {
    * @param vArray
    */
   times(vArray: number[]): number[] {
-    const newArray = this.elements.map(a => a.reduce((a, v, i) => a + v * vArray[i]));
+    const newArray = this.elements.map(a => a.reduce((a, v, i) => a + v * vArray[i], 0));
 
     return newArray;
+  }
+
+  /**
+   * Returns a string representation of this matrix.
+   */
+  toString(): string {
+    const innerString = this.elements.map(a => a.map(e => `${e}`).join(' ')).join('\n');
+    return `[${innerString}]`;
   }
 
   /**

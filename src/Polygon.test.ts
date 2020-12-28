@@ -67,14 +67,22 @@ test('toString should return string', () => {
 test('equals should return true when points are the same', () => {
   const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
   expect(pol.equals(pol)).toBeTruthy();
-  const otherPol = pol.transpose(0, 0);
+  const otherPol = pol.translate(0, 0);
   expect(pol.equals(otherPol)).toBeTruthy();
+});
+
+test('equals should return true when points are the same', () => {
+  const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
+  const pol2 = polygon([[0, 1], [1, 1], [1, 0], [0, 0]]);
+  const pol3 = polygon([[1, 1], [1, 0], [0, 0], [0, 1]]);
+  expect(pol.equals(pol2)).toBeTruthy();
+  expect(pol.equals(pol3)).toBeTruthy();
 });
 
 test('equals should return false when points are not the same', () => {
   const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
   const pol2 = polygon([[0, 0], [0, 1], [1, 1], [1, 0], [0.5, -1]]);
-  expect(pol.transpose(0.5, 0).equals(pol)).toBeFalsy();
+  expect(pol.translate(0.5, 0).equals(pol)).toBeFalsy();
   expect(pol.equals(pol2)).toBeFalsy();
 });
 
@@ -107,7 +115,7 @@ test('merge should throw error if no overlap', () => {
       [0, 1],
     ],
   );
-  const pol2 = pol1.transpose(2, 0);
+  const pol2 = pol1.translate(2, 0);
 
   expect(() => pol1.merge(pol2)).toThrow;
 });
@@ -128,7 +136,7 @@ test('merge should merge two diamond polygons', () => {
       [0, -1],
     ],
   );
-  const pol2 = pol1.transpose(1, 0);
+  const pol2 = pol1.translate(1, 0);
 
   expect(pol1.merge(pol2).lineSegments.length).toBe(8);
 });
@@ -149,7 +157,7 @@ test('closestPoint should return closest point on perimiter.', () => {
 });
 
 test('separationVector should return given polygon if no overlap found.', () => {
-  const pol2 = pol.transpose(3, 0);
+  const pol2 = pol.translate(3, 0);
 
   expect(pol.separationVector(pol2, vector(1, 0))).toEqual(Vector.null);
 });
@@ -274,7 +282,7 @@ test('overlap should return true when polygon lines intersect', () => {
       [2, 2],
       [0, 2],
     ]);
-  let pol2 = pol1.transpose(-1, 0);
+  let pol2 = pol1.translate(-1, 0);
 
   expect(pol1.overlap(pol2)).toBeTruthy();
   expect(pol2.overlap(pol1)).toBeTruthy();
@@ -297,13 +305,13 @@ test('overlap should return false when polygons are adjacent', () => {
       [2, 2],
       [0, 2],
     ]);
-  const pol2 = pol1.transpose(-2, 0);
+  const pol2 = pol1.translate(-2, 0);
   expect(pol1.overlap(pol2)).toBeFalsy();
 });
 
-test('transpose keeps orientation of lines', () => {
+test('translate keeps orientation of lines', () => {
   const pol = polygon([[0, 0], [0, 1], [1, 1], [1, 0]]);
-  const newPol = pol.transpose(0, 0);
+  const newPol = pol.translate(0, 0);
   expect(pol.equals(newPol)).toBeTruthy();
 });
 

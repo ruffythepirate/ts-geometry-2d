@@ -92,12 +92,12 @@ export class LineSegment {
   }
 
   /**
-   * Returns new line segment that is like this segment transposed.
+   * Returns new line segment that is like this segment moved.
    * @param x
    * @param y
    */
-  transpose(x: number, y: number): LineSegment {
-    return new LineSegment(this.p1.transpose(x, y), this.p2.transpose(x, y));
+  translate(x: number, y: number): LineSegment {
+    return new LineSegment(this.p1.translate(x, y), this.p2.translate(x, y));
   }
 
   /**

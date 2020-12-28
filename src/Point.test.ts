@@ -40,8 +40,8 @@ test('rotate should create a new point thats rotated', () => {
   expect(rotated.y).toBeCloseTo(-1, 2);
 });
 
-test('transpose should create new Point', () => {
-  const p1 = p.transpose(3, 2);
+test('translate should create new Point', () => {
+  const p1 = p.translate(3, 2);
   expect(p1.x).toBe(p.x + 3);
   expect(p1.y).toBe(p.y + 2);
 });

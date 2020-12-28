@@ -130,10 +130,10 @@ test('rightOfPoint should handle end points', () => {
   expect(ls1.rightOfPoint(Point.fromValues(-1, 0), IntervalType.Closed)).toBeTruthy();
 });
 
-test('transpose should create new line segment that is moved', () => {
-  const transp = ls.transpose(1, 2);
-  expect(transp.p1).toEqual(ls.p1.transpose(1, 2));
-  expect(transp.p2).toEqual(ls.p2.transpose(1, 2));
+test('translate should create new line segment that is moved', () => {
+  const transp = ls.translate(1, 2);
+  expect(transp.p1).toEqual(ls.p1.translate(1, 2));
+  expect(transp.p2).toEqual(ls.p2.translate(1, 2));
 });
 
 test('containsPoint should return true when point is on line segment', () => {
@@ -182,7 +182,7 @@ test('equals should return true when lines are equal', () => {
 test('equals should return false when lines are not equal', () => {
   const ls = lineSegment(0, 0, 1, 0);
   const ls2 = lineSegment(1, 0, 0, 0);
-  expect(ls.equals(ls.transpose(1, 0))).toBeFalsy();
+  expect(ls.equals(ls.translate(1, 0))).toBeFalsy();
   expect(ls.equals(ls2)).toBeFalsy();
 });
 

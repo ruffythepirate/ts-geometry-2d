@@ -33,7 +33,7 @@ export class Polygon {
     }
 
     if (!isClockwise(lineSegments)) {
-      this.lineSegments = lineSegments.map(ls => ls.flip());
+      this.lineSegments = lineSegments.map(ls => ls.flip()).reverse();
     }
   }
 
@@ -78,19 +78,19 @@ export class Polygon {
   }
 
   /**
-   * Returns a new polygon that is like this polygon with all points transposed.
+   * Returns a new polygon that is like this polygon with all points moved.
    * @param x
    * @param y
    */
-  transpose(x: number, y: number) {
-    return new Polygon(this.lineSegments.map(ls => ls.transpose(x, y)));
+  translate(x: number, y: number) {
+    return new Polygon(this.lineSegments.map(ls => ls.translate(x, y)));
   }
 
   /**
-   * Returns a transposed version of this polygon with all points transposed.
+   * Returns a moved version of this polygon with all points moved.
    */
-  transposeByVector(v: Vector): Polygon {
-    return this.transpose(v.x, v.y);
+  translateByVector(v: Vector): Polygon {
+    return this.translate(v.x, v.y);
   }
 
   /**
@@ -286,7 +286,7 @@ export class Polygon {
 
   /**
    * Finds the smallest possible vector in the given direction that this
-   * polygon can be transposed so that it no longer overlaps the
+   * polygon can be translated so that it no longer overlaps the
    * other polygon. If they already don't overlap, a null vector
    * is returned.
    * @param other
@@ -303,7 +303,7 @@ export class Polygon {
     }
 
     const separateVector = thisBounds.separationVector(otherBounds, direction);
-    const thisMovedFar = this.transposeByVector(separateVector);
+    const thisMovedFar = this.translateByVector(separateVector);
     const distancesFromThisToOther = thisMovedFar.points()
       .map(p => other.distanceToPerimiter(p, direction.reverse()));
 
@@ -318,13 +318,13 @@ export class Polygon {
 
     const shortestDistance = allDistances[0];
 
-    const transposeVector = separateVector.plus(
+    const translateVector = separateVector.plus(
       direction
         .reverse()
         .normed()
         .scale(shortestDistance));
 
-    return transposeVector;
+    return translateVector;
   }
 
   /**

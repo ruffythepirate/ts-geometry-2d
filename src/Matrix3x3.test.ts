@@ -80,6 +80,21 @@ test('timesMatrix should multiply matrix with matrix', () => {
   );
 });
 
+test('timesMatrix should multiply with self being left matrix', () => {
+  const m = Matrix3x3.fromArray([1, 1 , 1,
+    0, 0, 0,
+    0, 0, 0]);
+  const m2 = Matrix3x3.fromArray([1, 0 , 0,
+    1, 0, 0,
+    1, 0, 0]);
+
+  expect(m.timesMatrix(m2)).toEqual(
+    Matrix3x3.fromArray([3, 0 , 0,
+      0, 0, 0,
+      0, 0, 0]),
+  );
+});
+
 test('times should multiply vector with matrix', () => {
   const m = Matrix3x3.fromArray([1, 0 , 0,
     0, 2, 0,

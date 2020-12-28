@@ -1,8 +1,9 @@
 import { point } from './Point';
 import { Transformation } from './Transformation';
+import { Polygon } from './Polygon';
 
 test('Transformation should move point', () => {
-  const p = point(0, 0);
+  const p = point(2, 0);
 
   const t = Transformation.builder()
   .withTranslation(1, 2)
@@ -10,7 +11,7 @@ test('Transformation should move point', () => {
 
   const res = t.applyToPoint(p);
 
-  expect(res).toEqual(point(1, 2));
+  expect(res).toEqual(point(3, 2));
 });
 
 test('Transformation should rotate and move point', () => {
@@ -25,6 +26,23 @@ test('Transformation should rotate and move point', () => {
 
   expect(res.x).toBeCloseTo(0, 2);
   expect(res.y).toBeCloseTo(-2, 2);
+});
+
+test('Transformation should move polygon', () => {
+  const pol = Polygon.fromPoints([
+    point(0, 0),
+    point(1, 0),
+    point(1, 1),
+    point(0, 1),
+  ]);
+
+  const t = Transformation.builder()
+  .withTranslation(2, 0)
+  .build();
+
+  const res = t.applyToPolygon(pol);
+
+  expect(res.equals(pol.translate(2, 0))).toBeTruthy();
 });
 
 test('Transformation should scale point', () => {
