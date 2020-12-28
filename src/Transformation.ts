@@ -1,6 +1,7 @@
 import { Matrix3x3 } from './Matrix3x3';
 import { Point } from './Point';
 import { Polygon } from './Polygon';
+import { Vector } from './Vector';
 /**
  * A transformation can be applied to geometrical shaped to move them according to specific rules.
  *
@@ -88,6 +89,16 @@ class TransformationBuilder {
    */
   withRotationDegrees(degrees: number): TransformationBuilder {
     const rotationMatrix = Matrix3x3.rotationDegrees(degrees);
+
+    return this.createNewBuilder(rotationMatrix);
+  }
+
+  /**
+   * Rotates so that the positive x axis points in the direction
+   * of the given vector direction.
+   */
+  withVectorRotation(v: Vector): TransformationBuilder {
+    const rotationMatrix = Matrix3x3.fromArray([v.x, -v.y, 0, v.y, v.x, 0, 0, 0, 1]);
 
     return this.createNewBuilder(rotationMatrix);
   }

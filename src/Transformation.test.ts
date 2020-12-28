@@ -1,6 +1,7 @@
 import { point } from './Point';
 import { Transformation } from './Transformation';
 import { Polygon } from './Polygon';
+import { vector } from './Vector';
 
 test('Transformation should move point', () => {
   const p = point(2, 0);
@@ -69,4 +70,15 @@ test('Transformation should rotate point', () => {
 
   expect(res.x).toBeCloseTo(0, 2);
   expect(res.y).toBeCloseTo(-1, 2);
+});
+
+test('Transformation should rotate point according to vector', () => {
+  const t = Transformation.builder()
+  .withVectorRotation(vector(0, -1))
+  .build();
+
+  expect(t.applyToPoint(point(1, 0))).toEqual(point(0, -1));
+  expect(t.applyToPoint(point(0, 1))).toEqual(point(1, 0));
+  expect(t.applyToPoint(point(1, 1))).toEqual(point(1, -1));
+
 });
