@@ -105,6 +105,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#build" class="tsd-kind-icon">build</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="transformationbuilder.html#createnewbuilder" class="tsd-kind-icon">create<wbr>New<wbr>Builder</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withmatrix" class="tsd-kind-icon">with<wbr>Matrix</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withrotationdegrees" class="tsd-kind-icon">with<wbr>Rotation<wbr>Degrees</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withscale" class="tsd-kind-icon">with<wbr>Scale</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="transformationbuilder.html#withtranslation" class="tsd-kind-icon">with<wbr>Translation</a></li>
@@ -126,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L68">Transformation.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L68">Transformation.ts:68</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
@@ -142,7 +143,7 @@
 					<div class="tsd-signature tsd-kind-icon">operations<span class="tsd-signature-symbol">:</span> <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L68">Transformation.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L68">Transformation.ts:68</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,7 +160,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L74">Transformation.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L74">Transformation.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="transformation.html" class="tsd-signature-type">Transformation</a></h4>
@@ -176,13 +177,41 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L119">Transformation.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L126">Transformation.ts:126</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>additionalOperation: <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="withmatrix" class="tsd-anchor"></a>
+					<h3>with<wbr>Matrix</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Matrix<span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L107">Transformation.ts:107</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds an arbitrary transformation matrix to the builder.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>m: <a href="matrix3x3.html" class="tsd-signature-type">Matrix3x3</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="transformationbuilder.html" class="tsd-signature-type">TransformationBuilder</a></h4>
@@ -199,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L89">Transformation.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L89">Transformation.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -227,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L112">Transformation.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L119">Transformation.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -265,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L98">Transformation.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L98">Transformation.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -296,7 +325,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/73412b7/src/Transformation.ts#L80">Transformation.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/ruffythepirate/ts-geometry-2d/blob/68054f0/src/Transformation.ts#L80">Transformation.ts:80</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -370,6 +399,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="transformationbuilder.html#createnewbuilder" class="tsd-kind-icon">create<wbr>New<wbr>Builder</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="transformationbuilder.html#withmatrix" class="tsd-kind-icon">with<wbr>Matrix</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="transformationbuilder.html#withrotationdegrees" class="tsd-kind-icon">with<wbr>Rotation<wbr>Degrees</a>
