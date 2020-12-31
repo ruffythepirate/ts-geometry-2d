@@ -35,7 +35,7 @@
   "sideEffects": false,
   "devDependencies": {
     "@types/jest": "^25.2.2",
-    "@types/node": "^14.14.16",
+    "@types/node": "^14.14.17",
     "jest": "^25",
     "ts-jest": "^25.5.1",
     "tslint": "^6.1.2",
@@ -44,6 +44,6 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
-    "@ruffy/ts-optional": "^1.0.0"
+    "@ruffy/ts-optional": "^1.1.1"
   }
 }
