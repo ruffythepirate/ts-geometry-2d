@@ -8,3 +8,4 @@ export * from './Matrix3x3';
 export * from './Interval';
 export * from './Transformation';
 export * from './Rectangle';
+export * from '@ruffy/ts-optional';
