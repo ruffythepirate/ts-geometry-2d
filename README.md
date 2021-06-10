@@ -36,6 +36,11 @@ The library assumes a coordinate system where positive `x` goes to the right, an
 * Node and npm
 * To build or develop you will benefit from having `npx` https://github.com/npm/npx. This allows invoking of the other global npm requirements in the repository (Typescript, Jest) without having to install them.
 
+## Pages
+
+* [NPM](https://www.npmjs.com/package/ts-2d-geometry)
+* [Github](https://github.com/ruffythepirate/ts-geometry-2d)
+
 ## Usage
 
 You can install the package using. NOTE: The github name and the npm install names are different.

@@ -5,6 +5,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "prepublish": "tsc && npm lint && npm test",
+  "homepage": "https://github.com/ruffythepirate/ts-geometry-2d#readme",
+  "bugs": "https://github.com/ruffythepirate/ts-geometry-2d/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruffythepirate/ts-geometry-2d.git"
+  },
   "scripts": {
     "build": "npx tsc",
     "lint": "npx tslint src/*",
