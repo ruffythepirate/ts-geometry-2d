@@ -46,7 +46,7 @@
     "ts-jest": "^25.5.1",
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
-    "typedoc": "^0.17.6",
+    "typedoc": "^0.23.14",
     "typescript": "^3.9.2"
   },
   "dependencies": {
