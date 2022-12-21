@@ -1,0 +1,16 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge pull request
+        if: github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.status == 'success'
+        run: |
+          git fetch origin +refs/heads/*:refs/remotes/origin/*
+          git checkout -b merge origin/merge
+          git merge ${{ github.event.pull_request.head.sha }}
+          git push origin merge
