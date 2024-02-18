@@ -68,6 +68,15 @@ export class LineSegment {
   }
 
   /**
+   * Verifies if the given point is on the line segment defined by p1 and p2.
+   * @param p
+   * The point to verify
+   */
+  onLineSegment(p: Point): boolean {
+    return this.onLine(p) && this.containsPoint(p);
+  }
+
+  /**
    * Returns boolean whether this segment is placed to the right of given point.
    * This is defined as if whether a line segment starting at point p, and going
    * to x = infinity, intersect this line segment.

@@ -71,8 +71,9 @@ export class Polygon {
       return false;
     }
     const intersectedLines = this.lineSegments.reduce((a, ls) => {
-      return ls.rightOfPoint(p, IntervalType.Closed)
-              && !ls.onLine(p) ? a + 1 : a;
+      const rightOfPoint = ls.rightOfPoint(p, IntervalType.OpenEnd);
+      const onLineSegment = ls.onLineSegment(p);
+      return rightOfPoint && !onLineSegment ? a + 1 : a;
     },                                                0);
     return intersectedLines % 2 === 1;
   }

@@ -36,12 +36,20 @@ test('onLine should return false if point is not on line defined by points', () 
 });
 
 test('onLine should return true if point is on line defined by points', () => {
-  expect(ls.onLine(point(-5, 0))).toBeTruthy();
+  expect(ls.onLine(point(5, 0))).toBeTruthy();
 });
 
 test('onLine should return true if point is on endpoints', () => {
   expect(ls.onLine(point(0, 0))).toBeTruthy();
   expect(ls.onLine(point(1, 0))).toBeTruthy();
+});
+
+test('onLineSegment should return false if point is in line but outside interval', () => {
+  expect(ls.onLineSegment(point(-1, 0))).toBeFalsy();
+});
+
+test('onLineSegment should return true if point is in line and inside interval', () => {
+  expect(ls.onLineSegment(point(0.5, 0))).toBeTruthy();
 });
 
 test('flip should return a new line segment with p1 and p2 flipped', () => {

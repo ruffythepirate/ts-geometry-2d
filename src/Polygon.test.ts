@@ -54,6 +54,14 @@ test('containsPoint should return false if point is outside', () => {
   expect(pol.containsPoint(Point.fromValues(0.5, 1.5))).toBeFalsy();
 });
 
+test('containsPoint should handle triangle', () => {
+    const POINTS: Point[] = [new Point(0.153, 0.048), new Point(0.17, 0.7), new Point(0.692, 0.308)];
+    const TRIANGLE: Polygon = Polygon.fromPoints(POINTS);
+    expect(TRIANGLE.containsPoint(new Point(0.2, 0.307))).toBeTruthy();
+    expect(TRIANGLE.containsPoint(new Point(0.2, 0.308))).toBeTruthy();
+    expect(TRIANGLE.containsPoint(new Point(0.2, 0.309))).toBeTruthy();
+});
+
 test('containsPoint should return false if point is tangent to line', () => {
   const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(Point.fromValues(-0.5, 1))).toBeFalsy();
