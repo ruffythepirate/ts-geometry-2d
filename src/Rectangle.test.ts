@@ -1,6 +1,6 @@
-import { point, Point } from './Point';
-import { rectangle, Rectangle } from './Rectangle';
-import { Vector, vector } from './Vector';
+import {point} from './Point';
+import {rectangle} from './Rectangle';
+import {Vector, vector} from './Vector';
 
 test('constructor should initialize rectangle', () => {
   expect(true).toBeTruthy();
@@ -14,14 +14,14 @@ test('constructor should initialize rectangle', () => {
 
 test('constructor should throw error if first arg isnt top left in x', () => {
   expect(() => {
-    const rect = rectangle(3, 1, 1, 2);
+    rectangle(3, 1, 1, 2);
   }).toThrow();
 });
 
 test('constructor should throw error if first arg isnt top left in y', () => {
   expect(true).toBeTruthy();
   expect(() => {
-    const rect = rectangle(1, 2, 3, 1);
+    rectangle(1, 2, 3, 1);
   }).toThrow();
 });
 

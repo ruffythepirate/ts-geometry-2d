@@ -97,7 +97,7 @@ export class Vector {
   /**
    * Returns this vector in string form.
    */
-  toString(): String {
+  toString(): string {
     return `[${this.x}, ${this.y}]`;
   }
 

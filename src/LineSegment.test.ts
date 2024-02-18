@@ -1,9 +1,9 @@
-import { Point, point } from './Point';
-import { LineSegment, lineSegment } from './LineSegment';
-import { line } from './Line';
-import { IntervalType } from './Interval';
-import { Vector, vector } from './Vector';
-import { none, some } from '@ruffy/ts-optional';
+import {Point, point} from './Point';
+import {LineSegment, lineSegment} from './LineSegment';
+import {line} from './Line';
+import {IntervalType} from './Interval';
+import {Vector} from './Vector';
+import {none, some} from '@ruffy/ts-optional';
 
 const ls = new LineSegment(new Point(0, 0), new Point(1, 0));
 

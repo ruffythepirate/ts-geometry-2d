@@ -25,7 +25,7 @@ test('constructor should guarantee that line segments are clockwise oriented', (
 
 test('constructor should throw exception if polygon intersects itself', () => {
   expect(() => {
-    const pol = polygon([[0, 0], [1, 1], [1, 0], [0, 1]]);
+    polygon([[0, 0], [1, 1], [1, 0], [0, 1]]);
   }).toThrow();
 });
 

@@ -1,5 +1,5 @@
 import { Matrix3x3 } from './Matrix3x3';
-import { none, some } from '@ruffy/ts-optional';
+import { some } from '@ruffy/ts-optional';
 
 test('constructor should create Matrix', () => {
 

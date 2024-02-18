@@ -183,9 +183,9 @@ export class Polygon {
    * Polygon to merge this polygon with.
    */
   merge(other: Polygon): Polygon {
-    /* tslint:disable */
+    /* eslint-disable */
     const pol1: Polygon = this;
-    /* tslint:enable */
+    /* eslint-enable */
     const pol2 = other;
     let currentSegment = pol1.lineSegments.find(ls => !pol2.containsPoint(ls.p1));
     if (currentSegment === undefined) {
@@ -383,7 +383,7 @@ export class Polygon {
  * Array of line segments to check, note that they have to define a polygon by defining a
  * closed shape (ie. the last line must end where the first line starts.).
  */
-export function isClockwise(lineSegments: LineSegment[]): Boolean {
+export function isClockwise(lineSegments: LineSegment[]): boolean {
   return 0 > lineSegments
       .map(ls => ls.asVector())
       .reduce((sum, v, i, array) => {

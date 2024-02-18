@@ -62,7 +62,7 @@ export class Rectangle {
   /**
    * Check if there is an overlap between this and another rectangle.
    */
-  overlap(other: Rectangle): Boolean {
+  overlap(other: Rectangle): boolean {
     if (this.topLeft.x >= other.bottomRight.x || this.bottomRight.x <= other.topLeft.x) {
       return false;
     }
