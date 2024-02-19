@@ -14,6 +14,11 @@ export class Rectangle {
     }
   }
 
+  /**
+   * Method that checks if a point is inside this rectangle. If the point is on the edge it is not considered inside.
+   * @param p the point to check.
+   * @returns true if the point is inside the rectangle, false otherwise.
+   */
   containsPoint(p: Point): boolean {
     return p.x > this.topLeft.x && p.x < this.bottomRight.x &&
       p.y > this.topLeft.y && p.y < this.bottomRight.y;

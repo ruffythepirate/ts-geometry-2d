@@ -27,10 +27,8 @@ export class Interval {
      * The minimum endpoint of the interval
      * @param max
      * The maximum endpoint of the interval.
-     * @param includeMin
-     * If the min value is included in the interval.
-     * @param includeMax
-     * If the max value is included in the interval.
+     * @param intervalType
+     * The type of interval, default is closed.
      */
   constructor(public min: number, public max: number,
               public intervalType: IntervalType = IntervalType.Closed) {

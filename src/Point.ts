@@ -80,7 +80,7 @@ export class Point {
   /**
    * Returns true if this point and the other have the same coordinates within
    * GlobalConfig.precision error.
-   * @param
+   * @param other
    * The other point to compare with.
    */
   equals(other: Point): boolean {
