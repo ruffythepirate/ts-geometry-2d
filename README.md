@@ -25,7 +25,7 @@ There are many other geometry repositories already, why create another one? Beca
 * Focus on easy accessibility. The library tries to use simple functions to make writing code using the library fast.
 
 
-For full information, please refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d/globals.html) to see available classes and their functions.
+For full information, please refer to the [API documentation](https://ruffythepirate.github.io/ts-geometry-2d/) to see available classes and their functions.
 
 ## Details
 
