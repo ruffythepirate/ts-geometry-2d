@@ -27,6 +27,8 @@ export function lineSegmentsIntersectThemselves(lineSegments: LineSegment[]): bo
  */
 export class Polygon {
 
+    private boundsCache: Rectangle | undefined;
+
   private constructor(public lineSegments: LineSegment[]) {
     if (lineSegmentsIntersectThemselves(lineSegments)) {
       throw Error('Points in polygon are intersecting themselves, this is not allowed!');
@@ -67,6 +69,10 @@ export class Polygon {
    * @param p
    */
   containsPoint(p: Point): boolean {
+    if(! this.bounds().containsPoint(p) ) {
+      return false;
+    }
+
     if (this.lineSegments.find(ls => ls.containsPoint(p))) {
       return false;
     }
@@ -336,16 +342,19 @@ export class Polygon {
   }
 
   bounds(): Rectangle {
-    const points = this.points();
-    const coords = points.reduce((a, v) => {
-      a[0] = Math.min(v.x, a[0]);
-      a[1] = Math.min(v.y, a[1]);
-      a[2] = Math.max(v.x, a[2]);
-      a[3] = Math.max(v.y, a[3]);
-      return a;
-    },                           [points[0].x, points[0].y, points[0].x, points[0].y]);
+    if(this.boundsCache === undefined) {
+      const points = this.points();
+      const coords = points.reduce((a, v) => {
+        a[0] = Math.min(v.x, a[0]);
+        a[1] = Math.min(v.y, a[1]);
+        a[2] = Math.max(v.x, a[2]);
+        a[3] = Math.max(v.y, a[3]);
+        return a;
+      }, [points[0].x, points[0].y, points[0].x, points[0].y]);
 
-    return rectangle(coords[0], coords[1], coords[2], coords[3]);
+      this.boundsCache = rectangle(coords[0], coords[1], coords[2], coords[3]);
+    }
+    return this.boundsCache;
   }
 
   /**

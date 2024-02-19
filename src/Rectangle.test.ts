@@ -53,3 +53,13 @@ test('separationVector should return null vector if there is no overlap', () => 
     expect(r2.overlap(r1)).toEqual(overlap);
   });
 });
+
+[
+{ r: rectangle(0, 0, 1, 1), p: point(0.5, 0.5), contains: true },
+  { r: rectangle(0, 0, 1, 1), p: point(-1, 0), contains: false },
+  { r: rectangle(0, 0, 1, 1), p: point(0, 0), contains: false },
+].forEach(({ r, p , contains }) => {
+  test(`containsPoint should be ${contains} when checking if ${p} is in ${r}`, () => {
+    expect(r.containsPoint(p)).toEqual(contains);
+  });
+});

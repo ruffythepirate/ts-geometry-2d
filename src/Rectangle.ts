@@ -14,6 +14,11 @@ export class Rectangle {
     }
   }
 
+  containsPoint(p: Point): boolean {
+    return p.x > this.topLeft.x && p.x < this.bottomRight.x &&
+      p.y > this.topLeft.y && p.y < this.bottomRight.y;
+  }
+
   toPolygon(): Polygon {
     const points = [
       this.topLeft,

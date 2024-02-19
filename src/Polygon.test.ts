@@ -34,6 +34,11 @@ test('containsPoints should return true if point is inside Polygon.', () => {
   expect(pol.containsPoint(Point.fromValues(0.5, 0.5))).toBeTruthy();
 });
 
+test('containsPoints should return false if point is outside Polygon but at height with top point', () => {
+    const pol = polygon([[0, 0], [1, 1], [0, 1]]);
+    expect(pol.containsPoint(Point.fromValues(-0.5, 0))).toBeFalsy();
+});
+
 test('containsPoint should return false if point is one border of Polygon.', () => {
   const pol = polygon([[0, 0], [1, 0], [1, 1], [0, 1]]);
   expect(pol.containsPoint(point(0, 0))).toBeFalsy();
